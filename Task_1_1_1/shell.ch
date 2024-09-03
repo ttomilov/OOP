@@ -1,2 +1,2 @@
-javac org/example/Main.java
-java org/example/Main
+javac Main.java
+java Main
