@@ -1,7 +1,6 @@
 package org.example;
 
 public class Heap {
-
     /**
      * class for heap
      * @param array
@@ -34,7 +33,8 @@ public class Heap {
     private static void heapify(int[] array, int n, int i) {
         /**
          * The function takes a vertex and its right and left child.
-         * Then they are compared with each other, and if the vertex is smaller than one of the children,
+         * Then they are compared with each other, and if the vertex
+         * is smaller than one of the children,
          * then they switch places and the function starts again
          */
         int max = i;
