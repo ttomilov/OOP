@@ -3,11 +3,10 @@ package org.example;
 public class Heap {
     /**
      * class for heap
+     * @param array
+     * @return
      */
     public static int[] heapsort(int[] array) {
-        /**
-         * calls function to build heap, sorts it and prints sorted array
-         */
         buildHeap(array);
         for (int i = array.length - 1; i >= 0; i--) {
             int help = array[i];
@@ -19,9 +18,6 @@ public class Heap {
     }
 
     private static void buildHeap(int[] array) {
-        /**
-         * build heap from array
-         */
         int n = array.length;
         for (int i = n / 2 - 1; i >= 0; i--) {
             heapify(array, n, i);
@@ -29,12 +25,6 @@ public class Heap {
     }
 
     private static void heapify(int[] array, int n, int i) {
-        /**
-         * The function takes a vertex and its right and left child.
-         * Then they are compared with each other, and if the vertex
-         * is smaller than one of the children,
-         * then they switch places and the function starts again
-         */
         int max = i;
         int right = 2 * i + 1;
         int left = 2 * i + 2;
