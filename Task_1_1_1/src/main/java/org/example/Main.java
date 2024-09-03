@@ -3,7 +3,6 @@ package org.example;
 public class Main {
   /**
    * Main class
-   * @param args
    */
   public static void main(String[] args) {
         int[] arr = {5, 4, 3, 2, 1};

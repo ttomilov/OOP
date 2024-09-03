@@ -3,8 +3,6 @@ package org.example;
 public class Heap {
     /**
      * class for heap
-     * @param array
-     * @return
      */
     public static int[] heapsort(int[] array) {
         /**
