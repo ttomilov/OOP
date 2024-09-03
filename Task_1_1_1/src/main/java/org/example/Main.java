@@ -1,8 +1,11 @@
 package org.example;
 
 public class Main {
-
-    public static void main(String[] args) {
+  /**
+   * Main class
+   * @param args
+   */
+  public static void main(String[] args) {
         int[] arr = {5, 4, 3, 2, 1};
         Heap.heapsort(arr);
         System.out.print("[");
