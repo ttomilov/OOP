@@ -2,8 +2,8 @@ package org.example;
 
 public class Heap {
     /**
-     * class for heap
-     * @param array
+     * calls function to build heap and sorts it
+     * @param
      * @return
      */
     public static int[] heapsort(int[] array) {
@@ -17,12 +17,26 @@ public class Heap {
         return array;
     }
 
+    /**
+     * build heap from array
+     * @param
+     */
     private static void buildHeap(int[] array) {
         int n = array.length;
         for (int i = n / 2 - 1; i >= 0; i--) {
             heapify(array, n, i);
         }
     }
+
+    /**
+     * The function takes a vertex and its right and left child. Then they are compared with each other, and if the vertex is smaller than one of the children, then they switch places and the function starts again
+     * The function takes a vertex and its right and left child.
+     * Then they are compared with each other, and if the vertex is smaller than one of the children,
+     * then they switch places and the function starts again
+     * @param
+     * @param
+     * @param
+     */
 
     private static void heapify(int[] array, int n, int i) {
         int max = i;
