@@ -19,7 +19,7 @@ tasks.test {
     useJUnitPlatform()
 }
 
-jacocoTestReport {
+tasks.jacocoTestReport {
     reports {
         xml.required = true
     }
