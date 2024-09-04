@@ -6,6 +6,12 @@ plugins {
 group = "org.example"
 version = "1.0-SNAPSHOT"
 
+tasks.jacocoTestReport {
+    reports {
+        xml.required = true
+    }
+}
+
 repositories {
     mavenCentral()
 }
@@ -17,10 +23,4 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
-}
-
-tasks.jacocoTestReport {
-    reports {
-        xml.required = true
-    }
 }
