@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class test2 {
+class Test2 {
     /**
      * Test2.
      */
