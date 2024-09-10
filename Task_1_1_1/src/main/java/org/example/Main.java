@@ -1,11 +1,10 @@
 package org.example;
 
 public class Main {
-
-    /**
-     *Class for main.
-     */
     public static void main(String[] args){
+        /**
+         *Class for main.
+         */
         int[] array = new int[] {5, 4, 3, 2, 1};
         Heap.heapsort(array);
         System.out.printf("[");

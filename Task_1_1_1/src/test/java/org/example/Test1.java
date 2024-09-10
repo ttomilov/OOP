@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 import java.util.Random;
 
-class Test1 {
+class test1 {
     /**
      * Test1.
      */
@@ -18,38 +18,38 @@ class Test1 {
         int[] arr = {5, 4, 3, 2, 1};
         Heap.heapsort(arr);
         int[] trueArr = {1, 2, 3, 4, 5};
-        for (int i = 0; i < trueArr.length; i++) {
+        for (int i = 0; i < trueArr.length; i++){
             assertEquals(trueArr[i], arr[i]);
         }
 
         Random rand = new Random();
         int[] arr2 = new int[10000];
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 10000; i++){
             arr2[i] = rand.nextInt(10000000) - 5000000;
         }
         int[] arr3 = Heap.heapsort(arr2);
         Arrays.sort(arr2);
-        for (int i = 0; i < arr2.length; i++) {
+        for (int i = 0; i < arr2.length; i++){
             assertEquals(arr2[i], arr3[i]);
         }
     }
 
     @Test
-    void timeTest() {
+    void timeTest(){
         Random rand = new Random();
         int len1 = 1000;
         int len2 = 100000;
         int len3 = 10000000;
         int[] arr1 = new int[len1];
-        for (int i = 0; i < len1; i++) {
+        for (int i = 0; i < len1; i++){
             arr1[i] = rand.nextInt(10000000);
         }
         int[] arr2 = new int[len2];
-        for (int i = 0; i < len2; i++) {
+        for (int i = 0; i < len2; i++){
             arr2[i] = rand.nextInt(10000000);
         }
         int[] arr3 = new int[len3];
-        for (int i = 0; i < len3; i++) {
+        for (int i = 0; i < len3; i++){
             arr3[i] = rand.nextInt(10000000);
         }
         long startTime = System.currentTimeMillis();
