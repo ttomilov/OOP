@@ -3,8 +3,8 @@ plugins {
     id 'jacoco'
 }
 
-group = 'org.example'
-version = '1.0-SNAPSHOT'
+group = "org.example"
+version = "1.0-SNAPSHOT"
 
 tasks.jacocoTestReport {
     reports {
@@ -17,10 +17,10 @@ repositories {
 }
 
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation(platform("org.junit:junit-bom:5.10.0"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
 }
 
-test {
+tasks.test {
     useJUnitPlatform()
 }
