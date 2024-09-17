@@ -52,10 +52,10 @@ public class BlackJack {
         botsPoints = botsCards.get(0).points + botsCards.get(1).points;
         System.out.println("Дилер раздал карты");
         printCards(yourCards, botsCards, '0');
-        if (yourPoints == 21) {
+        if (yourPoints == 21 || botsPoints > 21) {
             yourScore++;
             System.out.printf("Вы выиграли раунд! Счёт %d:%d.\n", yourScore, botsScore);
-        } else if (botsPoints == 21) {
+        } else if (botsPoints == 21 || yourPoints > 21) {
             botsScore++;
             System.out.printf("Вы проиграли раунд! Счёт %d:%d.\n", yourScore, botsScore);
         } else {
