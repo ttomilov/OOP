@@ -50,8 +50,8 @@ public class BlackJack {
         System.out.printf("Раунд %d\n", round);
         Vector<Cards> yourCards = new Vector<Cards>(), botsCards = new Vector<Cards>();
         setCards(yourCards, botsCards, cards);
-        yourPoints = yourCards.getFirst().points + yourCards.get(1).points;
-        botsPoints = botsCards.getFirst().points + botsCards.get(1).points;
+        yourPoints = yourCards.get(0).points + yourCards.get(1).points;
+        botsPoints = botsCards.get(0).points + botsCards.get(1).points;
         System.out.println("Дилер раздал карты");
         printCards(yourCards, botsCards, '0');
         if (yourPoints == 21){
@@ -123,7 +123,7 @@ public class BlackJack {
         }
         System.out.printf("     Карты дилера: [");
         if (fl == '0'){
-            System.out.printf("%s (%d), <закрытая карта>]\n", botsCards.getFirst().nameCard, botsCards.getFirst().points);
+            System.out.printf("%s (%d), <закрытая карта>]\n", botsCards.get(0).nameCard, botsCards.get(0).points);
         }
         else{
             for (int i = 0; i < botsCards.size(); i++){
