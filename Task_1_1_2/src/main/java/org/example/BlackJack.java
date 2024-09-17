@@ -54,20 +54,30 @@ public class BlackJack {
         botsPoints = botsCards.getFirst().points + botsCards.get(1).points;
         System.out.println("Дилер раздал карты");
         printCards(yourCards, botsCards, '0');
-        char you = yourStep(yourCards, botsCards, cards);
-        if (you == '0') return;
-        char bot = botsStep(yourCards, botsCards, cards);
-        if (bot == '0') return;
-        if (yourPoints > botsPoints){
+        if (yourPoints == 21){
             yourScore++;
             System.out.printf("Вы выиграли раунд! Счёт %d:%d.\n", yourScore, botsScore);
         }
-        else if (yourPoints < botsPoints){
+        else if (botsPoints == 21){
             botsScore++;
             System.out.printf("Вы проиграли раунд! Счёт %d:%d.\n", yourScore, botsScore);
         }
         else{
-            System.out.printf("Ничья! Счёт %d:%d\n", yourScore, botsScore);
+            char you = yourStep(yourCards, botsCards, cards);
+            if (you == '0') return;
+            char bot = botsStep(yourCards, botsCards, cards);
+            if (bot == '0') return;
+            if (yourPoints > botsPoints){
+                yourScore++;
+                System.out.printf("Вы выиграли раунд! Счёт %d:%d.\n", yourScore, botsScore);
+            }
+            else if (yourPoints < botsPoints){
+                botsScore++;
+                System.out.printf("Вы проиграли раунд! Счёт %d:%d.\n", yourScore, botsScore);
+            }
+            else{
+                System.out.printf("Ничья! Счёт %d:%d\n", yourScore, botsScore);
+            }
         }
     }
 
