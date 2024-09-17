@@ -5,7 +5,7 @@ public class Cards {
     public int points;
     public char flUse;
 
-    public Cards(String name, int point, char fluse){
+    public Cards(String name, int point, char fluse) {
         this.nameCard = name;
         this.points = point;
         this.flUse = fluse;

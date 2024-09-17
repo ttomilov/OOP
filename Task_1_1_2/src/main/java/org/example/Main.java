@@ -10,7 +10,7 @@ public class Main {
         Cards[] cards = new Cards[53];
         makeDeck(cards);
         int round = 1;
-        while (true){
+        while (true) {
             game(cards, round++);
             System.out.printf("Хотите завершить игру?[Y/N]: ");
             Scanner scanner = new Scanner(System.in);

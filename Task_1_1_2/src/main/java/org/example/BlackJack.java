@@ -10,8 +10,8 @@ public class BlackJack {
     public static int botsScore = 0, botsPoints;
     public static int counterOfUsedCards = 0;
 
-    public static void makeDeck(Cards[] cards){
-        String[] names = new String[] {
+    public static void makeDeck(Cards[] cards) {
+        String[] names = new String[]{
                 "Пиковая Двойка", "Пиковая Тройка", "Пиковая Четверка", "Пиковая Пятерка", "Пиковая Шестерка",
                 "Пиковая Семерка", "Пиковая Восьмерка", "Пиковая Девятка", "Пиковая Десятка", "Пиковый Валет",
                 "Пиковая Дама", "Пиковый Король", "Пиковый Туз",
@@ -28,23 +28,21 @@ public class BlackJack {
                 "Восьмерка Треф", "Девятка Треф", "Десятка Треф", "Валет Треф", "Дама Треф", "Король Треф", "Туз Треф"
         };
         int point = 2;
-        for (int i = 0; i < 52; i++){
-            if (i == 12 || i == 25 || i == 38 || i == 51){
+        for (int i = 0; i < 52; i++) {
+            if (i == 12 || i == 25 || i == 38 || i == 51) {
                 cards[i] = new Cards(names[i], 11, '0');
                 point = 2;
-            }
-            else if (point == 10){
+            } else if (point == 10) {
                 cards[i] = new Cards(names[i], point, '0');
-            }
-            else{
+            } else {
                 cards[i] = new Cards(names[i], point, '0');
                 point++;
             }
         }
     }
 
-    public static void game(Cards[] cards, int round){
-        if (round == 1){
+    public static void game(Cards[] cards, int round) {
+        if (round == 1) {
             System.out.println("Добро пожаловать в Блэкджэк!");
         }
         System.out.printf("Раунд %d\n", round);
@@ -54,28 +52,24 @@ public class BlackJack {
         botsPoints = botsCards.get(0).points + botsCards.get(1).points;
         System.out.println("Дилер раздал карты");
         printCards(yourCards, botsCards, '0');
-        if (yourPoints == 21){
+        if (yourPoints == 21) {
             yourScore++;
             System.out.printf("Вы выиграли раунд! Счёт %d:%d.\n", yourScore, botsScore);
-        }
-        else if (botsPoints == 21){
+        } else if (botsPoints == 21) {
             botsScore++;
             System.out.printf("Вы проиграли раунд! Счёт %d:%d.\n", yourScore, botsScore);
-        }
-        else{
+        } else {
             char you = yourStep(yourCards, botsCards, cards);
             if (you == '0') return;
             char bot = botsStep(yourCards, botsCards, cards);
             if (bot == '0') return;
-            if (yourPoints > botsPoints){
+            if (yourPoints > botsPoints) {
                 yourScore++;
                 System.out.printf("Вы выиграли раунд! Счёт %d:%d.\n", yourScore, botsScore);
-            }
-            else if (yourPoints < botsPoints){
+            } else if (yourPoints < botsPoints) {
                 botsScore++;
                 System.out.printf("Вы проиграли раунд! Счёт %d:%d.\n", yourScore, botsScore);
-            }
-            else{
+            } else {
                 System.out.printf("Ничья! Счёт %d:%d\n", yourScore, botsScore);
             }
         }
@@ -85,7 +79,7 @@ public class BlackJack {
         Random rn = new Random();
         int maximum = 51, minimum = 0;
         int random = rn.nextInt(maximum - minimum + 1) + minimum;
-        if (counterOfUsedCards == 52){
+        if (counterOfUsedCards == 52) {
             remakeDeck(cards);
         }
         for (int i = 0; i < 2; i++) {
@@ -95,7 +89,7 @@ public class BlackJack {
             yourCards.add(cards[random]);
             cards[random].flUse = '1';
             counterOfUsedCards++;
-            if (counterOfUsedCards == 52){
+            if (counterOfUsedCards == 52) {
                 remakeDeck(cards);
             }
         }
@@ -107,63 +101,59 @@ public class BlackJack {
             botsCards.add(cards[random]);
             cards[random].flUse = '1';
             counterOfUsedCards++;
-            if (counterOfUsedCards == 52){
+            if (counterOfUsedCards == 52) {
                 remakeDeck(cards);
             }
         }
     }
 
-    public static void printCards(Vector<Cards> yourCards, Vector<Cards> botsCards, char fl){
+    public static void printCards(Vector<Cards> yourCards, Vector<Cards> botsCards, char fl) {
         System.out.printf("     Ваши карты: [");
-        for (int i = 0; i < yourCards.size(); i++){
-            if (i == yourCards.size() - 1){
+        for (int i = 0; i < yourCards.size(); i++) {
+            if (i == yourCards.size() - 1) {
                 System.out.printf("%s (%d)] => %d\n", yourCards.get(i).nameCard, yourCards.get(i).points, yourPoints);
-            }
-            else System.out.printf("%s (%d), ", yourCards.get(i).nameCard, yourCards.get(i).points);
+            } else System.out.printf("%s (%d), ", yourCards.get(i).nameCard, yourCards.get(i).points);
         }
         System.out.printf("     Карты дилера: [");
-        if (fl == '0'){
+        if (fl == '0') {
             System.out.printf("%s (%d), <закрытая карта>]\n", botsCards.get(0).nameCard, botsCards.get(0).points);
-        }
-        else{
-            for (int i = 0; i < botsCards.size(); i++){
-                if (i == botsCards.size() - 1){
+        } else {
+            for (int i = 0; i < botsCards.size(); i++) {
+                if (i == botsCards.size() - 1) {
                     System.out.printf("%s (%d)] => %d\n", botsCards.get(i).nameCard, botsCards.get(i).points, botsPoints);
-                }
-                else System.out.printf("%s (%d), ", botsCards.get(i).nameCard, botsCards.get(i).points);
+                } else System.out.printf("%s (%d), ", botsCards.get(i).nameCard, botsCards.get(i).points);
             }
         }
     }
 
-    public static char yourStep(Vector<Cards> yourCards, Vector<Cards> botsCards, Cards[] cards){
+    public static char yourStep(Vector<Cards> yourCards, Vector<Cards> botsCards, Cards[] cards) {
         System.out.println("Ваш ход\n-------\nВведите “1”, чтобы взять карту, и “0”, чтобы остановиться...");
         Scanner scanner = new Scanner(System.in);
         String fl = scanner.nextLine();
         int maximum = 51, minimum = 0;
         Random rn = new Random();
         int random = rn.nextInt(maximum - minimum + 1) + minimum;
-        if (counterOfUsedCards == 52){
+        if (counterOfUsedCards == 52) {
             remakeDeck(cards);
         }
-        while (fl.equals("1")){
+        while (fl.equals("1")) {
             while (cards[random].flUse == '1') {
                 random = rn.nextInt(maximum - minimum + 1) + minimum;
             }
             yourCards.add(cards[random]);
             cards[random].flUse = '1';
             counterOfUsedCards++;
-            if (counterOfUsedCards == 52){
+            if (counterOfUsedCards == 52) {
                 remakeDeck(cards);
             }
             System.out.printf("Вы открыли %s (%d)\n", cards[random].nameCard, cards[random].points);
             yourPoints += cards[random].points;
             printCards(yourCards, botsCards, '0');
-            if (yourPoints > 21){
+            if (yourPoints > 21) {
                 botsScore++;
                 System.out.printf("Вы проиграли раунд! Счёт %d:%d.\n", yourScore, botsScore);
                 return '0';
-            }
-            else if (yourPoints == 21){
+            } else if (yourPoints == 21) {
                 yourScore++;
                 System.out.printf("Вы выиграли раунд! Счёт %d:%d.\n", yourScore, botsScore);
                 return '0';
@@ -175,17 +165,17 @@ public class BlackJack {
         return '1';
     }
 
-    public static char botsStep(Vector<Cards> yourCards, Vector<Cards> botsCards, Cards[] cards){
+    public static char botsStep(Vector<Cards> yourCards, Vector<Cards> botsCards, Cards[] cards) {
         System.out.printf("Ход дилера\n-------\nДилер открывает закрытую карту %s %d\n", botsCards.get(1).nameCard,
                 botsCards.get(1).points);
         printCards(yourCards, botsCards, '1');
         int maximum = 51, minimum = 0;
         Random rn = new Random();
-        if (counterOfUsedCards == 52){
+        if (counterOfUsedCards == 52) {
             remakeDeck(cards);
         }
         int random = rn.nextInt(maximum - minimum + 1) + minimum;
-        while (botsPoints < 17){
+        while (botsPoints < 17) {
             while (cards[random].flUse == '1') {
                 random = rn.nextInt(maximum - minimum + 1) + minimum;
             }
@@ -193,17 +183,16 @@ public class BlackJack {
             cards[random].flUse = '1';
             botsPoints += cards[random].points;
             counterOfUsedCards++;
-            if (counterOfUsedCards == 52){
+            if (counterOfUsedCards == 52) {
                 remakeDeck(cards);
             }
             System.out.printf(" %s (%d)\n", cards[random].nameCard, cards[random].points);
             printCards(yourCards, botsCards, '1');
-            if (botsPoints > 21){
+            if (botsPoints > 21) {
                 yourScore++;
                 System.out.printf("Вы выиграли раунд! Счёт %d:%d.\n", yourScore, botsScore);
                 return '0';
-            }
-            else if (botsPoints == 21){
+            } else if (botsPoints == 21) {
                 botsScore++;
                 System.out.printf("Вы проиграли раунд! Счёт %d:%d.\n", yourScore, botsScore);
                 return '0';
@@ -212,8 +201,8 @@ public class BlackJack {
         return '1';
     }
 
-    public  static void remakeDeck(Cards[] cards){
-        for (int i = 0; i < 52; i++){
+    public static void remakeDeck(Cards[] cards) {
+        for (int i = 0; i < 52; i++) {
             cards[i].flUse = '0';
         }
         counterOfUsedCards = 0;
