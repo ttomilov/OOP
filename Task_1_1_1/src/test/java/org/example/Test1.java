@@ -12,21 +12,21 @@ class test1 {
     @Test
     void main() {
         int[] arr = {5, 4, 3, 2, 1};
-        Heap.heapsort(arr);
+        int[] ans = Heap.heapsort(arr);
         int[] trueArr = {1, 2, 3, 4, 5};
         for (int i = 0; i < trueArr.length; i++){
-            assertEquals(trueArr[i], arr[i]);
+            assertEquals(trueArr[i], ans[i]);
         }
 
         Random rand = new Random();
-        int[] arr2 = new int[10000];
+        int[] arr1 = new int[10000];
         for (int i = 0; i < 10000; i++){
-            arr2[i] = rand.nextInt(10000000) - 5000000;
+            arr1[i] = rand.nextInt(10000000) - 5000000;
         }
-        int[] arr3 = Heap.heapsort(arr2);
-        Arrays.sort(arr2);
-        for (int i = 0; i < arr2.length; i++){
-            assertEquals(arr2[i], arr3[i]);
+        int[] ans1 = Heap.heapsort(arr1);
+        Arrays.sort(arr1);
+        for (int i = 0; i < arr1.length; i++){
+            assertEquals(arr1[i], ans1[i]);
         }
     }
 
