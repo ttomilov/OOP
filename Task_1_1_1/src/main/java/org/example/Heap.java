@@ -4,12 +4,13 @@ public class Heap {
 
     /**
      * calls function to build heap and sorts it.
+     *
      * @return array
      */
-    public static int[] heapsort(int[] array){
+    public static int[] heapsort(int[] array) {
         int[] ans = array.clone();
         buildHeap(ans);
-        for (int i = ans.length - 1; i >= 0; i--){
+        for (int i = ans.length - 1; i >= 0; i--) {
             int help = ans[i];
             ans[i] = ans[0];
             ans[0] = help;
@@ -22,9 +23,9 @@ public class Heap {
      * build heap from array.
      */
 
-    private static void buildHeap(int[] array){
+    private static void buildHeap(int[] array) {
         int n = array.length;
-        for (int i = n / 2 - 1; i >= 0; i--){
+        for (int i = n / 2 - 1; i >= 0; i--) {
             heapify(array, n, i);
         }
     }
@@ -35,14 +36,14 @@ public class Heap {
      * then they switch places and the function starts again
      */
 
-    private static void heapify(int[] array, int n, int i){
+    private static void heapify(int[] array, int n, int i) {
         int max = i;
         int right = 2 * i + 1;
         int left = 2 * i + 2;
-        if (right < n && array[right] > array[max]){
+        if (right < n && array[right] > array[max]) {
             max = right;
         }
-        if (left < n && array[left] > array[max]){
+        if (left < n && array[left] > array[max]) {
             max = left;
         }
         if (max != i) {
