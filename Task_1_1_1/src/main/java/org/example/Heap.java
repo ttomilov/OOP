@@ -7,19 +7,21 @@ public class Heap {
      * @return array
      */
     public static int[] heapsort(int[] array){
-        buildHeap(array);
-        for (int i = array.length - 1; i >= 0; i--){
-            int help = array[i];
-            array[i] = array[0];
-            array[0] = help;
-            heapify(array, i, 0);
+        int[] ans = array.clone();
+        buildHeap(ans);
+        for (int i = ans.length - 1; i >= 0; i--){
+            int help = ans[i];
+            ans[i] = ans[0];
+            ans[0] = help;
+            heapify(ans, i, 0);
         }
-        return array;
+        return ans;
     }
 
     /**
      * build heap from array.
      */
+
     private static void buildHeap(int[] array){
         int n = array.length;
         for (int i = n / 2 - 1; i >= 0; i--){
