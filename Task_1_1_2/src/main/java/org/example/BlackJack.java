@@ -1,9 +1,15 @@
 package org.example;
 
 public class BlackJack {
+    /**
+     * Class of game BlackJack.
+     */
     public static int counterOfUsedCards = 0;
     public static Card[] cards = new Card[53];
 
+    /**
+     * Func to make deck.
+     */
     public static void makeDeck() {
         String[] names = new String[]{
                 "Пиковая Двойка", "Пиковая Тройка", "Пиковая Четверка", "Пиковая Пятерка", "Пиковая Шестерка",
@@ -35,6 +41,9 @@ public class BlackJack {
         }
     }
 
+    /**
+     * Func to remake deck.
+     */
     public static void remakeDeck() {
         for (int i = 0; i < 52; i++) {
             cards[i].flUse = '0';
@@ -42,24 +51,40 @@ public class BlackJack {
         counterOfUsedCards = 0;
     }
 
+    /**
+     * main func of game.
+     * @param round
+     */
     public static void game(int round) {
-        if(round == 1){
+        if (round == 1) {
             System.out.println("Добро пожаловать в Блекджек");
         }
         System.out.printf("Раунд %d\nДилер раздал карты:\n", round);
-        Player.printCards();
-        Dealer.printCards('0');
         Player.setCards();
         Dealer.setCards();
+        Player.printCards();
+        Dealer.printCards('0');
         char plstep = Player.step();
+        if (plstep == '0') {
+            Player.cards.clear();
+            Dealer.cards.clear();
+            return;
+        }
         char dlstep = Dealer.step();
+        if (dlstep == '0') {
+            Player.cards.clear();
+            Dealer.cards.clear();
+            return;
+        }
         winCheck(plstep, dlstep);
     }
 
+    /**
+     * Func to check, whoes win.
+     * @param player
+     * @param dealer
+     */
     private static void winCheck(char player, char dealer) {
-        if (player == '0' || dealer == '0') {
-            return;
-        }
         if (Dealer.points > Player.points) {
             Dealer.score++;
             System.out.printf("Вы проиграли раунд! Счёт %d:%d.\n", Player.score, Dealer.score);
@@ -70,5 +95,7 @@ public class BlackJack {
             System.out.println("Ничья!\n");
 
         }
+        Player.cards.clear();
+        Dealer.cards.clear();
     }
 }

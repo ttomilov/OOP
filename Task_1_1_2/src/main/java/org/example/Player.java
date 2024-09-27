@@ -5,10 +5,16 @@ import java.util.Scanner;
 import java.util.Vector;
 
 public class Player {
+    /**
+     * Player class.
+     */
     public static int score = 0;
     public static int points;
     public static Vector<Card> cards = new Vector<Card>();
 
+    /**
+     * Func to set cards to player.
+     */
     public static void setCards() {
         Random rn = new Random();
         int maximum = 51, minimum = 0;
@@ -27,8 +33,12 @@ public class Player {
                 BlackJack.remakeDeck();
             }
         }
+        points = cards.get(0).points + cards.get(1).points;
     }
 
+    /**
+     * Func to print player`s cards.
+     */
     public static void printCards() {
         System.out.printf("     Ваши карты: [");
         for (int i = 0; i < cards.size(); i++) {
@@ -38,6 +48,10 @@ public class Player {
         }
     }
 
+    /**
+     * Func to player`s step.
+     * @return char '1' '0'
+     */
     public static char step(){
         System.out.println("Ваш ход\n-------\nВведите “1”, чтобы взять карту, и “0”, чтобы остановиться...");
         Scanner scanner = new Scanner(System.in);

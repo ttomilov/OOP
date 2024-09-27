@@ -4,9 +4,16 @@ import java.util.Random;
 import java.util.Vector;
 
 public class Dealer {
+
+    /**
+     * Class to dealer.
+     */
     public static int score = 0, points;
     public static Vector<Card> cards = new Vector<Card>();
 
+    /**
+     * Func to set cards to dealer.
+     */
     public static void setCards() {
         Random rn = new Random();
         int maximum = 51, minimum = 0;
@@ -25,8 +32,12 @@ public class Dealer {
                 BlackJack.remakeDeck();
             }
         }
+        points = cards.get(0).points + cards.get(1).points;
     }
 
+    /**
+     * Func to print dealer`s cards.
+     */
     public static void printCards(char fl){
         System.out.printf("     Карты дилера: [");
         if (fl == '0') {
@@ -40,6 +51,10 @@ public class Dealer {
         }
     }
 
+    /**
+     * Func to dealer`s step.
+     * @return char '1' '0'
+     */
     public static char step() {
         System.out.printf("Ход дилера\n-------\nДилер открывает закрытую карту %s %d\n", cards.get(1).nameCard,
                 cards.get(1).points);
