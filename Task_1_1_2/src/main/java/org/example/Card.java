@@ -1,11 +1,11 @@
 package org.example;
 
-public class Cards {
+public class Card {
     public String nameCard;
     public int points;
     public char flUse;
 
-    public Cards(String name, int point, char fluse) {
+    public Card(String name, int point, char fluse) {
         this.nameCard = name;
         this.points = point;
         this.flUse = fluse;
