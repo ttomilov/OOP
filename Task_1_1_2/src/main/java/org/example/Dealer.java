@@ -7,7 +7,7 @@ public class Dealer {
     public static int score = 0, points;
     public static Vector<Card> cards = new Vector<Card>();
 
-    public void setCards() {
+    public static void setCards() {
         Random rn = new Random();
         int maximum = 51, minimum = 0;
         int random = rn.nextInt(maximum - minimum + 1) + minimum;
@@ -18,7 +18,7 @@ public class Dealer {
             while (BlackJack.cards[random].flUse == '1') {
                 random = rn.nextInt(maximum - minimum + 1) + minimum;
             }
-            this.cards.add(BlackJack.cards[random]);
+            cards.add(BlackJack.cards[random]);
             BlackJack.cards[random].flUse = '1';
             BlackJack.counterOfUsedCards++;
             if (BlackJack.counterOfUsedCards == 52) {

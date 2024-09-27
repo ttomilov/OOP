@@ -1,9 +1,5 @@
 package org.example;
 
-import java.util.Random;
-import java.util.Scanner;
-import java.util.Vector;
-
 public class BlackJack {
     public static int counterOfUsedCards = 0;
     public static Card[] cards = new Card[53];
@@ -53,22 +49,26 @@ public class BlackJack {
         System.out.printf("Раунд %d\nДилер раздал карты:\n", round);
         Player.printCards();
         Dealer.printCards('0');
+        Player.setCards();
+        Dealer.setCards();
         char plstep = Player.step();
         char dlstep = Dealer.step();
-        if (plstep == '0' || dlstep == '0'){
+        winCheck(plstep, dlstep);
+    }
+
+    private static void winCheck(char player, char dealer) {
+        if (player == '0' || dealer == '0') {
             return;
         }
-        if (Dealer.points > Player.points){
+        if (Dealer.points > Player.points) {
             Dealer.score++;
             System.out.printf("Вы проиграли раунд! Счёт %d:%d.\n", Player.score, Dealer.score);
-        }
-        else if (Dealer.points < Player.points){
+        } else if (Dealer.points < Player.points) {
             Player.score++;
             System.out.printf("Вы выиграли раунд! Счёт %d:%d.\n", Player.score, Dealer.score);
-        }
-        else{
+        } else {
             System.out.println("Ничья!\n");
+
         }
-        return;
     }
 }
