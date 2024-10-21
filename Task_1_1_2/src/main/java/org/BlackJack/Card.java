@@ -1,4 +1,4 @@
-package org.example;
+package org.BlackJack;
 
 public class Card {
     public String nameCard;

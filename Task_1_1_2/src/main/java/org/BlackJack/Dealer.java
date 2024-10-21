@@ -1,6 +1,6 @@
-package org.example;
+package org.BlackJack;
 
-import static org.example.BlackJack.counterOfUsedCards;
+import static org.BlackJack.BlackJack.counterOfUsedCards;
 
 import java.util.Vector;
 
