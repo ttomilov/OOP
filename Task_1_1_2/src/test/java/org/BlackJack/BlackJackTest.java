@@ -80,7 +80,7 @@ public class BlackJackTest {
      */
     @Test
     public void testDealerWin() {
-        Player.points = 15;
+        Player.points = 13;
         Dealer.points = 21;
         BlackJack.winCheck();
 
