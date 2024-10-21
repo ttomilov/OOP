@@ -1,14 +1,9 @@
-package org.example;
+package org.BlackJack;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-
-import org.BlackJack.BlackJack;
-import org.BlackJack.Card;
-import org.BlackJack.Dealer;
-import org.BlackJack.Player;
 
 /**
  * Unit tests for the BlackJack game logic.
