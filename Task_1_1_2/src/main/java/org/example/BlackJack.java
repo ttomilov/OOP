@@ -1,11 +1,24 @@
 package org.example;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class BlackJack {
     /**
      * Class of game BlackJack.
      */
     public static int counterOfUsedCards = 0;
     public static Card[] cards = new Card[53];
+
+    /**
+     * Func to shuffle deck.
+     */
+    public static void shuffle() {
+        List<Card> cardList = Arrays.asList(cards);
+        Collections.shuffle(cardList);
+        cardList.toArray(cards);
+    }
 
     /**
      * Func to make deck.
@@ -30,25 +43,24 @@ public class BlackJack {
         int point = 2;
         for (int i = 0; i < 52; i++) {
             if (i == 12 || i == 25 || i == 38 || i == 51) {
-                cards[i] = new Card(names[i], 11, '0');
+                cards[i] = new Card(names[i], 11);
                 point = 2;
             } else if (point == 10) {
-                cards[i] = new Card(names[i], point, '0');
+                cards[i] = new Card(names[i], point);
             } else {
-                cards[i] = new Card(names[i], point, '0');
+                cards[i] = new Card(names[i], point);
                 point++;
             }
         }
+        shuffle();
     }
 
     /**
      * Func to remake deck.
      */
     public static void remakeDeck() {
-        for (int i = 0; i < 52; i++) {
-            cards[i].flUse = '0';
-        }
         counterOfUsedCards = 0;
+        shuffle();
     }
 
     /**
@@ -76,15 +88,13 @@ public class BlackJack {
             Dealer.cards.clear();
             return;
         }
-        winCheck(plstep, dlstep);
+        winCheck();
     }
 
     /**
      * Func to check, whoes win.
-     * @param player
-     * @param dealer
      */
-    private static void winCheck(char player, char dealer) {
+    public static void winCheck() {
         if (Dealer.points > Player.points) {
             Dealer.score++;
             System.out.printf("Вы проиграли раунд! Счёт %d:%d.\n", Player.score, Dealer.score);

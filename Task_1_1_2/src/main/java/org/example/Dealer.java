@@ -1,6 +1,7 @@
 package org.example;
 
-import java.util.Random;
+import static org.example.BlackJack.counterOfUsedCards;
+
 import java.util.Vector;
 
 public class Dealer {
@@ -15,22 +16,11 @@ public class Dealer {
      * Func to set cards to dealer.
      */
     public static void setCards() {
-        Random rn = new Random();
-        int maximum = 51, minimum = 0;
-        int random = rn.nextInt(maximum - minimum + 1) + minimum;
-        if (BlackJack.counterOfUsedCards == 52) {
-            BlackJack.remakeDeck();
-        }
+        if (BlackJack.counterOfUsedCards == 52) BlackJack.remakeDeck();
         for (int i = 0; i < 2; i++) {
-            while (BlackJack.cards[random].flUse == '1') {
-                random = rn.nextInt(maximum - minimum + 1) + minimum;
-            }
-            cards.add(BlackJack.cards[random]);
-            BlackJack.cards[random].flUse = '1';
+            cards.add(BlackJack.cards[counterOfUsedCards]);
             BlackJack.counterOfUsedCards++;
-            if (BlackJack.counterOfUsedCards == 52) {
-                BlackJack.remakeDeck();
-            }
+            if (BlackJack.counterOfUsedCards == 52) BlackJack.remakeDeck();
         }
         points = cards.get(0).points + cards.get(1).points;
     }
@@ -60,24 +50,18 @@ public class Dealer {
                 cards.get(1).points);
         Player.printCards();
         printCards('1');
-        int maximum = 51, minimum = 0;
-        Random rn = new Random();
         if (BlackJack.counterOfUsedCards == 52) {
             BlackJack.remakeDeck();
         }
-        int random = rn.nextInt(maximum - minimum + 1) + minimum;
         while (points < 17) {
-            while (BlackJack.cards[random].flUse == '1') {
-                random = rn.nextInt(maximum - minimum + 1) + minimum;
-            }
-            cards.add(BlackJack.cards[random]);
-            BlackJack.cards[random].flUse = '1';
-            points += BlackJack.cards[random].points;
+            if (BlackJack.counterOfUsedCards == 52) BlackJack.remakeDeck();
+            cards.add(BlackJack.cards[counterOfUsedCards]);
+            if (BlackJack.counterOfUsedCards == 52) BlackJack.remakeDeck();
+            points += BlackJack.cards[counterOfUsedCards].points;
             BlackJack.counterOfUsedCards++;
-            if (BlackJack.counterOfUsedCards == 52) {
-                BlackJack.remakeDeck();
-            }
-            System.out.printf(" %s (%d)\n", BlackJack.cards[random].nameCard, BlackJack.cards[random].points);
+            if (BlackJack.counterOfUsedCards == 52) BlackJack.remakeDeck();
+            System.out.printf("Дилер открывает карту %s (%d)\n", BlackJack.cards[counterOfUsedCards].nameCard, BlackJack.cards[counterOfUsedCards].points);
+            BlackJack.counterOfUsedCards++;
             Player.printCards();
             printCards('1');
             if (points > 21) {
