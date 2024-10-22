@@ -2,9 +2,16 @@ package org.game;
 
 import java.util.Scanner;
 
+/**
+ * Main class that starts the BlackJack game.
+ * It contains the method to initialize and manage game rounds.
+ */
 public class Main {
+
     /**
-     *Class for main.
+     * The main method that launches the game.
+     *
+     * @param args command-line arguments (not used)
      */
     public static void main(String[] args) {
         BlackJack.makeDeck();
@@ -12,7 +19,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             BlackJack.game(round);
-            System.out.print("Хотите завершить игру? [Y/N]: ");
+            System.out.print("Do you want to end the game? [Y/N]: ");
             String input = scanner.nextLine().trim().toLowerCase();
             if (input.equals("y") || input.equals("д")) {
                 break;
