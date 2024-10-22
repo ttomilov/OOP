@@ -5,8 +5,8 @@ package org.game;
  * Each card has a name and a point value.
  */
 public class Card {
-    public String nameCard;
-    public int points;
+    private final String nameCard;
+    private int points;
 
     /**
      * Constructor that initializes the card with its name and point value.
@@ -17,5 +17,17 @@ public class Card {
     public Card(String name, int point) {
         this.nameCard = name;
         this.points = point;
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public String getNameCard() {
+        return nameCard;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
     }
 }

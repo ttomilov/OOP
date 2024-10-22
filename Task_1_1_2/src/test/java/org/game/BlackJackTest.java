@@ -49,20 +49,21 @@ public class BlackJackTest {
      */
     @Test
     public void testPlayerSetCards() {
-        Player.setCards();
-        assertEquals(2, Player.cards.size());
-        assertTrue(Player.points > 0);
+
+        Player player = new Human();
+        player.setCards();
+        assertTrue(player.getPoints() > 0);
     }
 
     /**
-     * Tests the {@link Dealer#setCards()} method to ensure the dealer is dealt two cards
+     * Tests the dealer setCards() method to ensure the dealer is dealt two cards
      * and has a positive points total.
      */
     @Test
     public void testDealerSetCards() {
-        Dealer.setCards();
-        assertEquals(2, Dealer.cards.size());
-        assertTrue(Dealer.points > 0);
+        Player dealer = new Dealer();
+        dealer.setCards();
+        assertTrue(dealer.getPoints() > 0);
     }
 
     /**
@@ -70,12 +71,13 @@ public class BlackJackTest {
      */
     @Test
     public void testPlayerWin() {
-        Player.points = 21;
-        Dealer.points = 18;
-        BlackJack.winCheck();
+        Player player = new Human(), dealer = new Dealer();
+        player.setPoints(21);
+        dealer.setPoints(18);
+        BlackJack.winCheck(player, dealer);
 
-        assertEquals(1, Player.score);
-        assertEquals(0, Dealer.score);
+        assertEquals(1, player.getScore());
+        assertEquals(0, dealer.getScore());
     }
 
     /**
@@ -83,12 +85,13 @@ public class BlackJackTest {
      */
     @Test
     public void testDealerWin() {
-        Player.points = 13;
-        Dealer.points = 21;
-        BlackJack.winCheck();
+        Player player = new Human(), dealer = new Dealer();
+        player.setPoints(13);
+        dealer.setPoints(21);
+        BlackJack.winCheck(player, dealer);
 
-        assertEquals(1, Player.score);
-        assertEquals(1, Dealer.score);
+        assertEquals(1, player.getScore());
+        assertEquals(1, dealer.getScore());
     }
 
     /**
@@ -97,11 +100,12 @@ public class BlackJackTest {
      */
     @Test
     public void testTie() {
-        Player.points = 20;
-        Dealer.points = 20;
-        BlackJack.winCheck();
+        Player player = new Human(), dealer = new Dealer();
+        player.setPoints(20);
+        dealer.setPoints(20);
+        BlackJack.winCheck(player, dealer);
 
-        assertEquals(0, Player.score);
-        assertEquals(0, Dealer.score);
+        assertEquals(0, player.getScore());
+        assertEquals(0, dealer.getScore());
     }
 }

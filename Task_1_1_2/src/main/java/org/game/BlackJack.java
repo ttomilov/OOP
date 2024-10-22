@@ -69,45 +69,49 @@ public class BlackJack {
      *
      * @param round the current round number
      */
-    public static void game(int round) {
+    public static void game(int round, Player human, Player dealer) {
         if (round == 1) {
             System.out.println("Добро пожаловать в Блекджек");
         }
         System.out.printf("Раунд %d\nДилер раздал карты:\n", round);
-        Player.setCards();
-        Dealer.setCards();
-        Player.printCards();
-        Dealer.printCards('0');
-        char plstep = Player.step();
+        human.setCards();
+        dealer.setCards();
+        human.printCards(true);
+        dealer.printCards(false);
+        char plstep = human.step(dealer);
         if (plstep == '0') {
-            Player.cards.clear();
-            Dealer.cards.clear();
+            dealer.setScore(dealer.getScore() + 1);
+            System.out.printf("Вы проиграли раунд! Счёт %d:%d.\n", human.getScore(), dealer.getScore());
+            human.clearCards();
+            dealer.clearCards();
             return;
         }
-        char dlstep = Dealer.step();
+        char dlstep = dealer.step(human);
         if (dlstep == '0') {
-            Player.cards.clear();
-            Dealer.cards.clear();
+            human.setScore(human.getScore() + 1);
+            System.out.printf("Вы выиграли раунд! Счёт %d:%d.\n", human.getScore(), dealer.getScore());
+            human.clearCards();
+            dealer.clearCards();
             return;
         }
-        winCheck();
+        winCheck(human, dealer);
     }
 
     /**
      * Checks who won the current round.
      */
-    public static void winCheck() {
-        if (Dealer.points > Player.points) {
-            Dealer.score++;
-            System.out.printf("Вы проиграли раунд! Счёт %d:%d.\n", Player.score, Dealer.score);
-        } else if (Dealer.points < Player.points) {
-            Player.score++;
-            System.out.printf("Вы выиграли раунд! Счёт %d:%d.\n", Player.score, Dealer.score);
+    public static void winCheck(Player human, Player dealer) {
+        if (dealer.getPoints() > human.getPoints()) {
+            dealer.setScore(dealer.getScore() + 1);
+            System.out.printf("Вы проиграли раунд! Счёт %d:%d.\n", human.getScore(), dealer.getScore());
+        } else if (dealer.getPoints() < human.getPoints()) {
+            human.setScore(human.getScore() + 1);
+            System.out.printf("Вы выиграли раунд! Счёт %d:%d.\n", human.getScore(), dealer.getScore());
         } else {
             System.out.println("Ничья!\n");
 
         }
-        Player.cards.clear();
-        Dealer.cards.clear();
+        human.clearCards();
+        dealer.clearCards();
     }
 }
