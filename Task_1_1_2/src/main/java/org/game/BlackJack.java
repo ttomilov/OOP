@@ -1,4 +1,4 @@
-package org.BlackJack;
+package org.game;
 
 import java.util.Arrays;
 import java.util.Collections;

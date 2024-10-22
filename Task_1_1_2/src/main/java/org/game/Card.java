@@ -1,4 +1,4 @@
-package org.BlackJack;
+package org.game;
 
 public class Card {
     public String nameCard;

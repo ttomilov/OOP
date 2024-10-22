@@ -1,6 +1,6 @@
-package org.BlackJack;
+package org.game;
 
-import static org.BlackJack.BlackJack.counterOfUsedCards;
+import static org.game.BlackJack.counterOfUsedCards;
 
 import java.util.Scanner;
 import java.util.Vector;
