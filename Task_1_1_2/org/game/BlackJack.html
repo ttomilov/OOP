@@ -132,6 +132,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">BlackJack</span>
 extends java.lang.Object</pre>
+<div class="block">Represents the BlackJack game.
+ Manages deck creation, shuffling, and game logic.</div>
 </li>
 </ul>
 </div>
@@ -160,9 +162,7 @@ extends java.lang.Object</pre>
 <tr class="rowColor">
 <td class="colFirst"><code>static int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#counterOfUsedCards">counterOfUsedCards</a></span></code></th>
-<td class="colLast">
-<div class="block">Class of game BlackJack.</div>
-</td>
+<td class="colLast">&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -207,35 +207,35 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#game(int)">game</a></span>&#8203;(int&nbsp;round)</code></th>
 <td class="colLast">
-<div class="block">main func of game.</div>
+<div class="block">Main game logic.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#makeDeck()">makeDeck</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Func to make deck.</div>
+<div class="block">Creates a new deck of cards.</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#remakeDeck()">remakeDeck</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Func to remake deck.</div>
+<div class="block">Reshuffles the deck and resets the used card counter.</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#shuffle()">shuffle</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Func to shuffle deck.</div>
+<div class="block">Shuffles the deck of cards.</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#winCheck()">winCheck</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Func to check, whoes win.</div>
+<div class="block">Checks who won the current round.</div>
 </td>
 </tr>
 </table>
@@ -269,7 +269,6 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>counterOfUsedCards</h4>
 <pre>public static&nbsp;int counterOfUsedCards</pre>
-<div class="block">Class of game BlackJack.</div>
 </li>
 </ul>
 <a id="cards">
@@ -317,7 +316,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>shuffle</h4>
 <pre class="methodSignature">public static&nbsp;void&nbsp;shuffle()</pre>
-<div class="block">Func to shuffle deck.</div>
+<div class="block">Shuffles the deck of cards.</div>
 </li>
 </ul>
 <a id="makeDeck()">
@@ -327,7 +326,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>makeDeck</h4>
 <pre class="methodSignature">public static&nbsp;void&nbsp;makeDeck()</pre>
-<div class="block">Func to make deck.</div>
+<div class="block">Creates a new deck of cards.</div>
 </li>
 </ul>
 <a id="remakeDeck()">
@@ -337,7 +336,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>remakeDeck</h4>
 <pre class="methodSignature">public static&nbsp;void&nbsp;remakeDeck()</pre>
-<div class="block">Func to remake deck.</div>
+<div class="block">Reshuffles the deck and resets the used card counter.</div>
 </li>
 </ul>
 <a id="game(int)">
@@ -347,10 +346,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>game</h4>
 <pre class="methodSignature">public static&nbsp;void&nbsp;game&#8203;(int&nbsp;round)</pre>
-<div class="block">main func of game.</div>
+<div class="block">Main game logic.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>round</code> - </dd>
+<dd><code>round</code> - the current round number</dd>
 </dl>
 </li>
 </ul>
@@ -361,7 +360,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>winCheck</h4>
 <pre class="methodSignature">public static&nbsp;void&nbsp;winCheck()</pre>
-<div class="block">Func to check, whoes win.</div>
+<div class="block">Checks who won the current round.</div>
 </li>
 </ul>
 </li>
