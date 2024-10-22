@@ -93,7 +93,7 @@ class Dealer extends Player {
             }
             pl.printCards(true);
             printCards(true);
-            if (points == 21){
+            if (points == 21) {
                 return '1';
             }
             if (points > 21) {
