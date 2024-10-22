@@ -205,7 +205,9 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>static void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#game(int)">game</a></span>&#8203;(int&nbsp;round)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#game(int,org.game.Player,org.game.Player)">game</a></span>&#8203;(int&nbsp;round,
+    org.game.Player&nbsp;human,
+    org.game.Player&nbsp;dealer)</code></th>
 <td class="colLast">
 <div class="block">Main game logic.</div>
 </td>
@@ -233,7 +235,8 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>static void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#winCheck()">winCheck</a></span>()</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#winCheck(org.game.Player,org.game.Player)">winCheck</a></span>&#8203;(org.game.Player&nbsp;human,
+        org.game.Player&nbsp;dealer)</code></th>
 <td class="colLast">
 <div class="block">Checks who won the current round.</div>
 </td>
@@ -339,13 +342,15 @@ extends java.lang.Object</pre>
 <div class="block">Reshuffles the deck and resets the used card counter.</div>
 </li>
 </ul>
-<a id="game(int)">
+<a id="game(int,org.game.Player,org.game.Player)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>game</h4>
-<pre class="methodSignature">public static&nbsp;void&nbsp;game&#8203;(int&nbsp;round)</pre>
+<pre class="methodSignature">public static&nbsp;void&nbsp;game&#8203;(int&nbsp;round,
+                        org.game.Player&nbsp;human,
+                        org.game.Player&nbsp;dealer)</pre>
 <div class="block">Main game logic.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -353,13 +358,14 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
-<a id="winCheck()">
+<a id="winCheck(org.game.Player,org.game.Player)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>winCheck</h4>
-<pre class="methodSignature">public static&nbsp;void&nbsp;winCheck()</pre>
+<pre class="methodSignature">public static&nbsp;void&nbsp;winCheck&#8203;(org.game.Player&nbsp;human,
+                            org.game.Player&nbsp;dealer)</pre>
 <div class="block">Checks who won the current round.</div>
 </li>
 </ul>
