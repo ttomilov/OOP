@@ -14,7 +14,7 @@ class Human extends Player {
     private static int points;
     private static Vector<Card> cards = new Vector<>();
 
-    @Override    
+    @Override
     void setPoints(int points) {
         Human.points = points;
     }
@@ -34,7 +34,7 @@ class Human extends Player {
         return score;
     }
 
-    @Override 
+    @Override
     void setCards() {
         if (BlackJack.counterOfUsedCards == 52) {
             BlackJack.remakeDeck();
