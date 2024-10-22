@@ -14,7 +14,9 @@ public class Main {
             BlackJack.game(round);
             System.out.print("Хотите завершить игру? [Y/N]: ");
             String input = scanner.nextLine().trim().toLowerCase();
-            if (input.equals("y") || input.equals("д")) break;
+            if (input.equals("y") || input.equals("д")) {
+                break;
+            }
             System.out.print("\033[H\033[J");
             round++;
         }

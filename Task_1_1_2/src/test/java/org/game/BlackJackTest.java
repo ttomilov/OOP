@@ -26,9 +26,9 @@ public class BlackJackTest {
      */
     @Test
     public void testMakeDeck() {
-        assertNotNull(BlackJack.cards, "Deck should not be null after creation.");
-        assertEquals(52, BlackJack.cards.length - 1, "Deck should contain 52 cards.");
-        assertNotSame(BlackJack.cards[0], BlackJack.cards[1], "First two cards in the deck should be different.");
+        assertNotNull(BlackJack.cards);
+        assertEquals(52, BlackJack.cards.length - 1);
+        assertNotSame(BlackJack.cards[0], BlackJack.cards[1]);
     }
 
     /**
@@ -40,18 +40,18 @@ public class BlackJackTest {
         Card firstCardBeforeShuffle = BlackJack.cards[0];
         BlackJack.shuffle();
         Card firstCardAfterShuffle = BlackJack.cards[0];
-        assertNotSame(firstCardBeforeShuffle, firstCardAfterShuffle, "First card should change after shuffling.");
+        assertNotSame(firstCardBeforeShuffle, firstCardAfterShuffle);
     }
 
     /**
-     * Tests the {@link Player#setCards()} method to ensure the player is dealt two cards
+     * Tests the {@link Player#setCards()} method to ensure the player is dealt two cards.
      * and has a positive points total.
      */
     @Test
     public void testPlayerSetCards() {
         Player.setCards();
-        assertEquals(2, Player.cards.size(), "Player should be dealt two cards.");
-        assertTrue(Player.points > 0, "Player's points should be greater than zero.");
+        assertEquals(2, Player.cards.size());
+        assertTrue(Player.points > 0);
     }
 
     /**
@@ -61,8 +61,8 @@ public class BlackJackTest {
     @Test
     public void testDealerSetCards() {
         Dealer.setCards();
-        assertEquals(2, Dealer.cards.size(), "Dealer should be dealt two cards.");
-        assertTrue(Dealer.points > 0, "Dealer's points should be greater than zero.");
+        assertEquals(2, Dealer.cards.size());
+        assertTrue(Dealer.points > 0);
     }
 
     /**
@@ -74,8 +74,8 @@ public class BlackJackTest {
         Dealer.points = 18;
         BlackJack.winCheck();
 
-        assertEquals(1, Player.score, "Player should win and score should be incremented.");
-        assertEquals(0, Dealer.score, "Dealer's score should remain unchanged.");
+        assertEquals(1, Player.score);
+        assertEquals(0, Dealer.score);
     }
 
     /**
@@ -87,12 +87,13 @@ public class BlackJackTest {
         Dealer.points = 21;
         BlackJack.winCheck();
 
-        assertEquals(1, Player.score, "Player's score should remain unchanged.");
-        assertEquals(1, Dealer.score, "Dealer should win and score should be incremented.");
+        assertEquals(1, Player.score);
+        assertEquals(1, Dealer.score);
     }
 
     /**
-     * Tests the win-check logic when the game results in a tie. Verifies that neither player nor dealer's score is updated.
+     * Tests the win-check logic when the game results in a tie.
+     * Verifies that neither player nor dealer's score is updated.
      */
     @Test
     public void testTie() {
@@ -100,7 +101,7 @@ public class BlackJackTest {
         Dealer.points = 20;
         BlackJack.winCheck();
 
-        assertEquals(0, Player.score, "Player's score should remain unchanged in case of a tie.");
-        assertEquals(0, Dealer.score, "Dealer's score should remain unchanged in case of a tie.");
+        assertEquals(0, Player.score);
+        assertEquals(0, Dealer.score);
     }
 }

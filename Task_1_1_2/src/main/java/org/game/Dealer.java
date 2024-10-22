@@ -16,11 +16,15 @@ public class Dealer {
      * Func to set cards to dealer.
      */
     public static void setCards() {
-        if (BlackJack.counterOfUsedCards == 52) BlackJack.remakeDeck();
+        if (BlackJack.counterOfUsedCards == 52) {
+            BlackJack.remakeDeck();
+        }
         for (int i = 0; i < 2; i++) {
             cards.add(BlackJack.cards[counterOfUsedCards]);
             BlackJack.counterOfUsedCards++;
-            if (BlackJack.counterOfUsedCards == 52) BlackJack.remakeDeck();
+            if (BlackJack.counterOfUsedCards == 52) {
+                BlackJack.remakeDeck();
+            }
         }
         points = cards.get(0).points + cards.get(1).points;
     }
@@ -54,12 +58,18 @@ public class Dealer {
             BlackJack.remakeDeck();
         }
         while (points < 17) {
-            if (BlackJack.counterOfUsedCards == 52) BlackJack.remakeDeck();
+            if (BlackJack.counterOfUsedCards == 52) {
+                BlackJack.remakeDeck();
+            }
             cards.add(BlackJack.cards[counterOfUsedCards]);
-            if (BlackJack.counterOfUsedCards == 52) BlackJack.remakeDeck();
+            if (BlackJack.counterOfUsedCards == 52) {
+                BlackJack.remakeDeck();
+            }
             points += BlackJack.cards[counterOfUsedCards].points;
             BlackJack.counterOfUsedCards++;
-            if (BlackJack.counterOfUsedCards == 52) BlackJack.remakeDeck();
+            if (BlackJack.counterOfUsedCards == 52) {
+                BlackJack.remakeDeck();
+            }
             System.out.printf("Дилер открывает карту %s (%d)\n", BlackJack.cards[counterOfUsedCards].nameCard, BlackJack.cards[counterOfUsedCards].points);
             BlackJack.counterOfUsedCards++;
             Player.printCards();
