@@ -14,8 +14,7 @@ abstract class Expression {
         Map<String, Integer> variables = parseAssignments(assignments);
         return eval(variables);
     }
-
-    // Метод для парсинга строковых означиваний переменных
+    
     private Map<String, Integer> parseAssignments(String assignments) {
         Map<String, Integer> variables = new HashMap<>();
         String[] pairs = assignments.split(";");
