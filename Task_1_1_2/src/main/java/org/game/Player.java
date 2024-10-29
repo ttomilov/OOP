@@ -23,6 +23,7 @@ abstract class Player {
 
     /**
      * Sets the points of the player based on the value of their cards.
+     *
      * @param points the total points to be set for the player.
      */
     void setPoints(int points) {
@@ -31,6 +32,7 @@ abstract class Player {
 
     /**
      * Returns the current points of the player.
+     *
      * @return the player's points as an integer.
      */
     int getPoints() {
@@ -39,6 +41,7 @@ abstract class Player {
 
     /**
      * Sets the score of the player, which is used to track wins and losses.
+     *
      * @param score the score to set for the player.
      */
     void setScore(int score) {
@@ -47,6 +50,7 @@ abstract class Player {
 
     /**
      * Returns the current score of the player.
+     *
      * @return the player's score as an integer.
      */
     int getScore() {
@@ -74,9 +78,10 @@ abstract class Player {
     /**
      * Prints the cards of the player or dealer. For the dealer, the second card is hidden
      * until revealed later in the game.
+     *
      * @param isHuman true if the player is a human, false if it is the dealer.
-     * @param fl indicates whether the dealer's second card should remain hidden.
-     * @param pl the player whose cards are to be printed.
+     * @param fl      indicates whether the dealer's second card should remain hidden.
+     * @param pl      the player whose cards are to be printed.
      */
     void printCards(boolean isHuman, boolean fl, Player pl) {
         if (isHuman) {
@@ -100,28 +105,35 @@ abstract class Player {
     /**
      * Represents the main step logic for the player. The player continues to take actions
      * until they either win, lose, or choose to stop.
-     * @param human the human player in the game.
+     *
+     * @param human  the human player in the game.
      * @param dealer the dealer in the game.
      * @return the status of the player, either WIN or LOSE.
      */
     Status step(Player human, Player dealer) {
         while (shouldContinue()) {
             takeCardAction(human, dealer);
-            if (getPoints() == 21) return Status.WIN;
-            if (getPoints() > 21) return Status.LOSE;
+            if (getPoints() == 21) {
+                return Status.WIN;
+            }
+            if (getPoints() > 21) {
+                return Status.LOSE;
+            }
         }
         return Status.WIN;
     }
 
     /**
      * Defines the specific action the player should take, implemented in subclasses.
-     * @param human the human player.
+     *
+     * @param human  the human player.
      * @param dealer the dealer.
      */
     abstract void takeCardAction(Player human, Player dealer);
 
     /**
      * Defines the condition for the player to continue their turn, implemented in subclasses.
+     *
      * @return true if the player should continue, false otherwise.
      */
     abstract boolean shouldContinue();

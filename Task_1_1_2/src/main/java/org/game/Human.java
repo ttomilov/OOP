@@ -16,7 +16,7 @@ class Human extends Player {
      * Draws a card from the deck, adds its points to the player's total, and adjusts for any aces if necessary.
      * Displays the player's and dealer's cards after the action.
      *
-     * @param human the human player in the game.
+     * @param human  the human player in the game.
      * @param dealer the dealer in the game.
      */
     @Override
