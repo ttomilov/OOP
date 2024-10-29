@@ -1,8 +1,10 @@
-package org.game;
+    package org.game;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
+import org.game.Player.Status;
 
 /**
  * Represents the BlackJack game.
@@ -10,7 +12,64 @@ import java.util.List;
  */
 public class BlackJack {
     public static int counterOfUsedCards = 0;
-    public static Card[] cards = new Card[53];
+    public static Card[] cards = new Card[]{
+        new Card("Пиковая двойка", 2),
+        new Card("Пиковая тройка", 3),
+        new Card("Пиковая четвёрка", 4),
+        new Card("Пиковая пятёрка", 5),
+        new Card("Пиковая шестерка", 6),
+        new Card("Пиковая семёрка", 7),
+        new Card("Пиковая восьмёрка", 8),
+        new Card("Пиковая девятка", 9),
+        new Card("Пиковая десятка", 10),
+        new Card("Пиковый валет", 10),
+        new Card("Пиковая дама", 10),
+        new Card("Пиковый король", 10),
+        new Card("Пиковый туз", 11),
+
+        new Card("Червоная двойка", 2),
+        new Card("Червоная тройка", 3),
+        new Card("Червоная четвёрка", 4),
+        new Card("Червоная пятёрка", 5),
+        new Card("Червоная шестерка", 6),
+        new Card("Червоная семёрка", 7),
+        new Card("Червоная восьмёрка", 8),
+        new Card("Червоная девятка", 9),
+        new Card("Червоная десятка", 10),
+        new Card("Червонный валет", 10),
+        new Card("Червоная дама", 10),
+        new Card("Червонный король", 10),
+        new Card("Червонный туз", 11),
+
+        new Card("Бубновая двойка", 2),
+        new Card("Бубновая тройка", 3),
+        new Card("Бубновая четвёрка", 4),
+        new Card("Бубновая пятёрка", 5),
+        new Card("Бубновая шестерка", 6),
+        new Card("Бубновая семёрка", 7),
+        new Card("Бубновая восьмёрка", 8),
+        new Card("Бубновая девятка", 9),
+        new Card("Бубновая десятка", 10),
+        new Card("Бубновый валет", 10),
+        new Card("Бубновая дама", 10),
+        new Card("Бубновый король", 10),
+        new Card("Бубновый туз", 11),
+
+        new Card("Трефовая двойка", 2),
+        new Card("Трефовая тройка", 3),
+        new Card("Трефовая четвёрка", 4),
+        new Card("Трефовая пятёрка", 5),
+        new Card("Трефовая шестерка", 6),
+        new Card("Трефовая семёрка", 7),
+        new Card("Трефовая восьмёрка", 8),
+        new Card("Трефовая девятка", 9),
+        new Card("Трефовая десятка", 10),
+        new Card("Трефовый валет", 10),
+        new Card("Трефовая дама", 10),
+        new Card("Трефовый король", 10),
+        new Card("Трефовый туз", 11)
+    };
+
 
     /**
      * Shuffles the deck of cards.
@@ -19,40 +78,6 @@ public class BlackJack {
         List<Card> cardList = Arrays.asList(cards);
         Collections.shuffle(cardList);
         cardList.toArray(cards);
-    }
-
-    /**
-     * Creates a new deck of cards.
-     */
-    public static void makeDeck() {
-        String[] names = new String[]{
-            "Пиковая Двойка", "Пиковая Тройка", "Пиковая Четверка", "Пиковая Пятерка", "Пиковая Шестерка",
-            "Пиковая Семерка", "Пиковая Восьмерка", "Пиковая Девятка", "Пиковая Десятка", "Пиковый Валет",
-            "Пиковая Дама", "Пиковый Король", "Пиковый Туз",
-
-            "Червовая Двойка", "Червовая Тройка", "Червовая Четверка", "Червовая Пятерка", "Червовая Шестерка",
-            "Червовая Семерка", "Червовая Восьмерка", "Червовая Девятка", "Червовая Десятка", "Червовый Валет",
-            "Червовая Дама", "Червовый Король", "Червовый Туз",
-
-            "Бубновая Двойка", "Бубновая Тройка", "Бубновая Четверка", "Бубновая Пятерка", "Бубновая Шестерка",
-            "Бубновая Семерка", "Бубновая Восьмерка", "Бубновая Девятка", "Бубновая Десятка", "Бубновый Валет",
-            "Бубновая Дама", "Бубновый Король", "Бубновый Туз",
-            "Двойка Треф", "Тройка Треф", "Четверка Треф", "Пятерка Треф", "Шестерка Треф", "Семерка Треф",
-            "Восьмерка Треф", "Девятка Треф", "Десятка Треф", "Валет Треф", "Дама Треф", "Король Треф", "Туз Треф"
-        };
-        int point = 2;
-        for (int i = 0; i < 52; i++) {
-            if (i == 12 || i == 25 || i == 38 || i == 51) {
-                cards[i] = new Card(names[i], 11);
-                point = 2;
-            } else if (point == 10) {
-                cards[i] = new Card(names[i], point);
-            } else {
-                cards[i] = new Card(names[i], point);
-                point++;
-            }
-        }
-        shuffle();
     }
 
     /**
@@ -69,24 +94,23 @@ public class BlackJack {
      * @param round the current round number
      */
     public static void game(int round, Player human, Player dealer) {
+        shuffle();
         if (round == 1) {
             System.out.println("Добро пожаловать в Блекджек");
         }
         System.out.printf("Раунд %d\nДилер раздал карты:\n", round);
         human.setCards();
         dealer.setCards();
-        human.printCards(true);
-        dealer.printCards(false);
-        char plstep = human.step(dealer);
-        if (plstep == '0') {
+        human.printCards(true, true, human);
+        dealer.printCards(false, true, dealer);
+        if (human.step(human, dealer) == Status.LOSE) {
             dealer.setScore(dealer.getScore() + 1);
             System.out.printf("Вы проиграли раунд! Счёт %d:%d.\n", human.getScore(), dealer.getScore());
             human.clearCards();
             dealer.clearCards();
             return;
         }
-        char dlstep = dealer.step(human);
-        if (dlstep == '0') {
+        if (dealer.step(human, dealer) == Status.LOSE) {
             human.setScore(human.getScore() + 1);
             System.out.printf("Вы выиграли раунд! Счёт %d:%d.\n", human.getScore(), dealer.getScore());
             human.clearCards();
