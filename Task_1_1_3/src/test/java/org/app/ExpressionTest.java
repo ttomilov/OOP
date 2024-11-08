@@ -10,6 +10,8 @@ import org.expressions.Sub;
 import org.expressions.Variable;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -190,4 +192,23 @@ class ExpressionTest {
         assertEquals("(((0*y)-(x*1))/(y*y))", sbY.toString());
     }
 
+    @Test
+    void testMainDivByZero() {
+        // Создаем поток для захвата вывода
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        PrintStream printStream = new PrintStream(outputStream);
+        
+        // Перенаправляем System.out на наш поток
+        System.setOut(printStream);
+        
+        // Запускаем main метод с делением на 0
+        Expression e = new Add(new Number(3), new Div(new Number(2), new Number(0)));
+        e.print();
+        
+        // Сравниваем вывод
+        String output = outputStream.toString().trim();
+        // Ожидаемый вывод в случае ошибки деления на 0
+        String expectedOutput = "(3+(2/0))";
+        assertEquals(expectedOutput, output);
+    }
 }
