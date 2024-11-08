@@ -60,6 +60,41 @@ class ExpressionTest {
     }
 
     @Test
+    void testDivVariable() {
+        Expression expr = new Div(new Variable("x"), new Variable("y"));
+        Map<String, Integer> vars = new HashMap<>();
+        vars.put("x", 10);
+        vars.put("y", 2);
+        assertEquals(5, expr.eval(vars));
+    }
+
+    @Test
+    void testDivByOne() {
+        Expression expr = new Div(new Variable("x"), new Number(1));
+        Map<String, Integer> vars = new HashMap<>();
+        vars.put("x", 10);
+        assertEquals(10, expr.eval(vars));
+    }
+
+    @Test
+    void testDivMultipleVariables() {
+        Expression expr = new Div(new Variable("a"), new Variable("b"));
+        Map<String, Integer> vars = new HashMap<>();
+        vars.put("a", 8);
+        vars.put("b", 4);
+        assertEquals(2, expr.eval(vars));
+    }
+
+    @Test
+    void testDivByVariableOne() {
+        Expression expr = new Div(new Variable("x"), new Variable("y"));
+        Map<String, Integer> vars = new HashMap<>();
+        vars.put("x", 10);
+        vars.put("y", 1);
+        assertEquals(10, expr.eval(vars));
+    }
+
+    @Test
     void testComplexExpressionEval() {
         Expression expr = new Add(new Number(3), new Mul(new Number(2), new Variable("x")));
         int result = expr.eval("x = 10");
