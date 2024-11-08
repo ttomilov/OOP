@@ -172,4 +172,22 @@ class ExpressionTest {
         vars.put("y", 10);
         assertEquals(11, expr.eval(vars));
     }
+
+    @Test
+    void testDivDerivative() {
+        Expression numerator = new Variable("x");
+        Expression denominator = new Variable("y");
+        Expression expr = new Div(numerator, denominator);
+
+        Expression derivativeX = expr.derivative("x");
+        StringBuilder sbX = new StringBuilder();
+        derivativeX.buildString(sbX);
+        assertEquals("(((1*y)-(x*0))/(y*y))", sbX.toString());
+
+        Expression derivativeY = expr.derivative("y");
+        StringBuilder sbY = new StringBuilder();
+        derivativeY.buildString(sbY);
+        assertEquals("(((0*y)-(x*1))/(y*y))", sbY.toString());
+    }
+
 }
