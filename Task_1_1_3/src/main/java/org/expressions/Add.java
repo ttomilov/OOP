@@ -7,7 +7,8 @@ import org.app.Expression;
  * Represents the addition of two expressions.
  */
 public class Add extends Expression {
-    private final Expression left, right;
+    private final Expression left; 
+    private final Expression right;
 
     /**
      * Constructs an Add expression with two sub-expressions.

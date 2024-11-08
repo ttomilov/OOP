@@ -7,7 +7,8 @@ import org.app.Expression;
  * Represents the division of two expressions.
  */
 public class Div extends Expression {
-    private final Expression numerator, denominator;
+    private final Expression numerator;
+    private final Expression denominator;
 
     /**
      * Constructs a Div expression with a numerator and denominator.

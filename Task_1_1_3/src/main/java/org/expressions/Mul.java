@@ -7,7 +7,8 @@ import org.app.Expression;
  * Represents the multiplication of two expressions.
  */
 public class Mul extends Expression {
-    private final Expression first, second;
+    private final Expression first;
+    private final Expression second;
 
     /**
      * Constructs a Mul expression with two sub-expressions.

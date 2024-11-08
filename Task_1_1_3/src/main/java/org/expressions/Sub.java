@@ -7,7 +7,8 @@ import org.app.Expression;
  * Represents the subtraction of two expressions.
  */
 public class Sub extends Expression {
-    private final Expression first, second;
+    private final Expression first;
+    private final Expression second;
 
     /**
      * Constructs a Sub expression with two sub-expressions.
