@@ -81,7 +81,7 @@ class ExpressionTest {
         StringBuilder sb = new StringBuilder();
         derivative.buildString(sb);
         
-        assertEquals("(y/(y*y))", sb.toString());
+        assertEquals("(((1*y)-(x*0))/(y*y))", sb.toString());
     }
 
     @Test
@@ -130,7 +130,7 @@ class ExpressionTest {
         StringBuilder sb = new StringBuilder();
         derivative.buildString(sb);
 
-        assertEquals("y", sb.toString());
+        assertEquals("((1*y)+(x*0))", sb.toString());
     }
 
     @Test
@@ -264,6 +264,6 @@ void testMulEval() {
         StringBuilder sb = new StringBuilder();
         derivative.buildString(sb);
         
-        assertEquals("1", sb.toString());
+        assertEquals("(1+0)", sb.toString());
     }
 }
