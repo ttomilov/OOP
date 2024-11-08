@@ -266,4 +266,56 @@ void testMulEval() {
         
         assertEquals("(1+0)", sb.toString());
     }
+
+    @Test
+    void testEvalStringAssignments() {
+        Expression expr = new Add(new Variable("x"), new Number(5));
+        int result = expr.eval("x=3");
+        assertEquals(8, result);
+    }
+
+    @Test
+    void testParseAssignments() {
+        String assignments = "x=5; y=10; z=15";
+        Expression expr = new Add(new Variable("x"), new Variable("y"));
+        
+        Map<String, Integer> variables = expr.parseAssignments(assignments);
+        
+        assertEquals(5, variables.get("x"));
+        assertEquals(10, variables.get("y"));
+        assertEquals(15, variables.get("z"));
+    }
+
+    @Test
+    void testEvalWithAdd() {
+        Expression expr = new Add(new Variable("x"), new Number(5));
+        Map<String, Integer> variables = new HashMap<>();
+        variables.put("x", 3);
+        assertEquals(8, expr.eval(variables));
+    }
+
+    @Test
+    void testEvalWithMul() {
+        Expression expr = new Mul(new Variable("x"), new Number(2));
+        Map<String, Integer> variables = new HashMap<>();
+        variables.put("x", 4);
+        assertEquals(8, expr.eval(variables));
+    }
+
+    @Test
+    void testBuildString() {
+        Expression expr = new Add(new Variable("x"), new Number(5));
+        StringBuilder sb = new StringBuilder();
+        expr.buildString(sb);
+        assertEquals("(x+5)", sb.toString());
+    }
+
+    @Test
+    void testExpressionDerivative() {
+        Expression expr = new Add(new Variable("x"), new Number(5));
+        Expression derivative = expr.derivative("x");
+        StringBuilder sb = new StringBuilder();
+        derivative.buildString(sb);
+        assertEquals("(1+0)", sb.toString());
+    }
 }
