@@ -1,11 +1,12 @@
 package org.app;
 
-import org.app.Expression;
-import org.expressions.*;
-import org.expressions.Number;
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.expressions.Add;
+import org.expressions.Mul;
+import org.expressions.Number;
+import org.expressions.Sub;
+import org.expressions.Variable;
+import org.junit.jupiter.api.Test;
 
 class HugeDerivativeTest {
 

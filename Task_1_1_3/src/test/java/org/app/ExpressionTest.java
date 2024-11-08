@@ -1,10 +1,14 @@
 package org.app;
 
-import org.app.Expression;
-import org.expressions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.expressions.Add;
+import org.expressions.Div;
+import org.expressions.Mul;
 import org.expressions.Number;
+import org.expressions.Sub;
+import org.expressions.Variable;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.HashMap;
 import java.util.Map;
