@@ -128,6 +128,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dl>
 <hr>
 <pre>public interface <span class="typeNameLabel">Graph</span></pre>
+<div class="block">Interface defining methods for working with a graph.</div>
 </li>
 </ul>
 </div>
@@ -152,33 +153,45 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addEdge(int,int)">addEdge</a></span>&#8203;(int&nbsp;parent,
        int&nbsp;child)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Adds an edge to the graph.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addVertex()">addVertex</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Adds a vertex to the graph.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#delEdge(int,int)">delEdge</a></span>&#8203;(int&nbsp;parent,
        int&nbsp;child)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Deletes an edge from the graph.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#delVertex(int)">delVertex</a></span>&#8203;(int&nbsp;vertNum)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Deletes a vertex from the graph.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#printNeighbours(int)">printNeighbours</a></span>&#8203;(int&nbsp;vertNum)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Prints the neighbors of a given vertex.</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#scanFromFile(java.lang.String)">scanFromFile</a></span>&#8203;(java.lang.String&nbsp;filename)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Loads a graph from a file.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -204,6 +217,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <h4>addVertex</h4>
 <pre class="methodSignature">void&nbsp;addVertex()</pre>
+<div class="block">Adds a vertex to the graph.</div>
 </li>
 </ul>
 <a id="delVertex(int)">
@@ -213,6 +227,11 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <h4>delVertex</h4>
 <pre class="methodSignature">void&nbsp;delVertex&#8203;(int&nbsp;vertNum)</pre>
+<div class="block">Deletes a vertex from the graph.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>vertNum</code> - The number of the vertex to be deleted.</dd>
+</dl>
 </li>
 </ul>
 <a id="addEdge(int,int)">
@@ -223,6 +242,12 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <h4>addEdge</h4>
 <pre class="methodSignature">void&nbsp;addEdge&#8203;(int&nbsp;parent,
              int&nbsp;child)</pre>
+<div class="block">Adds an edge to the graph.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>parent</code> - The number of the parent vertex.</dd>
+<dd><code>child</code> - The number of the child vertex.</dd>
+</dl>
 </li>
 </ul>
 <a id="delEdge(int,int)">
@@ -233,6 +258,12 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <h4>delEdge</h4>
 <pre class="methodSignature">void&nbsp;delEdge&#8203;(int&nbsp;parent,
              int&nbsp;child)</pre>
+<div class="block">Deletes an edge from the graph.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>parent</code> - The number of the parent vertex.</dd>
+<dd><code>child</code> - The number of the child vertex.</dd>
+</dl>
 </li>
 </ul>
 <a id="printNeighbours(int)">
@@ -242,6 +273,11 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <h4>printNeighbours</h4>
 <pre class="methodSignature">void&nbsp;printNeighbours&#8203;(int&nbsp;vertNum)</pre>
+<div class="block">Prints the neighbors of a given vertex.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>vertNum</code> - The number of the vertex whose neighbors are to be printed.</dd>
+</dl>
 </li>
 </ul>
 <a id="scanFromFile(java.lang.String)">
@@ -251,6 +287,11 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <h4>scanFromFile</h4>
 <pre class="methodSignature">void&nbsp;scanFromFile&#8203;(java.lang.String&nbsp;filename)</pre>
+<div class="block">Loads a graph from a file.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>filename</code> - The name of the file containing the graph.</dd>
+</dl>
 </li>
 </ul>
 </li>

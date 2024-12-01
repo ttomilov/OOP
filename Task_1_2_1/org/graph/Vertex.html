@@ -133,6 +133,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">Vertex</span>
 extends java.lang.Object</pre>
+<div class="block">Represents a vertex in a graph.</div>
 </li>
 </ul>
 </div>
@@ -154,7 +155,9 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(int)">Vertex</a></span>&#8203;(int&nbsp;num)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Constructor for initializing a vertex.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -178,39 +181,53 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addEdge(int,int)">addEdge</a></span>&#8203;(int&nbsp;parent,
        int&nbsp;child)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Adds an edge between two vertices.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#delEdge(int)">delEdge</a></span>&#8203;(int&nbsp;parent)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Removes an edge by the parent vertex number.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#delEdge(int,int)">delEdge</a></span>&#8203;(int&nbsp;parent,
        int&nbsp;child)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Removes an edge by the parent and child vertex numbers.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getNum()">getNum</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Gets the vertex number.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hasEdge(int,int)">hasEdge</a></span>&#8203;(int&nbsp;parent,
        int&nbsp;child)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Checks if an edge exists between two vertices.</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#printNeighbours()">printNeighbours</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Prints the neighbors of the vertex.</div>
+</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setNum(int)">setNum</a></span>&#8203;(int&nbsp;num)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Sets the vertex number.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -243,6 +260,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>Vertex</h4>
 <pre>public&nbsp;Vertex&#8203;(int&nbsp;num)</pre>
+<div class="block">Constructor for initializing a vertex.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>num</code> - the vertex number</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -262,6 +284,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getNum</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getNum()</pre>
+<div class="block">Gets the vertex number.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the vertex number</dd>
+</dl>
 </li>
 </ul>
 <a id="setNum(int)">
@@ -271,6 +298,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setNum</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;setNum&#8203;(int&nbsp;num)</pre>
+<div class="block">Sets the vertex number.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>num</code> - the vertex number to set</dd>
+</dl>
 </li>
 </ul>
 <a id="hasEdge(int,int)">
@@ -281,6 +313,14 @@ extends java.lang.Object</pre>
 <h4>hasEdge</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;hasEdge&#8203;(int&nbsp;parent,
                        int&nbsp;child)</pre>
+<div class="block">Checks if an edge exists between two vertices.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>parent</code> - the parent vertex number</dd>
+<dd><code>child</code> - the child vertex number</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>true if the edge exists, false otherwise</dd>
+</dl>
 </li>
 </ul>
 <a id="addEdge(int,int)">
@@ -291,6 +331,12 @@ extends java.lang.Object</pre>
 <h4>addEdge</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;addEdge&#8203;(int&nbsp;parent,
                     int&nbsp;child)</pre>
+<div class="block">Adds an edge between two vertices.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>parent</code> - the parent vertex number</dd>
+<dd><code>child</code> - the child vertex number</dd>
+</dl>
 </li>
 </ul>
 <a id="delEdge(int)">
@@ -300,6 +346,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>delEdge</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;delEdge&#8203;(int&nbsp;parent)</pre>
+<div class="block">Removes an edge by the parent vertex number.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>parent</code> - the parent vertex number</dd>
+</dl>
 </li>
 </ul>
 <a id="delEdge(int,int)">
@@ -310,6 +361,12 @@ extends java.lang.Object</pre>
 <h4>delEdge</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;delEdge&#8203;(int&nbsp;parent,
                     int&nbsp;child)</pre>
+<div class="block">Removes an edge by the parent and child vertex numbers.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>parent</code> - the parent vertex number</dd>
+<dd><code>child</code> - the child vertex number</dd>
+</dl>
 </li>
 </ul>
 <a id="printNeighbours()">
@@ -319,6 +376,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>printNeighbours</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;printNeighbours()</pre>
+<div class="block">Prints the neighbors of the vertex.</div>
 </li>
 </ul>
 </li>

@@ -138,6 +138,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <pre>public class <span class="typeNameLabel">AdjMatrix</span>
 extends java.lang.Object
 implements <a href="../main/Graph.html" title="interface in org.main">Graph</a></pre>
+<div class="block">Class representing a graph using an adjacency matrix.
+ Implements the <a href="../main/Graph.html" title="interface in org.main"><code>Graph</code></a> interface for graph operations like adding/removing vertices and edges.</div>
 </li>
 </ul>
 </div>
@@ -160,7 +162,9 @@ implements <a href="../main/Graph.html" title="interface in org.main">Graph</a><
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(int,boolean)">AdjMatrix</a></span>&#8203;(int&nbsp;numVert,
          boolean&nbsp;isOriented)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Constructs an adjacency matrix graph.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -184,44 +188,60 @@ implements <a href="../main/Graph.html" title="interface in org.main">Graph</a><
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addEdge(int,int)">addEdge</a></span>&#8203;(int&nbsp;parent,
        int&nbsp;child)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Adds an edge between two vertices.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addVertex()">addVertex</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Adds a new vertex to the graph.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#delEdge(int,int)">delEdge</a></span>&#8203;(int&nbsp;parent,
        int&nbsp;child)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Deletes an edge between two vertices.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#delVertex(int)">delVertex</a></span>&#8203;(int&nbsp;vertNum)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Deletes a vertex from the graph.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getEdge(int,int)">getEdge</a></span>&#8203;(int&nbsp;parent,
        int&nbsp;child)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Checks whether an edge exists between two vertices.</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getNumVert()">getNumVert</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Returns the number of vertices in the graph.</div>
+</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#printNeighbours(int)">printNeighbours</a></span>&#8203;(int&nbsp;vertNum)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Prints the neighbors of a given vertex.</div>
+</td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#scanFromFile(java.lang.String)">scanFromFile</a></span>&#8203;(java.lang.String&nbsp;filename)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Reads graph data from a file and updates the graph accordingly.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -255,6 +275,12 @@ implements <a href="../main/Graph.html" title="interface in org.main">Graph</a><
 <h4>AdjMatrix</h4>
 <pre>public&nbsp;AdjMatrix&#8203;(int&nbsp;numVert,
                  boolean&nbsp;isOriented)</pre>
+<div class="block">Constructs an adjacency matrix graph.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>numVert</code> - The number of vertices in the graph.</dd>
+<dd><code>isOriented</code> - True if the graph is oriented, false otherwise.</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -274,6 +300,11 @@ implements <a href="../main/Graph.html" title="interface in org.main">Graph</a><
 <li class="blockList">
 <h4>getNumVert</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getNumVert()</pre>
+<div class="block">Returns the number of vertices in the graph.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The number of vertices in the graph.</dd>
+</dl>
 </li>
 </ul>
 <a id="getEdge(int,int)">
@@ -284,6 +315,14 @@ implements <a href="../main/Graph.html" title="interface in org.main">Graph</a><
 <h4>getEdge</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getEdge&#8203;(int&nbsp;parent,
                    int&nbsp;child)</pre>
+<div class="block">Checks whether an edge exists between two vertices.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>parent</code> - The parent vertex.</dd>
+<dd><code>child</code> - The child vertex.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>1 if an edge exists, 0 otherwise.</dd>
+</dl>
 </li>
 </ul>
 <a id="addVertex()">
@@ -293,6 +332,7 @@ implements <a href="../main/Graph.html" title="interface in org.main">Graph</a><
 <li class="blockList">
 <h4>addVertex</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;addVertex()</pre>
+<div class="block">Adds a new vertex to the graph.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../main/Graph.html#addVertex()">addVertex</a></code>&nbsp;in interface&nbsp;<code><a href="../main/Graph.html" title="interface in org.main">Graph</a></code></dd>
@@ -306,9 +346,13 @@ implements <a href="../main/Graph.html" title="interface in org.main">Graph</a><
 <li class="blockList">
 <h4>delVertex</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;delVertex&#8203;(int&nbsp;vertNum)</pre>
+<div class="block">Deletes a vertex from the graph.
+ Removes the vertex and its associated edges.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../main/Graph.html#delVertex(int)">delVertex</a></code>&nbsp;in interface&nbsp;<code><a href="../main/Graph.html" title="interface in org.main">Graph</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>vertNum</code> - The vertex number to delete.</dd>
 </dl>
 </li>
 </ul>
@@ -320,9 +364,13 @@ implements <a href="../main/Graph.html" title="interface in org.main">Graph</a><
 <h4>addEdge</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;addEdge&#8203;(int&nbsp;parent,
                     int&nbsp;child)</pre>
+<div class="block">Adds an edge between two vertices.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../main/Graph.html#addEdge(int,int)">addEdge</a></code>&nbsp;in interface&nbsp;<code><a href="../main/Graph.html" title="interface in org.main">Graph</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>parent</code> - The parent vertex.</dd>
+<dd><code>child</code> - The child vertex.</dd>
 </dl>
 </li>
 </ul>
@@ -334,9 +382,13 @@ implements <a href="../main/Graph.html" title="interface in org.main">Graph</a><
 <h4>delEdge</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;delEdge&#8203;(int&nbsp;parent,
                     int&nbsp;child)</pre>
+<div class="block">Deletes an edge between two vertices.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../main/Graph.html#delEdge(int,int)">delEdge</a></code>&nbsp;in interface&nbsp;<code><a href="../main/Graph.html" title="interface in org.main">Graph</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>parent</code> - The parent vertex.</dd>
+<dd><code>child</code> - The child vertex.</dd>
 </dl>
 </li>
 </ul>
@@ -347,9 +399,12 @@ implements <a href="../main/Graph.html" title="interface in org.main">Graph</a><
 <li class="blockList">
 <h4>printNeighbours</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;printNeighbours&#8203;(int&nbsp;vertNum)</pre>
+<div class="block">Prints the neighbors of a given vertex.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../main/Graph.html#printNeighbours(int)">printNeighbours</a></code>&nbsp;in interface&nbsp;<code><a href="../main/Graph.html" title="interface in org.main">Graph</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>vertNum</code> - The vertex number whose neighbors will be printed.</dd>
 </dl>
 </li>
 </ul>
@@ -360,9 +415,14 @@ implements <a href="../main/Graph.html" title="interface in org.main">Graph</a><
 <li class="blockList">
 <h4>scanFromFile</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;scanFromFile&#8203;(java.lang.String&nbsp;filename)</pre>
+<div class="block">Reads graph data from a file and updates the graph accordingly.
+ The file should contain the number of vertices, a boolean indicating if the graph is oriented,
+ and a list of edges (pairs of vertex numbers).</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../main/Graph.html#scanFromFile(java.lang.String)">scanFromFile</a></code>&nbsp;in interface&nbsp;<code><a href="../main/Graph.html" title="interface in org.main">Graph</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>filename</code> - The name of the file containing the graph data.</dd>
 </dl>
 </li>
 </ul>
