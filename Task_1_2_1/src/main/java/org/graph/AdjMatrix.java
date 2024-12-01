@@ -111,22 +111,19 @@ public class AdjMatrix implements Graph{
     }
 
     @Override
-    public void scanFromFile(Graph graph){
-        try (Scanner scanner = new Scanner(new File("graph.txt"))){
+    public void scanFromFile(String filename) {
+        try (Scanner scanner = new Scanner(new File(filename))){
             int vertices = scanner.nextInt();
             boolean isOrientedFile = scanner.nextBoolean();
             AdjMatrix fileGraph = new AdjMatrix(vertices, isOrientedFile);
-
             while (scanner.hasNextInt()){
                 int parent = scanner.nextInt();
                 int child = scanner.nextInt();
                 fileGraph.addEdge(parent, child);
             }
-            
             this.numVert = fileGraph.numVert;
             this.isOriented = fileGraph.isOriented;
             this.graph = fileGraph.graph;
-
         } catch (FileNotFoundException e){
             System.out.println("ERROR: File not found!");
         }

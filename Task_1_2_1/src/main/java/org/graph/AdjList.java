@@ -1,8 +1,7 @@
 package org.graph;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.util.Scanner;
 import java.util.Vector;
 import org.main.Graph;
 
@@ -98,26 +97,21 @@ public class AdjList implements Graph {
     }
 
     @Override
-    public void scanFromFile(Graph graph) {
-        try (BufferedReader reader = new BufferedReader(new FileReader("graph.txt"))) {
-            String line = reader.readLine();
-            int numVert = Integer.parseInt(line);
-            line = reader.readLine();
-            boolean isOriented = Boolean.parseBoolean(line);
-            AdjList adjList = new AdjList(numVert, isOriented);
-            while ((line = reader.readLine()) != null) {
-                String[] edgeData = line.split(" ");
-                if (edgeData.length == 2) {
-                    int parent = Integer.parseInt(edgeData[0]);
-                    int child = Integer.parseInt(edgeData[1]);
-                    adjList.addEdge(parent, child);
-                }
+    public void scanFromFile(String filename) {
+        try (Scanner scanner = new Scanner(new File(filename))){
+            int vertices = scanner.nextInt();
+            boolean isOrientedFile = scanner.nextBoolean();
+            AdjList fileGraph = new AdjList(vertices, isOrientedFile);
+            while (scanner.hasNextInt()){
+                int parent = scanner.nextInt();
+                int child = scanner.nextInt();
+                fileGraph.addEdge(parent, child);
             }
-            graph = adjList;
-        } catch (IOException e) {
-            System.out.println("Error reading the file: " + e.getMessage());
-        } catch (NumberFormatException e) {
-            System.out.println("Error parsing the file data: " + e.getMessage());
+            this.numVert = fileGraph.numVert;
+            this.isOriented = fileGraph.isOriented;
+            this.graph = fileGraph.graph;
+        } catch (FileNotFoundException e){
+            System.out.println("ERROR: File not found!");
         }
     }
 }

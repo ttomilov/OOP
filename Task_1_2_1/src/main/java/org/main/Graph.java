@@ -6,5 +6,5 @@ public interface Graph{
     public void addEdge(int parent, int child);
     public void delEdge(int parent, int child);
     public void printNeighbours(int vertNum);
-    public void scanFromFile(Graph graph);
+    public void scanFromFile(String filename) ;
 }
