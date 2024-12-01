@@ -3,7 +3,7 @@ package org.graph;
 /**
  * Represents an edge in the graph.
  */
-public class Edge {
+public class Edge{
     private int parent;
     private int child;
 

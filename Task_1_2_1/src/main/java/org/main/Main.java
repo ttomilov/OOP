@@ -7,8 +7,8 @@ import org.graph.IncidenceMatrix;
 /**
  * Main class where graphs are created and tested.
  */
-public class Main {
-    public static void main(String[] args) {
+public class Main{
+    public static void main(String[] args){
         AdjList graph = new AdjList(5, true);
         graph.addVertex();
         graph.addEdge(1, 2);

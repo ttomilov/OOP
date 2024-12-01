@@ -9,9 +9,9 @@ import java.util.Vector;
 
 /**
  * Represents a graph using an incidence matrix.
- * Implements the {@link Graph} interface for managing graph operations like adding/removing vertices and edges.
+ * Implements the{@link Graph} interface for managing graph operations like adding/removing vertices and edges.
  */
-public class IncidenceMatrix implements Graph {
+public class IncidenceMatrix implements Graph{
     private int numVert;
     private int numEdges;
     private Vector<Vector<Integer>> incidenceMatrix = new Vector<Vector<Integer>>();
@@ -44,10 +44,10 @@ public class IncidenceMatrix implements Graph {
             return 0;
         }
 
-        for (int i = 0; i < numEdges; i++) {
+        for (int i = 0; i < numEdges; i++){
             Vector<Integer> edge = incidenceMatrix.get(i);
             if (edge.get(parent) == 1 &&
-                    ((isOriented && edge.get(child) == -1) || (!isOriented && edge.get(child) == 1))) {
+                    ((isOriented && edge.get(child) == -1) || (!isOriented && edge.get(child) == 1))){
                 return 1;
             }
         }
@@ -178,7 +178,7 @@ public class IncidenceMatrix implements Graph {
      * @param filename the name of the file containing the graph data
      */
     @Override
-    public void scanFromFile(String filename) {
+    public void scanFromFile(String filename){
         try (Scanner scanner = new Scanner(new File(filename))){
             int vertices = scanner.nextInt();
             boolean isOrientedFile = scanner.nextBoolean();

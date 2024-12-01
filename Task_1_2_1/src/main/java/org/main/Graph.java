@@ -3,7 +3,7 @@ package org.main;
 /**
  * Interface defining methods for working with a graph.
  */
-public interface Graph {
+public interface Graph{
     /**
      * Adds a vertex to the graph.
      */

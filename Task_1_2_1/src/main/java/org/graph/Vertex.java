@@ -5,7 +5,7 @@ import java.util.Vector;
 /**
  * Represents a vertex in a graph.
  */
-public class Vertex {
+public class Vertex{
     private int num;
     private int numEdges = 0;
     private Vector<Edge> edges = new Vector<Edge>();
@@ -44,9 +44,9 @@ public class Vertex {
      * @param child the child vertex number
      * @return true if the edge exists, false otherwise
      */
-    public boolean hasEdge(int parent, int child) {
-        for (Edge edge : edges) {
-            if (edge.getParent() == parent && edge.getChild() == child) {
+    public boolean hasEdge(int parent, int child){
+        for (Edge edge : edges){
+            if (edge.getParent() == parent && edge.getChild() == child){
                 return true;
             }
         }
@@ -98,9 +98,9 @@ public class Vertex {
     /**
      * Prints the neighbors of the vertex.
      */
-    public void printNeighbours() {
+    public void printNeighbours(){
         System.out.print("Neighbours: ");
-        for (Edge edge : edges) {
+        for (Edge edge : edges){
             System.out.print(edge.getChild() + " ");
         }
         System.out.println();

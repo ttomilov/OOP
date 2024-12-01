@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /*
  * Test cases for Graph implementations.
  */
-public class GraphTests {
+public class GraphTests{
 
     @Test
     public void adjMatrixTest(){
@@ -63,7 +63,7 @@ public class GraphTests {
     }
 
     @Test
-    public void testScanFromFile() {
+    public void testScanFromFile(){
         AdjList graph = new AdjList(0, false);
         graph.scanFromFile("src/test/resources/test_graph.txt");
         assertEquals(graph.getNumVert(), 5);
