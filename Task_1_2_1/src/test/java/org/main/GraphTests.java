@@ -20,6 +20,8 @@ public class GraphTests {
     @Test
     public void adjMatrixTest(){
         AdjMatrix graph = new AdjMatrix(5, true);
+        graph.addVertex();
+        graph.delVertex(6);
         graph.addEdge(1, 5);
         graph.addEdge(3, 1);
         graph.delEdge(3, 1);
@@ -33,6 +35,8 @@ public class GraphTests {
     @Test
     public void incidentMatrixTest(){
         IncidenceMatrix graph = new IncidenceMatrix(5, true);
+        graph.addVertex();
+        graph.delVertex(6);
         graph.addEdge(1, 5);
         graph.addEdge(3, 1);
         graph.delEdge(3, 1);
@@ -46,6 +50,8 @@ public class GraphTests {
     @Test
     public void adjListTest(){
         AdjList graph = new AdjList(5, true);
+        graph.addVertex();
+        graph.delVertex(6);
         graph.addEdge(1, 5);
         graph.addEdge(3, 1);
         graph.delEdge(3, 1);
