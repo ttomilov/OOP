@@ -55,7 +55,7 @@ public class Text implements Element {
             return this;
         }
 
-        public Builder inlineCode() {
+        public Builder code() {
             wrap("`");
             return this;
         }
