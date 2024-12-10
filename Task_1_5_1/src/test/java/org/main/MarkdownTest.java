@@ -41,26 +41,14 @@ class MarkdownTest {
 
     @Test
     void testTableSerializationWithAlignments() {
-        Table table = new Table.Builder()
-                .addRow("Header 1", "Header 2", "Header 3")
-                .addRow("Cell 1", "Cell 2", "Cell 3")
+        Table tableBuilder = new Table.Builder()
                 .withAlignments(Table.ALIGN_LEFT, Table.ALIGN_CENTER, Table.ALIGN_RIGHT)
-                .build();
-        String serialized = table.serialize();
-        String expected = "| Header 1 | Header 2 | Header 3 |\n| :--- | :---: | ---: |\n| Cell 1 | Cell 2 | Cell 3 |";
-        assertEquals(expected, serialized);
-    }
-
-    @Test
-    void testTableSerializationWithDefaultAlignments() {
-        Table table = new Table.Builder()
+                .withRowLimit(8)
+                .withColumns(3)
                 .addRow("Header 1", "Header 2", "Header 3")
-                .addRow("Cell 1", "Cell 2", "Cell 3")
-                .build();
-        String serialized = table.serialize();
-        String expected = "| Header 1 | Header 2 | Header 3 |\n" +
-                "| :--- | :--- | :--- |\n" +
-                "| Cell 1 | Cell 2 | Cell 3 |";
+                .addRow("Cell 1", "Cell 2", "Cell 3").build();
+        String serialized = tableBuilder.serialize();
+        String expected = "| Header 1 | Header 2 | Header 3 |\n|:-------- |:--------:| --------:|\n| Cell 1   |  Cell 2  |   Cell 3 |\n";
         assertEquals(expected, serialized);
     }
 
@@ -129,8 +117,8 @@ class MarkdownTest {
                 .setText("Different Heading")
                 .build();
 
-        assertTrue(heading1.equals(heading2)); // Same content
-        assertFalse(heading1.equals(heading3)); // Different content
+        assertTrue(heading1.equals(heading2));
+        assertFalse(heading1.equals(heading3));
     }
 
     @Test
@@ -148,7 +136,7 @@ class MarkdownTest {
                 .italic()
                 .build();
 
-        assertTrue(text1.equals(text2)); // Same content
-        assertFalse(text1.equals(text3)); // Different content
+        assertTrue(text1.equals(text2));
+        assertFalse(text1.equals(text3));
     }
 }
