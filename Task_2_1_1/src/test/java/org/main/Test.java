@@ -2,8 +2,8 @@ package org.main;
 
 import org.threadchecker.ThreadChecker;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.main.Consistently.findNotPrime;
-import static org.paralelstream.ParalelStream.check;
+import static org.consistently.Consistently.findNotPrime;
+import static org.paralelstream.ParallelStream.check;
 
 class Test {
     @org.junit.jupiter.api.Test
