@@ -18,7 +18,9 @@ public class Consistently {
                 return true;
             }
             for (int j = 2; j * j <= array[i]; j++) {
-                if (array[i] % j == 0) break;
+                if (array[i] % j == 0) {
+                    break;
+                }
             }
         }
         return false;
