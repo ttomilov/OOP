@@ -10,7 +10,7 @@ public class Threads extends Thread {
     private boolean done = false;
 
     /**
-     * Constructs a {@code Threads} instance with the specified array.
+     * Constructs a Threads instance with the specified array.
      *
      * @param array the array of integers to check
      */
@@ -21,7 +21,7 @@ public class Threads extends Thread {
     /**
      * Checks if the thread has completed execution.
      *
-     * @return {@code true} if execution is complete, {@code false} otherwise
+     * @return true if execution is complete, false otherwise
      */
     public boolean isDone() {
         return done;
@@ -30,7 +30,7 @@ public class Threads extends Thread {
     /**
      * Gets the result of the check.
      *
-     * @return {@code true} if a non-prime number was found, {@code false} otherwise
+     * @return true if a non-prime number was found, false otherwise
      */
     public boolean getResult() {
         return res;

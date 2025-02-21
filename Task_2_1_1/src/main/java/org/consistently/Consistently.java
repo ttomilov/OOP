@@ -10,7 +10,7 @@ public class Consistently {
      * Checks if the given array contains at least one non-prime number.
      *
      * @param array the array of integers to check
-     * @return {@code true} if the array contains at least one non-prime number, {@code false} otherwise
+     * @return true if the array contains at least one non-prime number, false otherwise
      */
     public static boolean findNotPrime(int[] array) {
         for (int i = 0; i < array.length; i++) {

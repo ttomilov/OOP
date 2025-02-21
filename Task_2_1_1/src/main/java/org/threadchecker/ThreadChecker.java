@@ -22,7 +22,7 @@ public class ThreadChecker {
     }
 
     /**
-     * Constructs a {@code ThreadChecker} with the given array.
+     * Constructs a ThreadChecker with the given array.
      *
      * @param array the array of integers to check
      */
@@ -34,24 +34,25 @@ public class ThreadChecker {
      * Uses multiple threads to determine if the array contains at least one non-prime number.
      *
      * @param numOfThreads the number of threads to use for checking
-     * @return {@code true} if a non-prime number is found, {@code false} otherwise
+     * @return true if a non-prime number is found, false otherwise
      */
     public boolean findNotPrime(int numOfThreads) {
         Threads[] threads = new Threads[numOfThreads];
         ArrayList<Integer> helper = new ArrayList<>();
         int end = 0;
         int step = array.length / numOfThreads;
+        int rest = array.length % numOfThreads;
         if (step == 0) {
             step = 1;
         }
 
         for (int i = 0; i < numOfThreads; i++) {
-            int start = i * step;
-            end += step;
+            int start = end;
+            end += step + rest;
             if (end > array.length) {
                 end = array.length;
             }
-            int[] newArray = copyOfRange(array, start, end + 1);
+            int[] newArray = copyOfRange(array, start, end);
             threads[i] = new Threads(newArray);
             helper.add(i);
             threads[i].start();

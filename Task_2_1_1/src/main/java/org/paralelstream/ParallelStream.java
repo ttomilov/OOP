@@ -12,27 +12,27 @@ public class ParallelStream {
      * Checks if the given array contains at least one non-prime number.
      *
      * @param array the array of integers to check
-     * @return {@code true} if the array contains at least one non-prime number, {@code false} otherwise
+     * @return true if the array contains at least one non-prime number, false otherwise
      */
     public static boolean check(int[] array) {
-        return IntStream.of(array).filter(ParallelStream::isNotPrime).findAny().isPresent();
+        return IntStream.of(array).parallel().filter(ParallelStream::isNotPrime).findAny().isPresent();
     }
 
     /**
      * Determines if a given number is not prime.
      *
      * @param num the number to check
-     * @return {@code true} if the number is not prime, {@code false} otherwise
+     * @return true if the number is not prime, false otherwise
      */
     private static boolean isNotPrime(int num) {
-        if (num < 2) {
+        if (num < 2){
             return true;
         }
-        for (int i = 2; i * i < num; i++) {
+        for (int i = 2; i * i <= num; i++) {
             if (num % i == 0) {
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
 }
