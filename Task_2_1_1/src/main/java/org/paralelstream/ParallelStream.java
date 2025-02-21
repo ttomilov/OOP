@@ -25,7 +25,7 @@ public class ParallelStream {
      * @return true if the number is not prime, false otherwise
      */
     private static boolean isNotPrime(int num) {
-        if (num < 2){
+        if (num < 2) {
             return true;
         }
         for (int i = 2; i * i <= num; i++) {
