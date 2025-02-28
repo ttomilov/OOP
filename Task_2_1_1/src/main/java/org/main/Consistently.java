@@ -1,4 +1,6 @@
-package org.consistently;
+package org.main;
+
+import static org.main.NotPrime.isNotPrime;
 
 /**
  * A class for checking whether an array contains any non-prime numbers.
@@ -13,14 +15,10 @@ public class Consistently {
      * @return true if the array contains at least one non-prime number, false otherwise
      */
     public static boolean findNotPrime(int[] array) {
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] < 2) {
+        for (int num : array) {
+            boolean res = isNotPrime(num);
+            if (res){
                 return true;
-            }
-            for (int j = 2; j * j <= array[i]; j++) {
-                if (array[i] % j == 0) {
-                    break;
-                }
             }
         }
         return false;

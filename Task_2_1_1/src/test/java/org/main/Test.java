@@ -1,9 +1,12 @@
 package org.main;
 
-import org.threadchecker.ThreadChecker;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.consistently.Consistently.findNotPrime;
-import static org.paralelstream.ParallelStream.check;
+//import java.io.File;
+//import java.io.FileNotFoundException;
+//import java.util.Scanner;
+
+import static org.main.Consistently.findNotPrime;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.main.ParallelStream.check;
 
 class Test {
     int[] testArray1 = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97,
@@ -40,23 +43,57 @@ class Test {
         1823, 1831, 1847, 1861, 1867, 1871, 1873, 1877, 1879, 1889, 1901, 1907, 1913, 1931, 1933, 1949, 1951, 1973,
         1979, 1987, 1993, 1997, 1999, 2003};
 
+//    int[] getTestExample() {
+//        int count = 0;
+//        int index = 0;
+//        int[] arr = null;
+//
+//        try (Scanner scanner = new Scanner(new File("D:\\University\\Programming\\Java\\OOP\\Task_2_1_1\\src\\test\\resources\\primeNumbers.txt"))) {
+//            while (scanner.hasNextLine()) {
+//                String line = scanner.nextLine();
+//                if (count == 0) {
+//                    count = Integer.parseInt(line);
+//                    arr = new int[count];
+//                } else {
+//                    arr[index] = Integer.parseInt(line);
+//                    index++;
+//                }
+//            }
+//        } catch (FileNotFoundException ignored){
+//        }
+//        return arr;
+//    }
+
     @org.junit.jupiter.api.Test
     void test() {
         ThreadChecker data = new ThreadChecker(testArray1);
         ThreadChecker data2 = new ThreadChecker(testArray2);
-        assertEquals(data.findNotPrime(8), true);
-        assertEquals(data2.findNotPrime(8), false);
+        assertTrue(data.findNotPrime(8));
+        assertFalse(data2.findNotPrime(8));
+//        int[] arr = getTestExample();
+//        ThreadChecker[] checker = new ThreadChecker[4];
+//        int val = 10;
+//        double start;
+//        double end;
+//        for (int i = 0; i < 4; i++) {
+//            checker[i] = new ThreadChecker(arr);
+//            start = System.currentTimeMillis();
+//            assertEquals(checker[i].findNotPrime(val), true);
+//            end = System.currentTimeMillis();
+//            System.out.println(val + ":" + (end - start));
+//            val += 2;
+//        }
     }
 
     @org.junit.jupiter.api.Test
     void test1() {
-        assertEquals(findNotPrime(testArray1), true);
-        assertEquals(findNotPrime(testArray2), false);
+        assertTrue(findNotPrime(testArray1));
+        assertFalse(findNotPrime(testArray2));
     }
 
     @org.junit.jupiter.api.Test
     void test2(){
-        assertEquals(check(testArray1), true);
-        assertEquals(check(testArray2), false);
+        assertTrue(check(testArray1));
+        assertFalse(check(testArray2));
     }
 }

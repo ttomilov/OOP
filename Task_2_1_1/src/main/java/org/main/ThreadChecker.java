@@ -1,6 +1,7 @@
-package org.threadchecker;
+package org.main;
 
 import java.util.ArrayList;
+import java.util.Vector;
 
 import static java.util.Arrays.copyOfRange;
 
@@ -37,8 +38,7 @@ public class ThreadChecker {
      * @return true if a non-prime number is found, false otherwise
      */
     public boolean findNotPrime(int numOfThreads) {
-        Threads[] threads = new Threads[numOfThreads];
-        ArrayList<Integer> helper = new ArrayList<>();
+        Vector<Threads> threads = new Vector<>();
         int end = 0;
         int step = array.length / numOfThreads;
         int rest = array.length % numOfThreads;
@@ -53,32 +53,27 @@ public class ThreadChecker {
                 end = array.length;
             }
             int[] newArray = copyOfRange(array, start, end);
-            threads[i] = new Threads(newArray);
-            helper.add(i);
-            threads[i].start();
+            threads.add(new Threads(newArray));
+            threads.get(i).start();
         }
 
-        while (!helper.isEmpty()) {
+        while (!threads.isEmpty()) {
             synchronized (lock) {
                 try {
                     lock.wait();
-                } catch (InterruptedException e) {
+                } catch (InterruptedException ignored) {
                 }
             }
-            for (int i = 0; i < numOfThreads; i++) {
-                if (threads[i] != null) {
-                    if (threads[i].isDone()) {
-                        if (threads[i].getResult()) {
-                            for (int j = 0; j < numOfThreads; j++) {
-                                if (threads[j] != null) {
-                                    threads[j].interrupt();
-                                }
-                            }
-                            return true;
-                        } else {
-                            threads[i] = null;
-                            helper.remove(helper.size() - 1);
+            for (int i = 0; i < threads.size(); i++) {
+                if (threads.get(i).isDone()) {
+                    if (threads.get(i).getResult()) {
+                        for (Threads thread : threads) {
+                            thread.interrupt();
                         }
+                        return true;
+                    } else {
+                        threads.remove(i);
+                        i--;
                     }
                 }
             }

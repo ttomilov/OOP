@@ -1,4 +1,6 @@
-package org.threadchecker;
+package org.main;
+
+import static org.main.NotPrime.isNotPrime;
 
 /**
  * This class realise thread to find non-prime numbers.
@@ -42,19 +44,11 @@ public class Threads extends Thread {
     @Override
     public void run() {
         Object lock = ThreadChecker.getLock();
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] < 2) {
-                done = true;
+        for (int num : array) {
+            boolean interRes = isNotPrime(num);
+            if (interRes){
                 res = true;
-                synchronized (lock) {
-                    lock.notify();
-                }
-                return;
-            }
-            for (int j = 2; j * j < array[i]; j++) {
-                if (array[i] % j == 0) {
-                    break;
-                }
+                break;
             }
         }
         done = true;
