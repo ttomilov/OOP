@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"org.consistently","l":"Consistently"},{"p":"org.paralelstream","l":"ParallelStream"},{"p":"org.threadchecker","l":"ThreadChecker"},{"p":"org.threadchecker","l":"Threads"}];updateSearchResults();
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"org.main","l":"Consistently"},{"p":"org.main","l":"NotPrime"},{"p":"org.main","l":"ParallelStream"},{"p":"org.main","l":"ThreadChecker"},{"p":"org.main","l":"Threads"}];updateSearchResults();
