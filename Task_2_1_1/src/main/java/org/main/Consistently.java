@@ -17,7 +17,7 @@ public class Consistently {
     public static boolean findNotPrime(int[] array) {
         for (int num : array) {
             boolean res = isNotPrime(num);
-            if (res){
+            if (res) {
                 return true;
             }
         }

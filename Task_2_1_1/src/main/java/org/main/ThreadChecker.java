@@ -1,6 +1,5 @@
 package org.main;
 
-import java.util.ArrayList;
 import java.util.Vector;
 
 import static java.util.Arrays.copyOfRange;
@@ -39,6 +38,7 @@ public class ThreadChecker {
      */
     public boolean findNotPrime(int numOfThreads) {
         Vector<Threads> threads = new Vector<>();
+        int start;
         int end = 0;
         int step = array.length / numOfThreads;
         int rest = array.length % numOfThreads;
@@ -47,7 +47,7 @@ public class ThreadChecker {
         }
 
         for (int i = 0; i < numOfThreads; i++) {
-            int start = end;
+            start = end;
             end += step + rest;
             if (end > array.length) {
                 end = array.length;

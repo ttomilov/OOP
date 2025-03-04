@@ -46,7 +46,7 @@ public class Threads extends Thread {
         Object lock = ThreadChecker.getLock();
         for (int num : array) {
             boolean interRes = isNotPrime(num);
-            if (interRes){
+            if (interRes) {
                 res = true;
                 break;
             }

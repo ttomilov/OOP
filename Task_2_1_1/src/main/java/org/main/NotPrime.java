@@ -1,5 +1,10 @@
 package org.main;
 
+/**
+ * Class for find not prime numbers.
+ *
+ */
+
 public class NotPrime {
     /**
      * Determines if a given number is not prime.
