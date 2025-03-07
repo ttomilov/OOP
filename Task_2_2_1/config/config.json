@@ -1,0 +1,9 @@
+[
+  {
+    "numBakers": 10,
+    "numDelivers": 10,
+    "bagSize": 10,
+    "warehouseSize": 100,
+    "workTime":10000000
+  }
+]
