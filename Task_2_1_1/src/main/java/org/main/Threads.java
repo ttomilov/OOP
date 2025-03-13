@@ -1,12 +1,10 @@
 package org.main;
 
-import static org.main.NotPrime.isNotPrime;
-
 /**
  * This class realise thread to find non-prime numbers.
  */
 
-public class Threads extends Thread {
+public class Threads extends NotPrimeChecker implements Runnable{
     private int[] array;
     private boolean res = false;
     private boolean done = false;

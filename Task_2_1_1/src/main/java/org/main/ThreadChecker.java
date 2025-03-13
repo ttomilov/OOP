@@ -8,9 +8,15 @@ import static java.util.Arrays.copyOfRange;
  * A class for checking whether an array contains any non-prime numbers using java.lang.Threads.
  */
 
-public class ThreadChecker {
-    private int[] array;
+public class ThreadChecker{
+    private Vector<Integer> array;
+    private int numThreads;
     private static final Object lock = new Object();
+
+    ThreadChecker(Vector<Integer> array, int numThreads) {
+        this.array = array;
+        this.numThreads = numThreads;
+    }
 
     /**
      * Gets the lock object used for thread synchronization.
@@ -22,39 +28,31 @@ public class ThreadChecker {
     }
 
     /**
-     * Constructs a ThreadChecker with the given array.
-     *
-     * @param array the array of integers to check
-     */
-    public ThreadChecker(int[] array) {
-        this.array = array;
-    }
-
-    /**
      * Uses multiple threads to determine if the array contains at least one non-prime number.
      *
-     * @param numOfThreads the number of threads to use for checking
      * @return true if a non-prime number is found, false otherwise
      */
-    public boolean findNotPrime(int numOfThreads) {
+    public boolean findNotPrime() {
         Vector<Threads> threads = new Vector<>();
+        Vector<Thread> threads1 = new Vector<>();
         int start;
         int end = 0;
-        int step = array.length / numOfThreads;
-        int rest = array.length % numOfThreads;
+        int step = array.size() / numThreads;
+        int rest = array.size() % numThreads;
         if (step == 0) {
             step = 1;
         }
 
-        for (int i = 0; i < numOfThreads; i++) {
+        for (int i = 0; i < numThreads; i++) {
             start = end;
             end += step + rest;
-            if (end > array.length) {
-                end = array.length;
+            if (end > array.size()) {
+                end = array.size();
             }
             int[] newArray = copyOfRange(array, start, end);
             threads.add(new Threads(newArray));
-            threads.get(i).start();
+            threads1.add(new Thread(threads.get(i)));
+            threads1.getLast().start();
         }
 
         while (!threads.isEmpty()) {
@@ -67,7 +65,7 @@ public class ThreadChecker {
             for (int i = 0; i < threads.size(); i++) {
                 if (threads.get(i).isDone()) {
                     if (threads.get(i).getResult()) {
-                        for (Threads thread : threads) {
+                        for (Thread thread : threads1) {
                             thread.interrupt();
                         }
                         return true;
@@ -79,5 +77,13 @@ public class ThreadChecker {
             }
         }
         return false;
+    }
+
+    private int[] copyOfRange(Vector<Integer> array, int start, int end) {
+        int[] newArray = new int[end - start];
+        for (int i = 0; i < end - start; i++) {
+            newArray[i] = array.get(start + i);
+        }
+        return newArray;
     }
 }
