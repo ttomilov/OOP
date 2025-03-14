@@ -16,7 +16,7 @@ public class Deliverer extends Worker {
     }
 
     @Override
-    void endWork() {
+    synchronized void endWork() {
         Logger.write("Deliverer " + getWorkerId() + " has finished work");
         notify();
     }
@@ -25,7 +25,7 @@ public class Deliverer extends Worker {
     void takeOrder() {
         Vector<Order> newOrders = new Vector<>();
         while (curOrdersNum < bagSize) {
-            Order order = warehouse.remove();
+            Order order = warehouse.poll();
             if (order == null) {
                 Logger.write("Warehouse is empty");
                 orders = null;
@@ -52,5 +52,6 @@ public class Deliverer extends Worker {
             Logger.write("Deliverer " + getWorkerId() + "delivered order " + orders.firstElement().toString());
             orders.remove(0);
         }
+        orders = null;
     }
 }

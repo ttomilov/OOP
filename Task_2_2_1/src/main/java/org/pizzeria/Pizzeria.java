@@ -3,6 +3,7 @@ package org.pizzeria;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.configs.BakerConfig;
 import org.configs.DelivererConfig;
+import org.configs.MenuConfig;
 import org.configs.PizzeriaConfig;
 import org.exeption.InvalidFormatJson;
 
@@ -22,6 +23,7 @@ public class Pizzeria {
     private final BakerConfig bakerConfig;
     private final DelivererConfig delivererConfig;
     private final PizzeriaConfig pizzeriaConfig;
+    private final MenuConfig menuConfig;
     private boolean isWorking;
     private boolean finished;
     private int workerID = 1;
@@ -30,17 +32,19 @@ public class Pizzeria {
     private Vector<String> menu;
     private int numPizzas = 0;
 
-    public Pizzeria(File bakerConfigJson, File delivererConfigJson, File pizzeriaConfigJson, OutputStream log) throws IOException {
+    public Pizzeria(File bakerConfigJson, File delivererConfigJson, File pizzeriaConfigJson, File menuConfigJson, OutputStream log) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         bakerConfig = objectMapper.readValue(bakerConfigJson, BakerConfig.class);
         delivererConfig = objectMapper.readValue(delivererConfigJson, DelivererConfig.class);
         pizzeriaConfig = objectMapper.readValue(pizzeriaConfigJson, PizzeriaConfig.class);
+        menuConfig = objectMapper.readValue(menuConfigJson, MenuConfig.class);
 
         exceptionCheck();
 
+        initPizzeria();
         initBakers();
         initDeliverers();
-        initPizzeria();
+        initMenu();
 
         Logger.setOutputStream(log);
         finished = false;
@@ -50,6 +54,7 @@ public class Pizzeria {
         bakerCheck();
         delivererCheck();
         pizzeriaCheck();
+        menuCheck();
     }
 
     private void bakerCheck() {
@@ -114,11 +119,24 @@ public class Pizzeria {
         }
     }
 
+    void menuCheck() {
+        if (menuConfig == null) {
+            throw new InvalidFormatJson("MenuConfig is null");
+        }
+
+        if (menuConfig.getMenu() == null) {
+            throw new InvalidFormatJson("Menu is null");
+        }
+
+        if (menuConfig.getMenu().isEmpty()){
+            throw new InvalidFormatJson("Menu is empty");
+        }
+    }
+
     public void initBakers() throws IOException {
         bakers = new Vector<>();
         for (int i = 0; i < bakerConfig.getNumBakers(); i++) {
             bakers.add(new Baker(workerID++, bakerConfig.getSpeeds()[i], warehouse, orderQueue));
-            bakers.get(i).start();
         }
     }
 
@@ -126,7 +144,6 @@ public class Pizzeria {
         deliverers = new Vector<>();
         for (int i = 0; i < delivererConfig.getNumDeliverers(); i++) {
             deliverers.add(new Deliverer(workerID++, delivererConfig.getSpeeds()[i], delivererConfig.getBagSize(), warehouse));
-            deliverers.get(i).start();
         }
     }
 
@@ -136,38 +153,19 @@ public class Pizzeria {
         warehouse = new Queue<>(pizzeriaConfig.getWarehouseSize());
     }
 
-    public void initMenu(boolean fl) {
-        menu = new Vector<>();
-        Scanner scanner = new Scanner(System.in);
-        if (fl) {
-            System.out.println("Welcome to Pizzeria! Let's make your menu! Input name of pizzas (to stop adding type 'exit'):");
-        }
-        while (true) {
-            String input = scanner.nextLine();
-            if (input.equals("exit")) {
-                break;
-            }
-            menu.add(input);
-            numPizzas++;
-        }
-        if (numPizzas == 0) {
-            System.out.println("You didn't make your menu. Let's try again!");
-            scanner.close();
-            initMenu(false);
-        }
-        scanner.close();
+    public void initMenu() {
+        menu = menuConfig.getMenu();
     }
 
     public synchronized boolean addOrder() {
         if (finished) {
             Logger.write("Pizzeria finished.");
             return false;
-        } else if (!isWorking) {
+        } else if (isWorking) {
             Logger.write("Pizzeria is not working");
             return false;
         }
-        Random rnd = new Random();
-        int number = rnd.nextInt(numPizzas) + 1;
+        int number = (int)(Math.random() * numPizzas);
         orderQueue.add(new Order(orderID++, menu.get(number)));
         return true;
     }
@@ -179,9 +177,15 @@ public class Pizzeria {
 
         isWorking = true;
 
-        if (workDay != 1) {
-            initMenu(true);
+        if (workDay == 1) {
             clock.startClock();
+            for (Worker baker : bakers) {
+                baker.start();
+            }
+
+            for (Worker deliverer : deliverers) {
+                deliverer.start();
+            }
             Logger.write("Started " + (workDay++) + " work day");
             return;
         }

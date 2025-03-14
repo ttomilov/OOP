@@ -17,20 +17,20 @@ class Baker extends Worker {
     }
 
     @Override
-    void endWork() {
+     synchronized void endWork() {
         Logger.write("Baker " + getWorkerId() + " has finished work");
         notify();
     }
 
     @Override
     void takeOrder() {
-        order = orderQueue.remove();
+        order = orderQueue.poll();
         if (order == null) {
             Logger.write("Queue is empty");
             order = null;
             return;
         }
-        Logger.write("Baker " + getWorkerId() + "took order" + order.toString());
+        Logger.write("Baker " + getWorkerId() + "took order" + order.getOrderID());
     }
 
     @Override

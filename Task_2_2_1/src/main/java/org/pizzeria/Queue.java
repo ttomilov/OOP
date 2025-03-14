@@ -25,7 +25,7 @@ class Queue<E> {
         }
     }
 
-    E remove() {
+    E poll() {
         E object = null;
         try {
             semaphoreGet.acquire();
