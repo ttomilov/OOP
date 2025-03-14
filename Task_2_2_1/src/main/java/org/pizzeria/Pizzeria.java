@@ -10,8 +10,6 @@ import org.exeption.InvalidFormatJson;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.Random;
-import java.util.Scanner;
 import java.util.Vector;
 
 public class Pizzeria {
