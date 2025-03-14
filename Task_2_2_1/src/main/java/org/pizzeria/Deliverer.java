@@ -5,7 +5,7 @@ import java.util.Vector;
 public class Deliverer extends Worker {
     private final Queue<Order> warehouse;
     private Vector<Order> orders;
-    private int bagSize;
+    private final int bagSize;
     private int curOrdersNum = 0;
 
     Deliverer(int workerID, int speed, int bagSize, Queue<Order> warehouse) {
@@ -50,7 +50,7 @@ public class Deliverer extends Worker {
                 interrupt();
             }
             Logger.write("Deliverer " + getWorkerId() + "delivered order " + orders.firstElement().toString());
-            orders.removeFirst();
+            orders.remove(0);
         }
     }
 }
