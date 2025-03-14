@@ -9,7 +9,7 @@ public class Order {
         this.OrderName = OrderName;
     }
 
-    int getOrderID() {
+    public int getOrderID() {
         return OrderID;
     }
 }

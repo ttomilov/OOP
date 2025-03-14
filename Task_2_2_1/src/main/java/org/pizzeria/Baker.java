@@ -1,35 +1,49 @@
 package org.pizzeria;
 
-public class Baker extends Thread {
+class Baker extends Worker {
+    private final Queue<Order> warehouse;
+    private final Queue<Order> orderQueue;
     private Order order = null;
-    private final int speed;
 
-    Baker(int speed) {
-        this.speed = speed;
+    Baker(int workerID, int speed, Queue<Order> warehouse, Queue<Order> orderQueue) {
+        setWorkerId(workerID);
+        setSpeed(speed);
+        this.warehouse = warehouse;
+        this.orderQueue = orderQueue;
     }
 
-    Order getOrder() {
+    Order getOrder(){
         return order;
     }
 
     @Override
-    public void run() {
-        while (!isInterrupted()) {
-            order = Distributer.getOrder();
-            if (order != null) {
-                System.out.printf("Baker is cooking order %d.\n", order.getOrderID());
-                try {
-                    sleep(speed * 1000);
-                } catch (InterruptedException e) {
-                    break;
-                }
-                synchronized (Distributer.getLock()) {
-                    if (Warehouse.addOrder(order)) {
-                        order = null;
-                    }
-                    Distributer.getLock().notifyAll();
-                }
-            }
+    void endWork() {
+        Logger.write("Baker " + getWorkerId() + " has finished work");
+        notify();
+    }
+
+    @Override
+    void takeOrder() {
+        order = orderQueue.remove();
+        if (order == null) {
+            Logger.write("Queue is empty");
+            order = null;
+            return;
         }
+        Logger.write("Baker " + getWorkerId() + "took order" + order.toString());
+    }
+
+    @Override
+    void work() {
+        if (order == null) {
+            return;
+        }
+        try {
+            sleep(1000L * getSpeed());
+        } catch (InterruptedException e) {
+            interrupt();
+        }
+        warehouse.add(order);
+        Logger.write("Baker " + getWorkerId() + "putted order " + order.getOrderID() + " to warehouse");
     }
 }
