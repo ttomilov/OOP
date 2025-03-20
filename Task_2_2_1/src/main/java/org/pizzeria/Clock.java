@@ -1,18 +1,23 @@
 package org.pizzeria;
 
-public class Clock extends Thread{
+import java.io.FileNotFoundException;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
+class Clock extends Thread{
     private final int workTime;
     private boolean isWorking = false;
     private boolean finished = false;
     private final Pizzeria pizzeria;
     private Object lock = null;
+    private static final Logger logger = LogManager.getLogger(Clock.class);
 
-    public Clock(int workTime, Pizzeria pizzeria){
+    Clock(int workTime, Pizzeria pizzeria) throws FileNotFoundException {
         this.workTime = workTime;
         this.pizzeria = pizzeria;
     }
 
-    public void startClock(){
+    void startClock(){
         if (isWorking){
             return;
         }
@@ -27,8 +32,11 @@ public class Clock extends Thread{
         }
     }
 
-    public synchronized void endClock(){
+    synchronized void endClock(){
         finished = true;
+        LoggerConsole.write("Clock ended");
+        logger.info("Clock ended");
+        notify();
     }
 
     @Override
@@ -38,7 +46,8 @@ public class Clock extends Thread{
             if (!isWorking){
                 synchronized (lock){
                     try {
-                        Logger.write("Waiting the new day...");
+                        LoggerConsole.write("Waiting the new day...");
+                        logger.info("Waiting the new day...");
                         lock.wait();
                     } catch (InterruptedException ignored) {
                     }
@@ -49,15 +58,14 @@ public class Clock extends Thread{
             } catch (InterruptedException ignored) {
             }
             isWorking = false;
-            pizzeria.endWorkDay();
+            try {
+                pizzeria.endWorkDay();
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
         }
-    }
-
-    public boolean isWorking(){
-        return isWorking;
-    }
-
-    public boolean isFinished() {
-        return finished;
+        synchronized (lock){
+            lock.notify();
+        }
     }
 }

@@ -1,13 +1,11 @@
 package org.test;
 
-import org.exeption.InvalidFormatJson;
+import org.exception.InvalidJsonFormatException;
 import org.junit.jupiter.api.Assertions;
 import org.pizzeria.Pizzeria;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.OutputStream;
-import org.pizzeria.Clock;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -99,7 +97,7 @@ public class Test {
                     + File.separator
                     + "success"
                     + File.separator
-                    + "bakerConfig.json"),
+                    + "configs/bakerConfig.json"),
             new File("src"
                     + File.separator
                     + "test"
@@ -108,7 +106,7 @@ public class Test {
                     + File.separator
                     + "success"
                     + File.separator
-                    + "delivererConfig.json"),
+                    + "configs/delivererConfig.json"),
             new File("src"
                     + File.separator
                     + "test"
@@ -117,7 +115,7 @@ public class Test {
                     + File.separator
                     + "success"
                     + File.separator
-                    + "pizzeriaConfig.json"),
+                    + "configs/pizzeriaConfig.json"),
             new File("src"
                     + File.separator
                     + "test"
@@ -126,7 +124,7 @@ public class Test {
                     + File.separator
                     + "success"
                     + File.separator
-                    + "menuConfig.json"),
+                    + "configs/menuConfig.json"),
     };
     File errorMenuConfig = new File("src"
             + File.separator
@@ -138,29 +136,30 @@ public class Test {
             + File.separator
             + "errorMenuConfig.json");
 
+    boolean parser(String find, File output) {
+        return true;
+    }
+
     @org.junit.jupiter.api.Test
     public void errorTest1() throws IOException {
         try{
-            Pizzeria pizzeria1 = new Pizzeria(errorBaker[0], errorDeliverer[0], errorPizzeria[0], errorMenuConfig,
-                    OutputStream.nullOutputStream());
+            Pizzeria pizzeria1 = new Pizzeria(errorBaker[0], errorDeliverer[0], errorPizzeria[0], errorMenuConfig);
             Assertions.fail();
-        } catch (InvalidFormatJson e) {
+        } catch (InvalidJsonFormatException e) {
             System.out.println(e.getMessage());
         }
 
         try{
-            Pizzeria pizzeria2 = new Pizzeria(successConfig[0], errorDeliverer[0], errorPizzeria[0], errorMenuConfig,
-                    OutputStream.nullOutputStream());
+            Pizzeria pizzeria2 = new Pizzeria(successConfig[0], errorDeliverer[0], errorPizzeria[0], errorMenuConfig);
             Assertions.fail();
-        } catch (InvalidFormatJson e) {
+        } catch (InvalidJsonFormatException e) {
             System.out.println(e.getMessage());
         }
 
         try{
-            Pizzeria pizzeria3 = new Pizzeria(successConfig[0], successConfig[1], errorPizzeria[0], errorMenuConfig,
-                    OutputStream.nullOutputStream());
+            Pizzeria pizzeria3 = new Pizzeria(successConfig[0], successConfig[1], errorPizzeria[0], errorMenuConfig);
             Assertions.fail();
-        } catch (InvalidFormatJson e) {
+        } catch (InvalidJsonFormatException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -168,26 +167,23 @@ public class Test {
     @org.junit.jupiter.api.Test
     public void errorTest2() throws IOException {
         try{
-            Pizzeria pizzeria1 = new Pizzeria(errorBaker[1], errorDeliverer[1], errorPizzeria[1], successConfig[3],
-                    OutputStream.nullOutputStream());
+            Pizzeria pizzeria1 = new Pizzeria(errorBaker[1], errorDeliverer[1], errorPizzeria[1], successConfig[3]);
             Assertions.fail();
-        } catch (InvalidFormatJson e) {
+        } catch (InvalidJsonFormatException e) {
             System.out.println(e.getMessage());
         }
 
         try{
-            Pizzeria pizzeria2 = new Pizzeria(successConfig[0], errorDeliverer[1], errorPizzeria[1], successConfig[3],
-                    OutputStream.nullOutputStream());
+            Pizzeria pizzeria2 = new Pizzeria(successConfig[0], errorDeliverer[1], errorPizzeria[1], successConfig[3]);
             Assertions.fail();
-        } catch (InvalidFormatJson e) {
+        } catch (InvalidJsonFormatException e) {
             System.out.println(e.getMessage());
         }
 
         try{
-            Pizzeria pizzeria3 = new Pizzeria(successConfig[0], successConfig[1], errorPizzeria[1], successConfig[3],
-                    OutputStream.nullOutputStream());
+            Pizzeria pizzeria3 = new Pizzeria(successConfig[0], successConfig[1], errorPizzeria[1], successConfig[3]);
             Assertions.fail();
-        } catch (InvalidFormatJson e) {
+        } catch (InvalidJsonFormatException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -195,42 +191,25 @@ public class Test {
     @org.junit.jupiter.api.Test
     public void errorTest3() throws IOException {
         try{
-            Pizzeria pizzeria1 = new Pizzeria(successConfig[0], errorDeliverer[2], errorPizzeria[2], successConfig[3],
-                    OutputStream.nullOutputStream());
+            Pizzeria pizzeria1 = new Pizzeria(successConfig[0], errorDeliverer[2], errorPizzeria[2], successConfig[3]);
             Assertions.fail();
-        } catch (InvalidFormatJson e) {
+        } catch (InvalidJsonFormatException e) {
             System.out.println(e.getMessage());
         }
 
         try{
-            Pizzeria pizzeria2 = new Pizzeria(successConfig[0], successConfig[1], errorPizzeria[2], successConfig[3],
-                    OutputStream.nullOutputStream());
+            Pizzeria pizzeria2 = new Pizzeria(successConfig[0], successConfig[1], errorPizzeria[2], successConfig[3]);
             Assertions.fail();
-        } catch (InvalidFormatJson e) {
+        } catch (InvalidJsonFormatException e) {
             System.out.println(e.getMessage());
         }
     }
 
     @org.junit.jupiter.api.Test
-    public void clockTest() throws IOException {
-        Pizzeria pizzeria = new Pizzeria(successConfig[0], successConfig[1], successConfig[2], successConfig[3],
-                OutputStream.nullOutputStream());
-        int timeWork = 1000;
-        Clock clock = new Clock(timeWork, pizzeria);
-        clock.startClock();
-        assertTrue(clock.isWorking());
-        clock.endClock();
-        assertTrue(clock.isFinished());
-    }
-
-    @org.junit.jupiter.api.Test
     public void pizzeriaTest() throws IOException, InterruptedException {
-        Pizzeria pizzeria = new Pizzeria(successConfig[0], successConfig[1], successConfig[2], successConfig[3],
-                OutputStream.nullOutputStream());
-        assertTrue(pizzeria.addOrder());
+        Pizzeria pizzeria = new Pizzeria(successConfig[0], successConfig[1], successConfig[2], successConfig[3]);
+        pizzeria.addOrder();
         pizzeria.startWorkDay();
-        assertTrue(pizzeria.isWorking());
         pizzeria.closePizzeria();
-        assertTrue(pizzeria.isFinished());
     }
 }

@@ -1,9 +1,14 @@
 package org.pizzeria;
 
+import java.io.FileNotFoundException;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 class Baker extends Worker {
     private final Queue<Order> warehouse;
     private final Queue<Order> orderQueue;
     private Order order = null;
+    private static final Logger logger = LogManager.getLogger(Baker.class);
 
     Baker(int workerID, int speed, Queue<Order> warehouse, Queue<Order> orderQueue) {
         setWorkerId(workerID);
@@ -12,29 +17,39 @@ class Baker extends Worker {
         this.orderQueue = orderQueue;
     }
 
-    Order getOrder(){
-        return order;
+    @Override
+    synchronized void print(String msg) {
+        LoggerConsole.write(msg);
+        logger.info(msg);
     }
 
     @Override
      synchronized void endWork() {
-        Logger.write("Baker " + getWorkerId() + " has finished work");
+        LoggerConsole.write("Baker " + getWorkerId() + " has finished work");
+        logger.info("Baker {} has finished work", getWorkerId());
+        setFinished(true);
         notify();
     }
 
     @Override
     void takeOrder() {
+        if (getFinished()) {
+            return;
+        }
         order = orderQueue.poll();
         if (order == null) {
-            Logger.write("Queue is empty");
+            print("Queue is empty");
             order = null;
             return;
         }
-        Logger.write("Baker " + getWorkerId() + "took order" + order.getOrderID());
+        print("Baker " + getWorkerId() + " took order " + order.getOrderID());
     }
 
     @Override
     void work() {
+        if (getFinished()) {
+            return;
+        }
         if (order == null) {
             return;
         }
@@ -44,6 +59,6 @@ class Baker extends Worker {
             interrupt();
         }
         warehouse.add(order);
-        Logger.write("Baker " + getWorkerId() + "putted order " + order.getOrderID() + " to warehouse");
+        print("Baker " + getWorkerId() + " putted order " + order.getOrderID() + " to warehouse");
     }
 }

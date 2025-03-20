@@ -1,15 +1,15 @@
 package org.pizzeria;
 
 public class Order {
-    private int OrderID;
-    private String OrderName;
+    private int orderID;
+    private String orderName;
 
     public Order(int OrderID, String OrderName) {
-        this.OrderID = OrderID;
-        this.OrderName = OrderName;
+        this.orderID = OrderID;
+        this.orderName = OrderName;
     }
 
     public int getOrderID() {
-        return OrderID;
+        return orderID;
     }
 }

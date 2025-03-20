@@ -1,15 +1,14 @@
 package org.pizzeria;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.configs.BakerConfig;
-import org.configs.DelivererConfig;
-import org.configs.MenuConfig;
-import org.configs.PizzeriaConfig;
-import org.exeption.InvalidFormatJson;
+import org.exception.InvalidJsonFormatException;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.configs.*;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.Vector;
 
 public class Pizzeria {
@@ -29,8 +28,10 @@ public class Pizzeria {
     private volatile int orderID = 1;
     private Vector<String> menu;
     private int numPizzas = 0;
+    private static final Logger logger = LogManager.getLogger(Pizzeria.class);
 
-    public Pizzeria(File bakerConfigJson, File delivererConfigJson, File pizzeriaConfigJson, File menuConfigJson, OutputStream log) throws IOException {
+
+    public Pizzeria(File bakerConfigJson, File delivererConfigJson, File pizzeriaConfigJson, File menuConfigJson) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         bakerConfig = objectMapper.readValue(bakerConfigJson, BakerConfig.class);
         delivererConfig = objectMapper.readValue(delivererConfigJson, DelivererConfig.class);
@@ -44,7 +45,6 @@ public class Pizzeria {
         initDeliverers();
         initMenu();
 
-        Logger.setOutputStream(log);
         finished = false;
     }
 
@@ -57,118 +57,122 @@ public class Pizzeria {
 
     private void bakerCheck() {
         if (bakerConfig == null) {
-            throw new InvalidFormatJson("BakerConfig is null");
+            throw new InvalidJsonFormatException("BakerConfig is null");
         }
 
         if (bakerConfig.getNumBakers() <= 0) {
-            throw new InvalidFormatJson("Number of bakers must be greater than 0");
+            throw new InvalidJsonFormatException("Number of bakers must be greater than 0");
         }
 
         if (delivererConfig.getSpeeds() == null) {
-            throw new InvalidFormatJson("Speeds is null");
+            throw new InvalidJsonFormatException("Speeds is null");
         }
 
         for (int i = 0; i < bakerConfig.getNumBakers(); i++) {
             if (bakerConfig.getSpeeds()[i] <= 0) {
-                throw new InvalidFormatJson("Speeds must be greater than 0");
+                throw new InvalidJsonFormatException("Speeds must be greater than 0");
             }
         }
     }
 
     private void delivererCheck() {
         if (delivererConfig == null) {
-            throw new InvalidFormatJson("DelivererConfig is null");
+            throw new InvalidJsonFormatException("DelivererConfig is null");
         }
 
         if (delivererConfig.getNumDeliverers() <= 0) {
-            throw new InvalidFormatJson("Number of deliverers must be greater than 0");
+            throw new InvalidJsonFormatException("Number of deliverers must be greater than 0");
         }
 
         if (delivererConfig.getSpeeds() == null) {
-            throw new InvalidFormatJson("Speeds is null");
+            throw new InvalidJsonFormatException("Speeds is null");
         }
 
         for (int i = 0; i < delivererConfig.getNumDeliverers(); i++) {
             if (delivererConfig.getSpeeds()[i] <= 0) {
-                throw new InvalidFormatJson("Speeds must be greater than 0");
+                throw new InvalidJsonFormatException("Speeds must be greater than 0");
             }
         }
 
         if (delivererConfig.getBagSize() <= 0) {
-            throw new InvalidFormatJson("Bag size must be greater than 0");
+            throw new InvalidJsonFormatException("Bag size must be greater than 0");
         }
     }
 
     private void pizzeriaCheck() {
         if (pizzeriaConfig == null) {
-            throw new InvalidFormatJson("PizzeriaConfig is null");
+            throw new InvalidJsonFormatException("PizzeriaConfig is null");
         }
 
         if (pizzeriaConfig.getOrdersQueueSize() <= 0) {
-            throw new InvalidFormatJson("Orders queue size must be greater than 0");
+            throw new InvalidJsonFormatException("Orders queue size must be greater than 0");
         }
 
         if (pizzeriaConfig.getWarehouseSize() <= 0) {
-            throw new InvalidFormatJson("Warehouse size must be greater than 0");
+            throw new InvalidJsonFormatException("Warehouse size must be greater than 0");
         }
 
         if (pizzeriaConfig.getWorkTime() <= 0) {
-            throw new InvalidFormatJson("Work time must be greater than 0");
+            throw new InvalidJsonFormatException("Work time must be greater than 0");
         }
     }
 
-    void menuCheck() {
+    private void menuCheck() {
         if (menuConfig == null) {
-            throw new InvalidFormatJson("MenuConfig is null");
+            throw new InvalidJsonFormatException("MenuConfig is null");
         }
 
         if (menuConfig.getMenu() == null) {
-            throw new InvalidFormatJson("Menu is null");
+            throw new InvalidJsonFormatException("Menu is null");
         }
 
         if (menuConfig.getMenu().isEmpty()){
-            throw new InvalidFormatJson("Menu is empty");
+            throw new InvalidJsonFormatException("Menu is empty");
         }
     }
 
-    public void initBakers() throws IOException {
+    private void initBakers() throws IOException {
         bakers = new Vector<>();
         for (int i = 0; i < bakerConfig.getNumBakers(); i++) {
             bakers.add(new Baker(workerID++, bakerConfig.getSpeeds()[i], warehouse, orderQueue));
         }
     }
 
-    public void initDeliverers() throws IOException {
+    private void initDeliverers() {
         deliverers = new Vector<>();
         for (int i = 0; i < delivererConfig.getNumDeliverers(); i++) {
             deliverers.add(new Deliverer(workerID++, delivererConfig.getSpeeds()[i], delivererConfig.getBagSize(), warehouse));
         }
     }
 
-    public void initPizzeria() throws IOException {
+    private void initPizzeria() throws IOException {
         clock = new Clock(pizzeriaConfig.getWorkTime(), this);
         orderQueue = new Queue<>(pizzeriaConfig.getOrdersQueueSize());
         warehouse = new Queue<>(pizzeriaConfig.getWarehouseSize());
     }
 
-    public void initMenu() {
+    private void initMenu() {
         menu = menuConfig.getMenu();
+        numPizzas = menu.size();
     }
 
-    public synchronized boolean addOrder() {
+    public synchronized void addOrder() {
         if (finished) {
-            Logger.write("Pizzeria finished.");
-            return false;
+            LoggerConsole.write("Pizzeria closed.");
+            logger.info("Pizzeria closed.");
+            return;
         } else if (isWorking) {
-            Logger.write("Pizzeria is not working");
-            return false;
+            LoggerConsole.write("Pizzeria is working");
+            logger.info("Pizzeria is working");
+            return;
         }
         int number = (int)(Math.random() * numPizzas);
+        LoggerConsole.write("Order " + orderID + " for " + menu.get(number) + " has been accepted");
+        logger.info("Order {} for {} has been accepted", orderID, menu.get(number));
         orderQueue.add(new Order(orderID++, menu.get(number)));
-        return true;
     }
 
-    public synchronized void startWorkDay() throws IOException {
+    public synchronized void startWorkDay() {
         if (isWorking || finished) {
             return;
         }
@@ -184,7 +188,9 @@ public class Pizzeria {
             for (Worker deliverer : deliverers) {
                 deliverer.start();
             }
-            Logger.write("Started " + (workDay++) + " work day");
+            LoggerConsole.write("Started " + workDay + " work day");
+            logger.info("Started {} work day", workDay);
+            notify();
             return;
         }
 
@@ -196,10 +202,11 @@ public class Pizzeria {
         for (Worker deliverer : deliverers) {
             deliverer.notify();
         }
-        Logger.write("Started " + workDay + " work day");
+        LoggerConsole.write("Started " + workDay + " work day");
+        logger.info("Started {} work day", workDay);
     }
 
-    synchronized void endWorkDay() {
+    public synchronized void endWorkDay() throws FileNotFoundException {
         isWorking = false;
         for (Worker baker : bakers) {
             baker.interrupt();
@@ -208,7 +215,8 @@ public class Pizzeria {
         for (Worker deliverer : deliverers) {
             deliverer.interrupt();
         }
-        Logger.write("Ended " + (workDay++) + " work day");
+        LoggerConsole.write("Ended " + workDay + " work day");
+        logger.info("Ended {} work day", (workDay++));
         this.notify();
     }
 
@@ -236,14 +244,15 @@ public class Pizzeria {
             deliverer.join();
         }
 
-        Logger.write("Pizzeria finished its work on " + workDay + " day");
-    }
+        LoggerConsole.write("Pizzeria finished its work on " + workDay + " day");
+        logger.info("Pizzeria finished {} work day", workDay);
 
-    public boolean isWorking() {
-        return isWorking;
-    }
+        for (Worker baker : bakers) {
+            baker.interrupt();
+        }
 
-    public boolean isFinished() {
-        return finished;
+        for (Worker deliverer : deliverers) {
+            deliverer.interrupt();
+        }
     }
 }

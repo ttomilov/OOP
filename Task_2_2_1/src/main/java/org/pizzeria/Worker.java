@@ -5,10 +5,17 @@ abstract class Worker extends Thread {
     private int speed;
     private volatile boolean finished = false;
 
-    synchronized void finish() {
-        finished = true;
-        notify();
+    @Override
+    public void run() {
+        while(!finished) {
+            waitNewDay();
+            takeOrder();
+            work();
+        }
+        LoggerConsole.write("Worker " + workerId + " finished");
     }
+
+    abstract void print(String msg);
 
     void setWorkerId(int workerId){
         this.workerId = workerId;
@@ -20,6 +27,14 @@ abstract class Worker extends Thread {
 
     int getWorkerId(){
         return workerId;
+    }
+
+    void setFinished(boolean finished){
+        this.finished = finished;
+    }
+
+    boolean getFinished(){
+        return finished;
     }
 
     int getSpeed(){
@@ -40,25 +55,12 @@ abstract class Worker extends Thread {
         }
         if (interrupted()) {
             try {
-                Logger.write(workerId + ": Waiting for new day");
-                wait();
+                synchronized (this){
+                    LoggerConsole.write("Worker " + workerId + " waiting for new day");
+                    wait();
+                }
             } catch (InterruptedException ignored) {
             }
-        }
-    }
-
-    @Override
-    public void run() {
-        while(true) {
-            synchronized (this) {
-                if (finished) {
-                    Logger.write(workerId + ": Finished");
-                    return;
-                }
-            }
-            waitNewDay();
-            takeOrder();
-            work();
         }
     }
 }
