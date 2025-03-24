@@ -1,64 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="INFO">
     <Appenders>
-        <!-- Аппендер для Pizzeria -->
-        <File name="Pizzeria" fileName="src/main/resources/logger/pizzeria.log" append="true">
+        <File name="Pizzeria" fileName="logs/pizzeria.log" append="true">
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
         </File>
 
-        <!-- Аппендер для Baker -->
-        <File name="Baker" fileName="src/main/resources/logger/baker.log" append="true">
+        <File name="Baker" fileName="logs/baker.log" append="true">
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
         </File>
 
-        <!-- Аппендер для Deliverer -->
-        <File name="Deliverer" fileName="src/main/resources/logger/deliverer.log" append="true">
+        <File name="Deliverer" fileName="logs/deliverer.log" append="true">
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
         </File>
 
-        <!-- Аппендер для Clock -->
-        <File name="Clock" fileName="src/main/resources/logger/clock.log" append="true">
+        <File name="Clock" fileName="logs/clock.log" append="true">
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
         </File>
 
-        <!-- Аппендер для Worker -->
-        <File name="Worker" fileName="src/main/resources/logger/worker.log" append="true">
+        <File name="Worker" fileName="logs/worker.log" append="true">
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
         </File>
 
-        <!-- Аппендер по умолчанию -->
-        <File name="FileDefault" fileName="src/main/resources/logger/app.log" append="true">
+        <File name="FileDefault" fileName="logs/app.log" append="true">
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
         </File>
     </Appenders>
 
     <Loggers>
-        <!-- Логгер для Pizzeria -->
-        <Logger name="org.pizzeria.Pizzeria" level="info" additivity="false">
-            <AppenderRef ref="Pizzeria"/>
-        </Logger>
-
-        <!-- Логгер для Baker -->
-        <Logger name="org.pizzeria.Baker" level="info" additivity="false">
-            <AppenderRef ref="Baker"/>
-        </Logger>
-
-        <!-- Логгер для Deliverer -->
-        <Logger name="org.pizzeria.Deliverer" level="info" additivity="false">
-            <AppenderRef ref="Deliverer"/>
-        </Logger>
-
-        <!-- Логгер для Clock -->
-        <Logger name="org.pizzeria.Clock" level="info" additivity="false">
-            <AppenderRef ref="Clock"/>
-        </Logger>
-
-        <!-- Логгер для Worker -->
-        <Logger name="org.pizzeria.Worker" level="info" additivity="false">
-            <AppenderRef ref="Worker"/>
-        </Logger>
-
-        <!-- Корневой логгер -->
         <Root level="info">
             <AppenderRef ref="Pizzeria"/>
             <AppenderRef ref="Baker"/>

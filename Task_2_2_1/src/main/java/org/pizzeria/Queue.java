@@ -3,11 +3,11 @@ package org.pizzeria;
 import java.util.LinkedList;
 import java.util.concurrent.Semaphore;
 
+
 class Queue<E> {
     private final LinkedList<E> queue = new LinkedList<>();
     private final Semaphore semaphorePut;
     private final Semaphore semaphoreGet;
-
     Queue(int capacity) {
         semaphoreGet = new Semaphore(0, true);
         semaphorePut = new Semaphore(capacity, true);
@@ -38,5 +38,9 @@ class Queue<E> {
         }
 
         return object;
+    }
+
+    public int size() {
+        return queue.size();
     }
 }

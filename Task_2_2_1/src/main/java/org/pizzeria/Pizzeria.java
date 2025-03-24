@@ -7,7 +7,6 @@ import org.apache.logging.log4j.LogManager;
 import org.configs.*;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Vector;
 
@@ -28,6 +27,7 @@ public class Pizzeria {
     private volatile int orderID = 1;
     private Vector<String> menu;
     private int numPizzas = 0;
+    private int queueSize;
     private static final Logger logger = LogManager.getLogger(Pizzeria.class);
 
 
@@ -64,7 +64,7 @@ public class Pizzeria {
             throw new InvalidJsonFormatException("Number of bakers must be greater than 0");
         }
 
-        if (delivererConfig.getSpeeds() == null) {
+        if (bakerConfig.getSpeeds() == null) {
             throw new InvalidJsonFormatException("Speeds is null");
         }
 
@@ -149,6 +149,7 @@ public class Pizzeria {
         clock = new Clock(pizzeriaConfig.getWorkTime(), this);
         orderQueue = new Queue<>(pizzeriaConfig.getOrdersQueueSize());
         warehouse = new Queue<>(pizzeriaConfig.getWarehouseSize());
+        queueSize = pizzeriaConfig.getOrdersQueueSize();
     }
 
     private void initMenu() {
@@ -161,18 +162,19 @@ public class Pizzeria {
             LoggerConsole.write("Pizzeria closed.");
             logger.info("Pizzeria closed.");
             return;
-        } else if (isWorking) {
-            LoggerConsole.write("Pizzeria is working");
-            logger.info("Pizzeria is working");
-            return;
         }
-        int number = (int)(Math.random() * numPizzas);
-        LoggerConsole.write("Order " + orderID + " for " + menu.get(number) + " has been accepted");
-        logger.info("Order {} for {} has been accepted", orderID, menu.get(number));
-        orderQueue.add(new Order(orderID++, menu.get(number)));
+        if (orderQueue.size() < queueSize){
+            int number = (int)(Math.random() * numPizzas);
+            LoggerConsole.write("Order " + orderID + " for " + menu.get(number) + " has been accepted");
+            logger.info("Order {} has been accepted", orderID);
+            orderQueue.add(new Order(orderID++, menu.get(number)));
+        } else {
+            LoggerConsole.write("Queue is full");
+            logger.info("Queue is full");
+        }
     }
 
-    public synchronized void startWorkDay() {
+    public synchronized void startNewDay() {
         if (isWorking || finished) {
             return;
         }
@@ -181,43 +183,42 @@ public class Pizzeria {
 
         if (workDay == 1) {
             clock.startClock();
-            for (Worker baker : bakers) {
-                baker.start();
+            for (Worker worker : bakers) {
+                worker.start();
             }
-
-            for (Worker deliverer : deliverers) {
-                deliverer.start();
+            for (Worker worker : deliverers) {
+                worker.start();
             }
             LoggerConsole.write("Started " + workDay + " work day");
             logger.info("Started {} work day", workDay);
-            notify();
             return;
         }
-
         clock.startClock();
-        for (Worker baker : bakers) {
-            baker.notify();
-        }
-
-        for (Worker deliverer : deliverers) {
-            deliverer.notify();
-        }
         LoggerConsole.write("Started " + workDay + " work day");
         logger.info("Started {} work day", workDay);
+        for (Worker worker : bakers) {
+            worker.notify();
+        }
+        for (Worker worker : deliverers) {
+            worker.notify();
+        }
     }
 
-    public synchronized void endWorkDay() throws FileNotFoundException {
+
+    public synchronized void endWorkDay() throws InterruptedException {
         isWorking = false;
-        for (Worker baker : bakers) {
-            baker.interrupt();
+
+        for (Worker worker : bakers){
+            worker.interrupt();
         }
 
-        for (Worker deliverer : deliverers) {
-            deliverer.interrupt();
+        for (Worker worker : deliverers){
+            worker.interrupt();
         }
+
         LoggerConsole.write("Ended " + workDay + " work day");
         logger.info("Ended {} work day", (workDay++));
-        this.notify();
+        notify();
     }
 
     public synchronized void closePizzeria() throws InterruptedException {
@@ -234,25 +235,17 @@ public class Pizzeria {
 
         clock.endClock();
 
-        for (Worker baker : bakers) {
-            baker.endWork();
-            baker.join();
+        for (Worker worker : bakers) {
+            worker.finishWork();
+            worker.interrupt();
         }
 
         for (Worker deliverer : deliverers) {
-            deliverer.endWork();
+            deliverer.finishWork();
             deliverer.join();
         }
 
-        LoggerConsole.write("Pizzeria finished its work on " + workDay + " day");
-        logger.info("Pizzeria finished {} work day", workDay);
-
-        for (Worker baker : bakers) {
-            baker.interrupt();
-        }
-
-        for (Worker deliverer : deliverers) {
-            deliverer.interrupt();
-        }
+        LoggerConsole.write("Pizzeria finished its work on " + (workDay - 1) + " day");
+        logger.info("Pizzeria finished {} work day", (workDay - 1));
     }
 }

@@ -7,6 +7,7 @@ import org.pizzeria.Pizzeria;
 import java.io.File;
 import java.io.IOException;
 
+import static java.lang.Thread.sleep;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class Test {
@@ -97,7 +98,7 @@ public class Test {
                     + File.separator
                     + "success"
                     + File.separator
-                    + "configs/bakerConfig.json"),
+                    + "bakerConfig.json"),
             new File("src"
                     + File.separator
                     + "test"
@@ -106,7 +107,7 @@ public class Test {
                     + File.separator
                     + "success"
                     + File.separator
-                    + "configs/delivererConfig.json"),
+                    + "delivererConfig.json"),
             new File("src"
                     + File.separator
                     + "test"
@@ -115,7 +116,7 @@ public class Test {
                     + File.separator
                     + "success"
                     + File.separator
-                    + "configs/pizzeriaConfig.json"),
+                    + "pizzeriaConfig.json"),
             new File("src"
                     + File.separator
                     + "test"
@@ -124,8 +125,9 @@ public class Test {
                     + File.separator
                     + "success"
                     + File.separator
-                    + "configs/menuConfig.json"),
+                    + "menuConfig.json"),
     };
+    
     File errorMenuConfig = new File("src"
             + File.separator
             + "test"
@@ -209,7 +211,8 @@ public class Test {
     public void pizzeriaTest() throws IOException, InterruptedException {
         Pizzeria pizzeria = new Pizzeria(successConfig[0], successConfig[1], successConfig[2], successConfig[3]);
         pizzeria.addOrder();
-        pizzeria.startWorkDay();
+        pizzeria.startNewDay();
+        sleep(15000);
         pizzeria.closePizzeria();
     }
 }

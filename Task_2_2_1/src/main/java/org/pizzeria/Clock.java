@@ -4,67 +4,62 @@ import java.io.FileNotFoundException;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
-class Clock extends Thread{
+class Clock extends Thread {
     private final int workTime;
     private boolean isWorking = false;
     private boolean finished = false;
     private final Pizzeria pizzeria;
-    private Object lock = null;
     private static final Logger logger = LogManager.getLogger(Clock.class);
+    private final Object lock = new Object();
 
     Clock(int workTime, Pizzeria pizzeria) throws FileNotFoundException {
         this.workTime = workTime;
         this.pizzeria = pizzeria;
     }
 
-    void startClock(){
-        if (isWorking){
+    void startClock() {
+        if (isWorking) {
             return;
         }
         isWorking = true;
-        if (lock == null){
-            lock = new Object();
+        synchronized (lock) {
+            lock.notify();
             start();
-            return;
         }
-        synchronized (lock){
+    }
+
+    void endClock() {
+        synchronized (lock) {
+            finished = true;
+            isWorking = false;
+            LoggerConsole.write("Clock ended");
+            logger.info("Clock ended");
             lock.notify();
         }
     }
 
-    synchronized void endClock(){
-        finished = true;
-        LoggerConsole.write("Clock ended");
-        logger.info("Clock ended");
-        notify();
-    }
-
     @Override
     public void run() {
-        isWorking = true;
-        while (!finished){
-            if (!isWorking){
-                synchronized (lock){
-                    try {
+        while (!finished) {
+            try {
+                if (!isWorking) {
+                    synchronized (lock) {
                         LoggerConsole.write("Waiting the new day...");
                         logger.info("Waiting the new day...");
                         lock.wait();
-                    } catch (InterruptedException ignored) {
                     }
                 }
-            }
-            try {
                 sleep(workTime);
             } catch (InterruptedException ignored) {
             }
+
             isWorking = false;
             try {
                 pizzeria.endWorkDay();
-            } catch (FileNotFoundException e) {
-                throw new RuntimeException(e);
+            } catch (InterruptedException ignored) {
             }
         }
-        synchronized (lock){
+        synchronized (lock) {
             lock.notify();
         }
     }

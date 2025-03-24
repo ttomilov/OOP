@@ -8,50 +8,51 @@ import java.io.IOException;
 import static java.lang.Thread.sleep;
 
 public class Main {
-    static File[] successConfig = {
-            new File("src"
-                    + File.separator
-                    + "main"
-                    + File.separator
-                    + "resources"
-                    + File.separator
-                    + "configs/bakerConfig.json"),
-            new File("src"
-                    + File.separator
-                    + "main"
-                    + File.separator
-                    + "resources"
-                    + File.separator
-                    + "configs/delivererConfig.json"),
-            new File("src"
-                    + File.separator
-                    + "main"
-                    + File.separator
-                    + "resources"
-                    + File.separator
-                    + "configs/pizzeriaConfig.json"),
-            new File("src"
-                    + File.separator
-                    + "main"
-                    + File.separator
-                    + "resources"
-                    + File.separator
-                    + "configs/menuConfig.json"),
-    };
-
     public static void main(String[] args) throws IOException, InterruptedException {
-        Pizzeria pizza = new Pizzeria(successConfig[0], successConfig[1], successConfig[2], successConfig[3]);
-
-        for (int i = 0; i < 8; i++){
-            pizza.addOrder();
+        File[] successConfig = {
+                new File("src"
+                        + File.separator
+                        + "main"
+                        + File.separator
+                        + "resources"
+                        + File.separator
+                        + "configs"
+                        + File.separator
+                        + "bakerConfig.json"),
+                new File("src"
+                        + File.separator
+                        + "main"
+                        + File.separator
+                        + "resources"
+                        + File.separator
+                        + "configs"
+                        + File.separator
+                        + "delivererConfig.json"),
+                new File("src"
+                        + File.separator
+                        + "main"
+                        + File.separator
+                        + "resources"
+                        + File.separator
+                        + "configs"
+                        + File.separator
+                        + "pizzeriaConfig.json"),
+                new File("src"
+                        + File.separator
+                        + "main"
+                        + File.separator
+                        + "resources"
+                        + File.separator
+                        + "configs"
+                        + File.separator
+                        + "menuConfig.json"),
+        };
+        Pizzeria pizzeria = new Pizzeria(successConfig[0], successConfig[1], successConfig[2], successConfig[3]);
+        for (int i = 0; i < 8; i++) {
+            pizzeria.addOrder();
         }
-
-        pizza.startWorkDay();
-
-        sleep(11000);
-
-        pizza.closePizzeria();
-
-        System.exit(0);
+        pizzeria.startNewDay();
+        sleep(15000);
+        pizzeria.closePizzeria();
     }
 }

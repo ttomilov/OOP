@@ -1,66 +1,63 @@
 package org.pizzeria;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 abstract class Worker extends Thread {
     private int workerId;
     private int speed;
-    private volatile boolean finished = false;
+    private volatile boolean isFinished = false;
+    private static Logger logger = LogManager.getLogger(Worker.class);
 
     @Override
     public void run() {
-        while(!finished) {
-            waitNewDay();
-            takeOrder();
-            work();
-        }
-        LoggerConsole.write("Worker " + workerId + " finished");
-    }
-
-    abstract void print(String msg);
-
-    void setWorkerId(int workerId){
-        this.workerId = workerId;
-    }
-
-    void setSpeed(int speed){
-        this.speed = speed;
-    }
-
-    int getWorkerId(){
-        return workerId;
-    }
-
-    void setFinished(boolean finished){
-        this.finished = finished;
-    }
-
-    boolean getFinished(){
-        return finished;
-    }
-
-    int getSpeed(){
-        return speed;
-    }
-
-    abstract void endWork();
-
-    abstract void takeOrder();
-
-    abstract void work();
-
-    void waitNewDay(){
-        synchronized (this){
-            if (finished){
-                return;
-            }
-        }
-        if (interrupted()) {
+        while (!isFinished) {
             try {
-                synchronized (this){
-                    LoggerConsole.write("Worker " + workerId + " waiting for new day");
-                    wait();
-                }
+                waitNewDay();
+                work();
             } catch (InterruptedException ignored) {
             }
         }
+    }
+
+    abstract void work() throws InterruptedException;
+
+    synchronized void waitNewDay() throws InterruptedException {
+        if (isFinished) {
+            return;
+        }
+        if (Thread.currentThread().isInterrupted()) {
+            LoggerConsole.write("Worker " + workerId + " waiting new day...");
+            logger.info("Worker {} waiting new day...", workerId);
+            wait();
+        }
+    }
+
+    abstract void finishWork();
+
+    abstract void log(String msg);
+
+    void setWorkerId(int workerId) {
+        this.workerId = workerId;
+    }
+
+    void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    boolean getIsFinished() {
+        return isFinished;
+    }
+
+    int getSpeed() {
+        return speed;
+    }
+
+    int getWorkerId() {
+        return workerId;
+    }
+
+    void setIsFinished(boolean isFinished) {
+        this.isFinished = isFinished;
     }
 }

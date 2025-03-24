@@ -1,12 +1,11 @@
 package org.pizzeria;
 
-import java.io.FileNotFoundException;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
-class Baker extends Worker {
-    private final Queue<Order> warehouse;
-    private final Queue<Order> orderQueue;
+public class Baker extends Worker {
+    private Queue<Order> orderQueue;
+    private Queue<Order> warehouse;
     private Order order = null;
     private static final Logger logger = LogManager.getLogger(Baker.class);
 
@@ -18,47 +17,48 @@ class Baker extends Worker {
     }
 
     @Override
-    synchronized void print(String msg) {
-        LoggerConsole.write(msg);
-        logger.info(msg);
+    void work(){
+        if (getIsFinished()) {
+            return;
+        }
+
+        order = orderQueue.poll();
+        if (order == null) {
+            return;
+        }
+
+        log("Baker " + getWorkerId() + " took order " + order.getOrderID());
+        try {
+            sleep(getSpeed());
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        log("Baker " + getWorkerId() + " put order " + order.getOrderID() + " into warehouse");
+        warehouse.add(order);
+        order = null;
     }
 
     @Override
-     synchronized void endWork() {
-        LoggerConsole.write("Baker " + getWorkerId() + " has finished work");
-        logger.info("Baker {} has finished work", getWorkerId());
-        setFinished(true);
+    synchronized void finishWork() {
+        if (order == null) {
+            log("Baker " + getWorkerId() + " finished work");
+        } else {
+            try {
+                sleep(getSpeed());
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            log("Baker " + getWorkerId() + " put order " + order.getOrderID() + " into warehouse");
+            warehouse.add(order);
+        }
+        log("Baker " + getWorkerId() + " finished work");
+        setIsFinished(true);
         notify();
     }
 
     @Override
-    void takeOrder() {
-        if (getFinished()) {
-            return;
-        }
-        order = orderQueue.poll();
-        if (order == null) {
-            print("Queue is empty");
-            order = null;
-            return;
-        }
-        print("Baker " + getWorkerId() + " took order " + order.getOrderID());
-    }
-
-    @Override
-    void work() {
-        if (getFinished()) {
-            return;
-        }
-        if (order == null) {
-            return;
-        }
-        try {
-            sleep(1000L * getSpeed());
-        } catch (InterruptedException e) {
-            interrupt();
-        }
-        warehouse.add(order);
-        print("Baker " + getWorkerId() + " putted order " + order.getOrderID() + " to warehouse");
+    void log(String msg) {
+        LoggerConsole.write(msg);
+        logger.info(msg);
     }
 }
