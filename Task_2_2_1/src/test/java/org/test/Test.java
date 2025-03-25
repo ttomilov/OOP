@@ -4,8 +4,8 @@ import org.exception.InvalidJsonFormatException;
 import org.junit.jupiter.api.Assertions;
 import org.pizzeria.Pizzeria;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.util.Vector;
 
 import static java.lang.Thread.sleep;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -138,8 +138,29 @@ public class Test {
             + File.separator
             + "errorMenuConfig.json");
 
-    boolean parser(String find, File output) {
-        return true;
+    boolean parser(String find, BufferedReader output) throws IOException {
+        String[] findTokens = find.split(" ");
+        String line = output.readLine();
+        int count;
+        Vector<String> results = new Vector<String>();
+        while (line != null) {
+            String[] tokens = line.split(" ");
+            int indxTokens = 6;
+            for (int i = 0; i < findTokens.length; i++) {
+                if (findTokens[i].equals(tokens[indxTokens])) {
+                    results.add(findTokens[i]);
+                    indxTokens++;
+                } else {
+                    results.clear();
+                    break;
+                }
+            }
+            if (findTokens.length == results.size()) {
+                return true;
+            }
+            line = output.readLine();
+        }
+        return false;
     }
 
     @org.junit.jupiter.api.Test
@@ -212,7 +233,27 @@ public class Test {
         Pizzeria pizzeria = new Pizzeria(successConfig[0], successConfig[1], successConfig[2], successConfig[3]);
         pizzeria.addOrder();
         pizzeria.startNewDay();
-        sleep(15000);
+        sleep(13000);
         pizzeria.closePizzeria();
+        FileReader fileReader = new FileReader("logs/pizzeria.log");
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        assertTrue(parser("Pizzeria was inited", bufferedReader));
+        assertTrue(parser("Bakers were inited", bufferedReader));
+        assertTrue(parser("Deliverers were inited", bufferedReader));
+        assertTrue(parser("Menu was inited", bufferedReader));
+        assertTrue(parser("Order 1 has been accepted", bufferedReader));
+        assertTrue(parser("Started 1 work day", bufferedReader));
+        assertTrue(parser("Ended 1 work day", bufferedReader));
+        assertTrue(parser("Waiting the new day...", bufferedReader));
+        assertTrue(parser("Clock ended", bufferedReader));
+        assertTrue(parser("Baker 1 finished work", bufferedReader));
+        assertTrue(parser("Baker 2 finished work", bufferedReader));
+        assertTrue(parser("Baker 3 finished work", bufferedReader));
+        assertTrue(parser("Baker 4 finished work", bufferedReader));
+        assertTrue(parser("Deliverer 5 finished work", bufferedReader));
+        assertTrue(parser("Deliverer 6 finished work", bufferedReader));
+        assertTrue(parser("Deliverer 7 finished work", bufferedReader));
+        assertTrue(parser("Deliverer 8 finished work", bufferedReader));
+        assertTrue(parser("Pizzeria finished 1 work day", bufferedReader));
     }
 }

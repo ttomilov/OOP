@@ -136,6 +136,8 @@ public class Pizzeria {
         for (int i = 0; i < bakerConfig.getNumBakers(); i++) {
             bakers.add(new Baker(workerID++, bakerConfig.getSpeeds()[i], warehouse, orderQueue));
         }
+        LoggerConsole.write("Bakers were inited");
+        logger.info("Bakers were inited");
     }
 
     private void initDeliverers() {
@@ -143,6 +145,8 @@ public class Pizzeria {
         for (int i = 0; i < delivererConfig.getNumDeliverers(); i++) {
             deliverers.add(new Deliverer(workerID++, delivererConfig.getSpeeds()[i], delivererConfig.getBagSize(), warehouse));
         }
+        LoggerConsole.write("Deliverers were inited");
+        logger.info("Deliverers were inited");
     }
 
     private void initPizzeria() throws IOException {
@@ -150,11 +154,15 @@ public class Pizzeria {
         orderQueue = new Queue<>(pizzeriaConfig.getOrdersQueueSize());
         warehouse = new Queue<>(pizzeriaConfig.getWarehouseSize());
         queueSize = pizzeriaConfig.getOrdersQueueSize();
+        LoggerConsole.write("Pizzeria was inited");
+        logger.info("Pizzeria was inited");
     }
 
     private void initMenu() {
         menu = menuConfig.getMenu();
         numPizzas = menu.size();
+        LoggerConsole.write("Menu was inited");
+        logger.info("Menu was inited");
     }
 
     public synchronized void addOrder() {

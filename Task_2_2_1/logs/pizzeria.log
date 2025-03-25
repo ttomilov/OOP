@@ -1,0 +1,30 @@
+2025-03-25 11:45:41 INFO  org.pizzeria.Pizzeria - Pizzeria was inited
+2025-03-25 11:45:41 INFO  org.pizzeria.Pizzeria - Bakers were inited
+2025-03-25 11:45:41 INFO  org.pizzeria.Pizzeria - Deliverers were inited
+2025-03-25 11:45:41 INFO  org.pizzeria.Pizzeria - Menu was inited
+2025-03-25 11:45:41 INFO  org.pizzeria.Pizzeria - Order 1 has been accepted
+2025-03-25 11:45:41 INFO  org.pizzeria.Pizzeria - Started 1 work day
+2025-03-25 11:45:41 INFO  org.pizzeria.Baker - Baker 1 took order 1
+2025-03-25 11:45:41 INFO  org.pizzeria.Baker - Baker 1 put order 1 into warehouse
+2025-03-25 11:45:41 INFO  org.pizzeria.Deliverer - Deliverer 7 took order 1
+2025-03-25 11:45:51 INFO  org.pizzeria.Worker - Worker 1 waiting new day...
+2025-03-25 11:45:51 INFO  org.pizzeria.Pizzeria - Ended 1 work day
+2025-03-25 11:45:51 INFO  org.pizzeria.Worker - Worker 2 waiting new day...
+2025-03-25 11:45:51 INFO  org.pizzeria.Worker - Worker 4 waiting new day...
+2025-03-25 11:45:51 INFO  org.pizzeria.Worker - Worker 3 waiting new day...
+2025-03-25 11:45:51 INFO  org.pizzeria.Clock - Waiting the new day...
+2025-03-25 11:45:54 INFO  org.pizzeria.Clock - Clock ended
+2025-03-25 11:45:54 INFO  org.pizzeria.Baker - Baker 1 finished work
+2025-03-25 11:45:54 INFO  org.pizzeria.Baker - Baker 1 finished work
+2025-03-25 11:45:54 INFO  org.pizzeria.Baker - Baker 2 finished work
+2025-03-25 11:45:54 INFO  org.pizzeria.Baker - Baker 2 finished work
+2025-03-25 11:45:54 INFO  org.pizzeria.Baker - Baker 3 finished work
+2025-03-25 11:45:54 INFO  org.pizzeria.Baker - Baker 3 finished work
+2025-03-25 11:45:54 INFO  org.pizzeria.Baker - Baker 4 finished work
+2025-03-25 11:45:54 INFO  org.pizzeria.Baker - Baker 4 finished work
+2025-03-25 11:45:54 INFO  org.pizzeria.Deliverer - Deliverer 5 finished work
+2025-03-25 11:45:54 INFO  org.pizzeria.Deliverer - Deliverer 6 finished work
+2025-03-25 11:45:54 INFO  org.pizzeria.Deliverer - Deliverer 7 delivered order 1
+2025-03-25 11:45:54 INFO  org.pizzeria.Deliverer - Deliverer 7 finished work
+2025-03-25 11:45:54 INFO  org.pizzeria.Deliverer - Deliverer 8 finished work
+2025-03-25 11:45:54 INFO  org.pizzeria.Pizzeria - Pizzeria finished 1 work day

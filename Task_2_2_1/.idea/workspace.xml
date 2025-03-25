@@ -5,19 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="33180d0b-a47e-4e6f-9b11-95f47872c197" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pizzeria/Baker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pizzeria/Baker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pizzeria/Clock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pizzeria/Clock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pizzeria/Deliverer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pizzeria/Deliverer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pizzeria/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pizzeria/Order.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/pizzeria/Pizzeria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pizzeria/Pizzeria.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pizzeria/Queue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pizzeria/Queue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pizzeria/Worker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pizzeria/Worker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/configs/log4j2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/configs/log4j2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/configs/log4j2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/logger/app.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/logger/baker.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/logger/clock.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/logger/deliverer.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/logger/pizzeria.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/logger/worker.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/test/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/test/Test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,12 +36,12 @@
     &quot;assignee&quot;: &quot;ttomilov&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/ttomilov/OOP.git",
-    "accountId": "03cda9cb-67b3-4fe7-9232-48df4c9dd628"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ttomilov/OOP.git&quot;,
+    &quot;accountId&quot;: &quot;03cda9cb-67b3-4fe7-9232-48df4c9dd628&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 1
@@ -59,7 +56,9 @@
     "Gradle.Task_2_2_1 [:jdk.tools.jmod.Main.main()].executor": "Run",
     "Gradle.Task_2_2_1 [:org.main.Main.main()].executor": "Run",
     "Gradle.Test.errorTest1.executor": "Run",
+    "Gradle.Test.errorTest3.executor": "Debug",
     "Gradle.Test.executor": "Run",
+    "Gradle.Test.pizzeriaTest.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "#9 on Task__2__2__1",
@@ -70,10 +69,19 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\University\Programming\Java\OOP\Task_2_2_1\src\main\resources" />
+      <recent name="D:\University\Programming\Java\OOP\Task_2_2_1\log" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.Test.pizzeriaTest">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="corretto-21" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -107,12 +115,64 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="Test.errorTest3" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;org.test.Test.errorTest3&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="Test.pizzeriaTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;org.test.Test.pizzeriaTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Application.Main" />
+      <item itemvalue="Gradle.Test.errorTest3" />
+      <item itemvalue="Gradle.Test.pizzeriaTest" />
       <item itemvalue="Gradle.Test.errorTest1" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.Test.pizzeriaTest" />
+        <item itemvalue="Gradle.Test.errorTest3" />
         <item itemvalue="Gradle.Test.errorTest1" />
       </list>
     </recent_temporary>
@@ -135,10 +195,23 @@
       <updated>1742808695336</updated>
       <workItem from="1742808696783" duration="7000" />
       <workItem from="1742808720476" duration="5211000" />
+      <workItem from="1742869120913" duration="5903000" />
+      <workItem from="1742877345796" duration="622000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/org/test/Test.java</url>
+          <line>239</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
