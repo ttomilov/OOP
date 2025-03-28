@@ -49,6 +49,9 @@ class Clock extends Thread {
                         lock.wait();
                     }
                 }
+                if (finished) {
+                    return;
+                }
                 sleep(workTime);
             } catch (InterruptedException ignored) {
             }

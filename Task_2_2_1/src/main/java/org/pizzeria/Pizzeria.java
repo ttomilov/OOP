@@ -229,13 +229,15 @@ public class Pizzeria {
         notify();
     }
 
-    public synchronized void closePizzeria() throws InterruptedException {
+    public void closePizzeria() throws InterruptedException {
         if (finished) {
             return;
         }
 
         if (isWorking) {
-            wait();
+            synchronized (this){
+                wait();
+            }
         }
 
         isWorking = false;
@@ -252,8 +254,9 @@ public class Pizzeria {
             deliverer.finishWork();
             deliverer.join();
         }
-
-        LoggerConsole.write("Pizzeria finished its work on " + (workDay - 1) + " day");
-        logger.info("Pizzeria finished {} work day", (workDay - 1));
+        synchronized (this){
+            LoggerConsole.write("Pizzeria finished its work on " + (workDay - 1) + " day");
+            logger.info("Pizzeria finished {} work day", (workDay - 1));
+        }
     }
 }
