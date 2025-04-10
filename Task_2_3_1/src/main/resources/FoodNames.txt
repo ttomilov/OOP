@@ -1,0 +1,2 @@
+Apple len*2 #FF0000
+Banana len*3 #FFFF00
