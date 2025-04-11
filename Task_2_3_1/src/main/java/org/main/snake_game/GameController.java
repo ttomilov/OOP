@@ -1,16 +1,21 @@
 package org.main.snake_game;
 
 import javafx.animation.AnimationTimer;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.stage.FileChooser;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -18,7 +23,7 @@ import java.awt.Point;
 import java.io.IOException;
 
 public class GameController {
-    @FXML public Button fileLoaderButton;
+    //@FXML public Button fileLoaderButton;
     @FXML private Canvas gameCanvas;
     @FXML private VBox sidePanel;
     @FXML private Label scoreLabel;
@@ -45,6 +50,7 @@ public class GameController {
     public void initialize() {
         startButton.setOnAction(e -> restartGame());
         exitButton.setOnAction(e -> System.exit(0));
+        //fileLoaderButton.setOnAction(e -> loadFile());
         gameCanvas.setFocusTraversable(true);
         gameCanvas.setOnKeyPressed(this::handleKeyPress);
     }
@@ -108,6 +114,8 @@ public class GameController {
         gameLoop.start();
         gameCanvas.requestFocus();
     }
+
+    //private void loadFile() {}
 
     private void updateGame() {
         if (!running || snake == null || gameField == null) return;
