@@ -6,13 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class GameField {
+class GameField {
     private int width, height;
     private List<Food> foodList;
     private Random random;
     private List<FoodType> typeList;
 
-    public GameField(int width, int height) throws IOException {
+    GameField(int width, int height) throws IOException {
         if (width <= 0 || height <= 0) {
             throw new IllegalArgumentException("Field dimensions must be positive");
         }
@@ -40,7 +40,7 @@ public class GameField {
         }
     }
 
-    public void generateFood() {
+    void generateFood() {
         Food newFood;
         boolean positionOccupied;
         FoodType foodType = typeList.get(random.nextInt(typeList.size()));
@@ -57,7 +57,7 @@ public class GameField {
         foodList.add(newFood);
     }
 
-    public Food getFoodAt(Point p) {
+   Food getFoodAt(Point p) {
         for (int i = 0; i < foodList.size(); i++) {
             Food f = foodList.get(i);
             if (f.getX() == p.x && f.getY() == p.y) {
@@ -65,9 +65,9 @@ public class GameField {
             }
         }
         return null;
-    }
+   }
 
-    public List<Food> getFoodPositions() {
+   List<Food> getFoodPositions() {
         return new ArrayList<>(foodList);
     }
 }

@@ -4,44 +4,44 @@ import java.awt.Point;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Snake {
+class Snake {
     private LinkedList<Point> body;
     private int dx = 1, dy = 0;
 
-    public Snake(int startX, int startY) {
+    Snake(int startX, int startY) {
         body = new LinkedList<>();
         body.add(new Point(startX, startY));
     }
 
-    public void changeDirection(int dx, int dy) {
+    void changeDirection(int dx, int dy) {
         if (this.dx == -dx && this.dy == -dy) return;
         this.dx = dx;
         this.dy = dy;
     }
 
-    public void move() {
+    void move() {
         Point head = getNextHeadPosition();
         body.addFirst(head);
         body.removeLast();
     }
 
-    public void grow() {
+    void grow() {
         Point head = getNextHeadPosition();
         body.addFirst(head);
     }
 
-    public void growToLength(int newLength) {
+    void growToLength(int newLength) {
         while (body.size() < newLength) {
             grow();
         }
     }
 
-    public Point getNextHeadPosition() {
+    Point getNextHeadPosition() {
         Point currentHead = body.getFirst();
         return new Point(currentHead.x + dx, currentHead.y + dy);
     }
 
-    public boolean checkCollision(int width, int height) {
+    boolean checkCollision(int width, int height) {
         Point head = body.getFirst();
 
         if (head.x < 0 || head.x >= width || head.y < 0 || head.y >= height) {
@@ -57,11 +57,11 @@ public class Snake {
         return false;
     }
 
-    public List<Point> getBody() {
+    List<Point> getBody() {
         return body;
     }
 
-    public int getLength() {
+    int getLength() {
         return body.size();
     }
 }

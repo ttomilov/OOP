@@ -29,6 +29,7 @@ public class GameController {
     private static final long BASE_SPEED = 150_000_000;
     private static final long MIN_SPEED = 50_000_000;
     private static final long SPEED_INCREMENT = 5_000_000;
+    private static final int WIN_LENGTH = 30;
 
     private int width;
     private int height;
@@ -50,11 +51,6 @@ public class GameController {
 
     public void setStage(Stage stage) {
         this.stage = stage;
-        configureFullScreen();
-    }
-
-    private void configureFullScreen() {
-        if (stage == null) return;
 
         stage.setFullScreen(true);
         Screen screen = Screen.getPrimary();
@@ -67,8 +63,6 @@ public class GameController {
         gameCanvas.setWidth(screenWidth * 0.75);
         gameCanvas.setHeight(screenHeight);
         sidePanel.setPrefWidth(screenWidth * 0.25);
-
-        restartGame();
     }
 
     private void handleKeyPress(KeyEvent event) {
@@ -133,6 +127,11 @@ public class GameController {
             score++;
             gameField.generateFood();
             increaseSpeed();
+
+            if (newLen >= WIN_LENGTH) {
+                winGame();
+                return;
+            }
         } else {
             snake.move();
         }
@@ -176,6 +175,19 @@ public class GameController {
         scoreLabel.setText("Score: " + score);
     }
 
+    private void drawVictory() {
+        GraphicsContext gc = gameCanvas.getGraphicsContext2D();
+        if (gc == null) return;
+
+        gc.setFill(Color.LIMEGREEN);
+        gc.setFont(new Font(30));
+        String winText = "You Win!";
+        double textWidth = winText.length() * 15;
+        gc.fillText(winText,
+                (gameCanvas.getWidth() - textWidth) / 2,
+                gameCanvas.getHeight() / 2);
+    }
+
     private void drawGameOver() {
         GraphicsContext gc = gameCanvas.getGraphicsContext2D();
         if (gc == null) return;
@@ -189,11 +201,11 @@ public class GameController {
                 gameCanvas.getHeight() / 2);
     }
 
-    public void handleStartButton(javafx.event.ActionEvent actionEvent) {
-        restartGame();
-    }
-
-    public void handleExitButton(javafx.event.ActionEvent actionEvent) {
-        System.exit(0);
+    private void winGame() {
+        running = false;
+        if (gameLoop != null) {
+            gameLoop.stop();
+        }
+        drawVictory();
     }
 }

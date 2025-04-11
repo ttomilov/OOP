@@ -2,7 +2,6 @@ package org.main.snake_game;
 
 import org.junit.jupiter.api.Test;
 import java.awt.Point;
-import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SnakeTest {
@@ -30,7 +29,7 @@ class SnakeTest {
     @Test
     void testChangeDirectionAndMove() {
         Snake snake = new Snake(0, 0);
-        snake.changeDirection(0, 1); // вниз
+        snake.changeDirection(0, 1);
         snake.move();
         assertEquals(new Point(0, 1), snake.getBody().get(0));
     }
@@ -39,14 +38,14 @@ class SnakeTest {
     void testCollisionWithSelf() {
         Snake snake = new Snake(0, 0);
         snake.changeDirection(1, 0);
-        snake.grow(); // (1,0)
-        snake.grow(); // (2,0)
+        snake.grow();
+        snake.grow();
         snake.changeDirection(0, -1);
-        snake.grow(); // (2,-1)
+        snake.grow();
         snake.changeDirection(-1, 0);
-        snake.grow(); // (1,-1)
+        snake.grow();
         snake.changeDirection(0, 1);
-        snake.grow(); // (1,0) -> коллизия
+        snake.grow();
         assertTrue(snake.checkCollision(100, 100));
     }
 }

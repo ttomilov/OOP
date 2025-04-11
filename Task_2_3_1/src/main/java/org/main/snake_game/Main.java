@@ -14,7 +14,6 @@ public class Main extends Application {
         controller.setStage(stage);
         stage.setTitle("Snake Game");
         stage.setScene(scene);
-        stage.setFullScreen(true);
         stage.setFullScreenExitHint("");
         stage.show();
     }
