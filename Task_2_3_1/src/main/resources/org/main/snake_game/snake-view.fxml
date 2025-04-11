@@ -22,13 +22,22 @@
                 </font>
             </Label>
             <Button fx:id="startButton" text="Start Game">
-            <font>
-               <Font size="20.0" />
-            </font></Button>
+                <font>
+                   <Font size="20.0" />
+                </font>
+            </Button>
             <Button fx:id="exitButton" text="Exit">
-            <font>
-               <Font size="20.0" />
-            </font></Button>
+                <font>
+                   <Font size="20.0" />
+                </font>
+            </Button>
+            <Button fx:id="fileLoaderButton"
+                    layoutX="150.0" layoutY="50.0"
+                    mnemonicParsing="false" text="Load Food Config">
+                <font>
+                    <Font size="20.0" />
+                </font>
+            </Button>
         </VBox>
     </right>
 </BorderPane>

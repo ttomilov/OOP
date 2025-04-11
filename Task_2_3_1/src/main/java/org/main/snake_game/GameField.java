@@ -11,6 +11,7 @@ class GameField {
     private List<Food> foodList;
     private Random random;
     private List<FoodType> typeList;
+    private String filePath = "src/main/resources/FoodNames.txt";
 
     GameField(int width, int height) throws IOException {
         if (width <= 0 || height <= 0) {
@@ -28,7 +29,8 @@ class GameField {
     }
 
     private void loadFoodTypes() throws IOException {
-        File file = new File("src/main/resources/FoodNames.txt");
+        typeList.clear();
+        File file = new File(filePath);
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -38,9 +40,14 @@ class GameField {
                 }
             }
         }
+        if (typeList.isEmpty()) {
+            throw new IOException("No valid food types found in file: " + filePath);
+        }
     }
 
     void generateFood() {
+        if (typeList.isEmpty()) return;
+
         Food newFood;
         boolean positionOccupied;
         FoodType foodType = typeList.get(random.nextInt(typeList.size()));
@@ -57,7 +64,13 @@ class GameField {
         foodList.add(newFood);
     }
 
-   Food getFoodAt(Point p) {
+    void loadFoodTypesFromFile(String path) throws IOException {
+        this.filePath = path;
+        loadFoodTypes();
+        foodList.clear();
+    }
+
+    Food getFoodAt(Point p) {
         for (int i = 0; i < foodList.size(); i++) {
             Food f = foodList.get(i);
             if (f.getX() == p.x && f.getY() == p.y) {
@@ -65,9 +78,9 @@ class GameField {
             }
         }
         return null;
-   }
+    }
 
-   List<Food> getFoodPositions() {
+    List<Food> getFoodPositions() {
         return new ArrayList<>(foodList);
     }
 }
