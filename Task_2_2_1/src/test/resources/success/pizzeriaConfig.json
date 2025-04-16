@@ -1,0 +1,5 @@
+{
+  "ordersQueueSize": 20,
+  "warehouseSize": 100,
+  "workTime": 10000
+}
