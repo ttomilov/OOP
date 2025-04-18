@@ -1,0 +1,10 @@
+#!/bin/bash
+
+JAR_FILE="./build/libs/Task_2_4_1.jar"
+
+if [ ! -f "$JAR_FILE" ]; then
+    echo "JAR файл не найден!"
+    exit 1
+fi
+
+java -jar "$JAR_FILE"
