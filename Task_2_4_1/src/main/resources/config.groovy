@@ -1,5 +1,3 @@
-package org.checker.config
-
 tasks {
     task {
         id = '2_2_1'

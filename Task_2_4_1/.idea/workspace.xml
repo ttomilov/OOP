@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="843702c7-5941-4832-9934-7ab3b7664cb4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/OOP.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/logs/pizzeria.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/src/main/java/org/configs/BakerConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/src/main/java/org/configs/DelivererConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/src/main/java/org/configs/MenuConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/src/main/java/org/configs/PizzeriaConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/src/main/java/org/exception/InvalidJsonFormatException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/src/main/java/org/main/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/src/main/java/org/pizzeria/Baker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/src/main/java/org/pizzeria/Clock.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/src/main/java/org/pizzeria/Deliverer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/src/main/java/org/pizzeria/LoggerConsole.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/src/main/java/org/pizzeria/Order.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/src/main/java/org/pizzeria/Pizzeria.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/src/main/java/org/pizzeria/Queue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/src/main/java/org/pizzeria/Worker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/src/main/resources/configs/bakerConfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/src/main/resources/configs/delivererConfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/src/main/resources/configs/menuConfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/src/main/resources/configs/pizzeriaConfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/src/main/resources/log4j2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/src/test/java/org/test/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/src/test/resources/error/errorBakerConfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/src/test/resources/error/errorBakerConfig1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/src/test/resources/error/errorDelivererConfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/src/test/resources/error/errorDelivererConfig1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/src/test/resources/error/errorDelivererConfig2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/src/test/resources/error/errorMenuConfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/src/test/resources/error/errorPizzeriaConfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/src/test/resources/error/errorPizzeriaConfig1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/src/test/resources/error/errorPizzeriaConfig2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/src/test/resources/success/bakerConfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/src/test/resources/success/delivererConfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/src/test/resources/success/menuConfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_2_2_1/src/test/resources/success/pizzeriaConfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/oop-checker" beforeDir="false" afterPath="$PROJECT_DIR$/oop-checker" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script" beforeDir="false" afterPath="$PROJECT_DIR$/script" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/main/GitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/main/GitService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/main/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/main/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/main/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/main/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.groovy" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2vnnYLH0BOgq4uYQpY2B8XRhMbV" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "Task__2__4__1",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/media/ttomilov/Timofey/University/Programming/Java/OOP/Task_2_4_1",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.23774.435" />
+        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-IU-251.23774.435" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="843702c7-5941-4832-9934-7ab3b7664cb4" name="Changes" comment="" />
+      <created>1744789753407</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1744789753407</updated>
+      <workItem from="1744789754667" duration="11069000" />
+      <workItem from="1744863631287" duration="863000" />
+      <workItem from="1744941142910" duration="4729000" />
+      <workItem from="1744949316443" duration="168000" />
+      <workItem from="1745228513248" duration="31000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

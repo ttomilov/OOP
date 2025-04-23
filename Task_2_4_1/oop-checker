@@ -1,10 +1,10 @@
 #!/bin/bash
 
-JAR_FILE="./build/libs/Task_2_4_1.jar"
+JAR_FILE="./build/libs/Task_2_4_1-1.0-SNAPSHOT.jar"
 
 if [ ! -f "$JAR_FILE" ]; then
-    echo "JAR файл не найден!"
+    echo "JAR doesn't exist!"
     exit 1
 fi
 
-java -jar "$JAR_FILE"
+java -jar "$JAR_FILE" "$@"
