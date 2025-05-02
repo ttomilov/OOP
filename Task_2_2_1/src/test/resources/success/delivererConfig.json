@@ -1,0 +1,5 @@
+{
+  "numDeliverers": 4,
+  "speeds": [10, 20, 30, 40],
+  "bagSize" : 10
+}
