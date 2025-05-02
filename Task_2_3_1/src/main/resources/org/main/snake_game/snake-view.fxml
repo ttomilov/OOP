@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.main.snake_game.GameController">
+    <center>
+        <Canvas fx:id="gameCanvas" />
+    </center>
+
+    <right>
+        <VBox fx:id="sidePanel" alignment="TOP_CENTER" spacing="10">
+            <padding>
+                <Insets bottom="10" left="10" right="10" top="10" />
+            </padding>
+            <Label fx:id="scoreLabel" text="Score: 0">
+                <font>
+                    <Font size="20" />
+                </font>
+            </Label>
+            <Button fx:id="startButton" text="Start Game">
+                <font>
+                   <Font size="20.0" />
+                </font>
+            </Button>
+            <Button fx:id="exitButton" text="Exit">
+                <font>
+                   <Font size="20.0" />
+                </font>
+            </Button>
+            <Button fx:id="fileLoaderButton"
+                    layoutX="150.0" layoutY="50.0"
+                    mnemonicParsing="false" text="Load Food Config">
+                <font>
+                    <Font size="20.0" />
+                </font>
+            </Button>
+        </VBox>
+    </right>
+</BorderPane>
