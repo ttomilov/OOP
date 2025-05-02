@@ -11,7 +11,7 @@ public class BigTest {
 
     @BeforeAll
     static void getArray() {
-        array = new ArrayList<>(3_000_000);
+        array = new ArrayList<>(2_000_000);
         int count = 0;
         int number = 2;
 
