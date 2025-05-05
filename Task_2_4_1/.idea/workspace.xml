@@ -5,86 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ea52222a-51d3-4252-a0f5-748998c1c445" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Config.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Controller.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Groups.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Tasks.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/config.chk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/CheckTasks.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/CoroutineCheck.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/CorutinCheckAll.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/GitCommands.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-5.0.0-alpha-1-sources.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-5.0.0-alpha-1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-ant-5.0.0-alpha-1-sources.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-ant-5.0.0-alpha-1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-astbuilder-5.0.0-alpha-1-sources.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-astbuilder-5.0.0-alpha-1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-cli-commons-5.0.0-alpha-1-sources.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-cli-commons-5.0.0-alpha-1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-cli-picocli-5.0.0-alpha-1-sources.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-cli-picocli-5.0.0-alpha-1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-console-5.0.0-alpha-1-sources.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-console-5.0.0-alpha-1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-contracts-5.0.0-alpha-1-sources.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-contracts-5.0.0-alpha-1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-datetime-5.0.0-alpha-1-sources.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-datetime-5.0.0-alpha-1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-dateutil-5.0.0-alpha-1-sources.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-dateutil-5.0.0-alpha-1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-docgenerator-5.0.0-alpha-1-sources.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-docgenerator-5.0.0-alpha-1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-ginq-5.0.0-alpha-1-sources.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-ginq-5.0.0-alpha-1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-groovydoc-5.0.0-alpha-1-sources.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-groovydoc-5.0.0-alpha-1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-groovysh-5.0.0-alpha-1-sources.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-groovysh-5.0.0-alpha-1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-jmx-5.0.0-alpha-1-sources.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-jmx-5.0.0-alpha-1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-json-5.0.0-alpha-1-sources.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-json-5.0.0-alpha-1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-jsr223-5.0.0-alpha-1-sources.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-jsr223-5.0.0-alpha-1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-macro-5.0.0-alpha-1-sources.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-macro-5.0.0-alpha-1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-macro-library-5.0.0-alpha-1-sources.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-macro-library-5.0.0-alpha-1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-nio-5.0.0-alpha-1-sources.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-nio-5.0.0-alpha-1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-servlet-5.0.0-alpha-1-sources.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-servlet-5.0.0-alpha-1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-sql-5.0.0-alpha-1-sources.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-sql-5.0.0-alpha-1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-swing-5.0.0-alpha-1-sources.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-swing-5.0.0-alpha-1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-templates-5.0.0-alpha-1-sources.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-templates-5.0.0-alpha-1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-test-5.0.0-alpha-1-sources.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-test-5.0.0-alpha-1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-test-junit5-5.0.0-alpha-1-sources.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-test-junit5-5.0.0-alpha-1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-testng-5.0.0-alpha-1-sources.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-testng-5.0.0-alpha-1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-toml-5.0.0-alpha-1-sources.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-toml-5.0.0-alpha-1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-typecheckers-5.0.0-alpha-1-sources.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-typecheckers-5.0.0-alpha-1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-xml-5.0.0-alpha-1-sources.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-xml-5.0.0-alpha-1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/oop-checker" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/script" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/main/GitService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/main/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/main/Student.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/main/Task.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.groovy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Config.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Config.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Controller.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Controller.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Groups.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Groups.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Tasks.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Tasks.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config.chk" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,25 +52,32 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "ttomilov"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;ttomilov&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/ttomilov/OOP.git",
-    "accountId": "3c5514f7-ee6e-4f68-b8fc-ef9a7d3252c7"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ttomilov/OOP.git&quot;,
+    &quot;accountId&quot;: &quot;f75db85e-2317-4d58-bf77-63157dca0134&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 1
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2wRRwII8q8Yrsv3irWbpzFNzHQp" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -139,20 +85,50 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Gradle.Build Task_2_4_1.executor": "Run",
+    "Gradle.Download Sources.executor": "Run",
+    "Kotlin.MainKt.executor": "Run",
+    "Kotlin.oop-checker.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "#11 on Task__2__4__1",
+    "git-widget-placeholder": "Task__2__4__1",
     "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "/media/ttomilov/Timofey/University/Programming/Java/OOP/Task_2_4_1",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="oop-checker" type="JetRunConfigurationType" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="org.dsl.MainKt" />
+      <module name="Task_2_4_1.main" />
+      <option name="PROGRAM_PARAMETERS" value="--check ttomilov Task_2_2_1" />
+      <shortenClasspath name="NONE" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Kotlin.oop-checker" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -169,6 +145,9 @@
       <option name="presentableId" value="Default" />
       <updated>1746083448902</updated>
       <workItem from="1746083450396" duration="1400000" />
+      <workItem from="1746423609109" duration="73000" />
+      <workItem from="1746423721306" duration="11989000" />
+      <workItem from="1746436037100" duration="5648000" />
     </task>
     <servers />
   </component>

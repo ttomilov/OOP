@@ -1,3 +1,5 @@
+package org.dsl
+
 fun main(args: Array<String>) {
     if (args.isEmpty()) {
         println("oop-checker: not enough arguments. Type --help | -h")
