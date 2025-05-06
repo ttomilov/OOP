@@ -29,27 +29,3 @@ class Group(var name: String,
 
     }
 }
-
-class Student(val github: String, val fullName: String, val repo: String) {
-
-    data class Result(val taskName: String,
-                      val build: Boolean,
-                      val test: Boolean,
-                      val checkstyle: Boolean
-    )
-
-    private var group: String = ""
-    private var results: ArrayList<Result> = ArrayList()
-
-    fun setGroup(group: String) {
-        this.group = group
-    }
-
-    fun getGroup(): String = this.group
-
-    fun addResult(result: Result) {
-        results.add(result)
-    }
-
-    fun getResults(): ArrayList<Result> = this.results
-}
