@@ -1,50 +1,98 @@
 package org.dsl
 
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 import org.dsl.CheckCommands.Companion.runAllChecks
+import org.dsl.Config.Companion.getCheckTasks
+import org.dsl.Config.Companion.getGroups
+import org.dsl.Config.Companion.getTasks
+import org.dsl.Config.Companion.read
 import kotlin.system.exitProcess
 
 class Controller(val args: Array<String>) {
-    private val config: Config = Config()
 
     fun help() {
         println("oop-checker:")
-        println("        --help | -h_________________________print this message;")
+        println("        --help | -h___________________________________print this message;")
+        println("        --check_______________________________________checks tasks of all students;")
+        println("        --check cfg___________________________________checks by config plan;")
         println("        --check --student <student_name>______________checks all tasks of the selected student;")
         println("        --check --student <student_name> <task>_______checks tasks of the selected student;")
-        println("        --check_____________________________checks tasks of all students;")
-        println("        --check cfg_________________________checks by config plan;")
-        println("        --check --group <group_id>__________________checks all tasks for all students of the selected group;")
+        println("        --check --group <group_id>____________________checks all tasks for all students of the selected group;")
     }
 
     fun check() {
-        config.read()
+        read()
         when {
             args.size == 1 -> checkAll()
             args.size == 2 && args[1] == "cfg" -> checkCfg()
             args.size == 3 && args[1] == "--student" -> checkCurStudent()
             args.size == 4 && args[1] == "--student" -> checkCurStudentTask()
             args.size == 3 && args[1] == "--group" -> checkGroup()
-            else -> println("oop-checker: Invalid arguments. Use --help for usage info.")
+            else -> println("oop-checker: Invalid arguments. Use --help | -h for usage info.")
         }
     }
 
 
-    private fun checkAll() {
-        val tasks = config.getTasks()
-        val groups = config.getGroups()
+    private fun checkAll() = runBlocking {
+        val tasks = getTasks()
+        val groups = getGroups()
+        val students = ArrayList<Student>()
+        val coroutines = ArrayList<CoroutineTask>()
 
+        for (group in groups) {
+            students.addAll(group.students)
+        }
+
+        for (task in tasks) {
+            coroutines.add(CoroutineTask(task, students))
+        }
+
+        async { coroutines.forEach { it.check() } }.join()
+
+        students.forEach { student -> println(student.toString()) }
     }
 
     private fun checkCfg() = runBlocking {
+        val groups = getGroups()
+        val tasks = getTasks()
+        val checkTasks = getCheckTasks()
+        val stdForPrint = mutableSetOf<Student>()
+        val students = ArrayList<Student>()
+        val coroutines = ArrayList<CoroutineTask>()
+        val checker = mutableMapOf<Task, ArrayList<Student>>()
+        groups.groups.forEach { group -> students.addAll(group.students) }
 
+        for (checkTask in checkTasks) {
+            for (task in tasks) {
+                if (task.id == checkTask.task){
+                    val neededStudent = ArrayList<Student>()
+                    for (checkStudent in checkTask.students) {
+                        for (student in students) {
+                            if (checkStudent == student.github){
+                                neededStudent.add(student)
+                                stdForPrint.add(student)
+                            }
+                        }
+                    }
+                    checker[task] = neededStudent
+                    break
+                }
+            }
+        }
+
+        for (check in checker) {
+            coroutines.add(CoroutineTask(check.key, check.value))
+        }
+
+        async { coroutines.forEach { it.check() } }.join()
+
+        students.forEach { student -> println(student.toString()) }
     }
 
     private fun checkCurStudent() = runBlocking {
-        val student = findStudent(config.getGroups())
-        val tasks = config.getTasks()
-        val coroutine = ArrayList<CoroutineTask>()
+        val student = findStudent(getGroups())
+        val tasks = getTasks()
+        val coroutines = ArrayList<CoroutineTask>()
 
         if (student.github == "EXIT") {
             System.err.println("ERROR: student ${args[2]} doesn't exist")
@@ -54,17 +102,17 @@ class Controller(val args: Array<String>) {
         array.add(student)
 
         for (task in tasks) {
-            coroutine.add(CoroutineTask(task, array))
+            coroutines.add(CoroutineTask(task, array))
         }
 
-        launch { coroutine.forEach { it.check() } }
+        async { coroutines.forEach { it.check() } }.join()
 
         println(student.toString())
     }
 
     private fun checkCurStudentTask() {
-        val tasks = config.getTasks()
-        val groups = config.getGroups()
+        val tasks = getTasks()
+        val groups = getGroups()
         val student = findStudent(groups)
         val task = findTask(tasks)
 
@@ -84,8 +132,8 @@ class Controller(val args: Array<String>) {
     }
 
     private fun checkGroup() = runBlocking {
-        val groups = config.getGroups()
-        val tasks = config.getTasks()
+        val groups = getGroups()
+        val tasks = getTasks()
         val students = ArrayList<Student>()
         var selectedGroup: Group? = null
         val coroutine = ArrayList<CoroutineTask>()
@@ -104,15 +152,13 @@ class Controller(val args: Array<String>) {
 
         selectedGroup.students.forEach { student -> students.add(student) }
 
-        for (task in tasks){
+        for (task in tasks) {
             coroutine.add(CoroutineTask(task, students))
         }
 
-        launch { coroutine.forEach { it.check() } }
+        async { coroutine.forEach { it.check() } }.join()
 
-        for (student in students){
-            println(student.toString())
-        }
+        students.forEach { student -> println(student.toString()) }
     }
 
     private fun findTask(tasks: Tasks): Task {
@@ -129,7 +175,9 @@ class Controller(val args: Array<String>) {
         for (group in groups) {
             for (student in group.students) {
                 if (student.github == args[2]) {
-                    return student
+                    val std = student
+                    std.setGroup(group.name)
+                    return std
                 }
             }
         }

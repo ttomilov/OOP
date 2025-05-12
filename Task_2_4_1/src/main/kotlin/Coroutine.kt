@@ -10,7 +10,3 @@ class CoroutineTask(private val task: Task, private val students: ArrayList<Stud
         }
     }
 }
-
-class CoroutineCheckAll {
-
-}

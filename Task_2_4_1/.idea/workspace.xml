@@ -4,16 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea52222a-51d3-4252-a0f5-748998c1c445" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Coroutine.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Student.kt" afterDir="false" />
+    <list default="true" id="f3730cd5-72ba-4733-b598-9f8ad83c8b39" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/CheckCommands.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/CheckCommands.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Config.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Config.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Controller.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Controller.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/CoroutineCheck.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/CorutinCheckAll.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/GitCommands.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/GitCommands.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Groups.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Groups.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Coroutine.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Coroutine.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Student.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Student.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/config" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,30 +31,6 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
-  </component>
-  <component name="ExternalProjectsManager">
-    <system id="GRADLE">
-      <state>
-        <projects_view>
-          <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Task_2_4_1" type="f1a62948:ProjectNode" />
-              </path>
-            </expand>
-            <select />
-          </tree_state>
-        </projects_view>
-      </state>
-    </system>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Kotlin Class" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -69,7 +51,7 @@
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 1
 }</component>
-  <component name="ProjectId" id="2wRRwII8q8Yrsv3irWbpzFNzHQp" />
+  <component name="ProjectId" id="2wiHa6sfRQ4Mzz7qOQbCX5ryL5k" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -77,51 +59,43 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Gradle.Build Task_2_4_1.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
-    &quot;Kotlin.MainKt.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Task_2_4_1.executor&quot;: &quot;Run&quot;,
     &quot;Kotlin.oop-checker.executor&quot;: &quot;Run&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;#11 on Task__2__4__1&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/media/ttomilov/Timofey/University/Programming/Java/OOP/Task_2_4_1&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;/media/ttomilov/Timofey/University/Programming/Java/OOP/Task_2_4_1/src/main/kotlin/Main.kt&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+      <recent name="$PROJECT_DIR$/src/main/kotlin" />
       <recent name="$PROJECT_DIR$" />
-    </key>
-    <key name="K2MoveDeclarationsDialog.RECENT_PACKAGE_KEY">
-      <recent name="org.dsl" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="oop-checker" type="JetRunConfigurationType" temporary="true">
+    <configuration name="oop-checker" type="JetRunConfigurationType">
       <option name="MAIN_CLASS_NAME" value="org.dsl.MainKt" />
       <module name="Task_2_4_1.main" />
-      <option name="PROGRAM_PARAMETERS" value="--check --student ttomilov Task_2_2_1" />
+      <option name="PROGRAM_PARAMETERS" value="--check --student nkrainov Task_2_2_1" />
       <shortenClasspath name="NONE" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Kotlin.oop-checker" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -133,17 +107,18 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ea52222a-51d3-4252-a0f5-748998c1c445" name="Changes" comment="" />
-      <created>1746083448902</created>
+      <changelist id="f3730cd5-72ba-4733-b598-9f8ad83c8b39" name="Changes" comment="" />
+      <created>1746517537840</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1746083448902</updated>
-      <workItem from="1746083450396" duration="1400000" />
-      <workItem from="1746423609109" duration="73000" />
-      <workItem from="1746423721306" duration="11989000" />
-      <workItem from="1746436037100" duration="6253000" />
-      <workItem from="1746454045622" duration="871000" />
-      <workItem from="1746498777616" duration="1459000" />
+      <updated>1746517537840</updated>
+      <workItem from="1746517539789" duration="1213000" />
+      <workItem from="1746518772597" duration="9695000" />
+      <workItem from="1746595382170" duration="18000" />
+      <workItem from="1746596061884" duration="1403000" />
+      <workItem from="1746603513374" duration="96000" />
+      <workItem from="1746603791641" duration="2792000" />
+      <workItem from="1747033774435" duration="5547000" />
     </task>
     <servers />
   </component>

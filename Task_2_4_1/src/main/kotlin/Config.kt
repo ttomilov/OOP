@@ -3,31 +3,34 @@ package org.dsl
 import javax.script.ScriptEngineManager
 
 class Config {
-    private val tasks: Tasks = Tasks()
-    private val groups: Groups = Groups()
-    private val checkTasks : CheckTasks = CheckTasks()
 
-    fun read(){
-        val config = this::class.java.classLoader.getResourceAsStream("config")!!
-        val reader = config.reader()
-        val engine = ScriptEngineManager().getEngineByExtension("kts")!!
+    companion object {
+        private val tasks: Tasks = Tasks()
+        private val groups: Groups = Groups()
+        private val checkTasks : CheckTasks = CheckTasks()
 
-        engine.put("tasks", tasks)
-        engine.put("groups", groups)
-        engine.put("checkTasks", checkTasks)
+        fun read(){
+            val config = this::class.java.classLoader.getResourceAsStream("config")!!
+            val reader = config.reader()
+            val engine = ScriptEngineManager().getEngineByExtension("kts")!!
 
-        engine.eval(reader)
-    }
+            engine.put("tasks", tasks)
+            engine.put("groups", groups)
+            engine.put("checkTasks", checkTasks)
 
-    fun getTasks(): Tasks {
-        return tasks
-    }
+            engine.eval(reader)
+        }
 
-    fun getGroups(): Groups {
-        return groups
-    }
+        fun getTasks(): Tasks {
+            return tasks
+        }
 
-    fun getCheckTasks(): CheckTasks {
-        return checkTasks
+        fun getGroups(): Groups {
+            return groups
+        }
+
+        fun getCheckTasks(): CheckTasks {
+            return checkTasks
+        }
     }
 }

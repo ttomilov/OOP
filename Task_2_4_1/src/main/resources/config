@@ -15,12 +15,10 @@ groups {
 
 checkTasks {
     task("Task_2_3_1"){
-        check("ttomilov")
         check("nkrainov")
     }
 
     task("Task_2_2_1"){
-        check("ttomilov")
         check("nkrainov")
     }
 }
