@@ -1,0 +1,26 @@
+tasks {
+    task("Task_2_1_1", "Простые числа", 1, "14/02/2025", "21/02/2025")
+    task("Task_2_2_1", "Пиццерия", 1, "07/03/2025", "14/03/2025")
+    task("Task_2_3_1", "Змейка", 1, "28/03/2025", "04/04/2025")
+    task("Task_2_4_1", "Автоматическая проверка задач по ООП", 1, "18/04/2025", "02/05/2025")
+    task("Task_2_1_2", "Простые числа", 1, "16/05/2025", "30/05/2025")
+}
+
+groups {
+    group("23213") {
+        student("ArtemChepenkov", "Артем Чепинков Игоревич", "https://github.com/ArtemChepenkov/OOP")
+    }
+    group("23216") {
+        student("nkrainov", "Крайнов Никита Сергеевич", "https://github.com/nkrainov/OOP")
+    }
+}
+
+checkTasks {
+    task("Task_2_3_1"){
+        check("nkrainov")
+    }
+
+    task("Task_2_2_1"){
+        check("nkrainov")
+    }
+}

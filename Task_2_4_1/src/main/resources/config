@@ -7,8 +7,10 @@ tasks {
 }
 
 groups {
+    group("23213") {
+        student("ArtemChepenkov", "Артем Чепинков Игоревич", "https://github.com/ArtemChepenkov/OOP")
+    }
     group("23216") {
-        student("ttomilov", "Томилов Тимофей Максимович", "https://github.com/ttomilov/OOP")
         student("nkrainov", "Крайнов Никита Сергеевич", "https://github.com/nkrainov/OOP")
     }
 }
