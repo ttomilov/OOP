@@ -12,15 +12,18 @@ groups {
     }
     group("23216") {
         student("nkrainov", "Крайнов Никита Сергеевич", "https://github.com/nkrainov/OOP")
+        student("ttomilov", "Томилов Тимофей Максимович", "https://github.com/ttomilov/OOP")
     }
 }
 
 checkTasks {
     task("Task_2_3_1"){
+        check("ttomilov")
         check("nkrainov")
     }
 
     task("Task_2_2_1"){
-        check("nkrainov")
+        check("ttomilov")
+        check("ArtemChepenkov")
     }
 }

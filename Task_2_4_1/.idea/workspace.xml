@@ -5,20 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f3730cd5-72ba-4733-b598-9f8ad83c8b39" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/HTMLReporter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_1_1/.gradle/8.10/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_1_1/.gradle/8.10/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_1_1/.gradle/8.10/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_1_1/.gradle/8.10/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_1_1/.gradle/8.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_1_1/.gradle/8.10/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_1_1/.gradle/8.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_1_1/.gradle/8.10/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_1_1/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_1_1/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_1_1/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_1_1/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_3_1/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_3_1/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repositories/ttomilov/OOP/Task_2_2_1/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/ttomilov/OOP/Task_2_2_1/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repositories/ttomilov/OOP/Task_2_2_1/logs/pizzeria.log" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/ttomilov/OOP/Task_2_2_1/logs/pizzeria.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repositories/ttomilov/OOP/Task_2_3_1/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/ttomilov/OOP/Task_2_3_1/gradlew" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/CheckCommands.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/CheckCommands.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Controller.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Controller.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Student.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Student.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/config" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/config" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/config" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,13 +60,13 @@
   "keyToString": {
     "Gradle.Build Task_2_4_1.executor": "Run",
     "Gradle.Task_2_4_1.executor": "Run",
-    "Kotlin.oop-checker.executor": "Run",
+    "Kotlin.oop-checker.executor": "Debug",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "#11 on Task__2__4__1",
-    "last_opened_file_path": "/media/ttomilov/Timofey/University/Programming/Java/OOP/Task_2_4_1",
+    "last_opened_file_path": "/home/ttomilov/OOP/Task_2_4_1/src/test/resources",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -81,11 +76,13 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/resources" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/main/kotlin" />
       <recent name="$PROJECT_DIR$" />
@@ -95,7 +92,7 @@
     <configuration name="oop-checker" type="JetRunConfigurationType">
       <option name="MAIN_CLASS_NAME" value="org.dsl.MainKt" />
       <module name="Task_2_4_1.main" />
-      <option name="PROGRAM_PARAMETERS" value="--check" />
+      <option name="PROGRAM_PARAMETERS" value="--check cfg" />
       <shortenClasspath name="NONE" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -128,6 +125,8 @@
       <workItem from="1747204047004" duration="13547000" />
       <workItem from="1747222193322" duration="491000" />
       <workItem from="1747222874215" duration="155000" />
+      <workItem from="1747275867357" duration="345000" />
+      <workItem from="1747276331165" duration="3349000" />
     </task>
     <servers />
   </component>
