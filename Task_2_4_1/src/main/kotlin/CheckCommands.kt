@@ -11,6 +11,7 @@ class CheckCommands {
 
     companion object {
         fun runAllChecks(student: Student, task: Task) {
+            println("Run check for ${student.github} in ${task.id}")
             clone(student)
             val path = Path("repositories" + File.separator + student.github + File.separator + "OOP" + File.separator + task.id)
             if (!Files.exists(path)) {
@@ -27,7 +28,6 @@ class CheckCommands {
 
             val process = ProcessBuilder(gradleCmd)
                 .directory(dir)
-                .inheritIO()
                 .start()
 
             return process.waitFor() == 0
@@ -39,9 +39,9 @@ class CheckCommands {
         }
 
         private fun checkstyle(student: Student, task: Task): Boolean {
-            val taskDir = File("repositories" + File.separator + student.github + File.separator + "OOP" + File.separator + task.id + "src")
+            val taskDir = File("repositories${File.separator}${student.github}${File.separator}OOP${File.separator}${task.id}${File.separator}src")
             val jar = javaClass.getResource("/checkstyle-10.23.1-all.jar")
-            val cfg = javaClass.getResource("/google_checks.jar")
+            val cfg = javaClass.getResource("/google_checks.xml")
 
             if (cfg == null) {
                 println("WARNING: No style config found!")
@@ -58,14 +58,27 @@ class CheckCommands {
                 return false
             }
 
-            val commands = listOf("java", "-jar", jar.toString(), "-c", cfg.toString(), taskDir.absolutePath.toString())
+            val jarPath = Paths.get(jar.toURI()).toString()
+            val cfgPath = Paths.get(cfg.toURI()).toString()
+
+            val commands = listOf("java", "-jar", jarPath, "-c", cfgPath, taskDir.absolutePath)
 
             val process = ProcessBuilder(commands)
                 .directory(taskDir)
-                .inheritIO()
+                .redirectErrorStream(true)
                 .start()
 
-            return process.waitFor() == 0
+            val output = process.inputStream.bufferedReader().readText()
+            val exitCode = process.waitFor()
+
+            if (exitCode > 1) {
+                println("ERROR in producing checkstyle jar, exitCode=${exitCode}")
+                return false
+            }
+
+            val errorLines = output.lines().filter { it.contains("[ERROR]") }
+
+            return errorLines.size <= 10
         }
 
         private fun tests(student: Student, task: Task): Boolean {

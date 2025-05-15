@@ -52,7 +52,12 @@ class Controller(val args: Array<String>) {
             coroutines.map { async { it.check() } }.awaitAll()
         }
 
-        generateHtmlReport(students, "report_all.html")
+        for (student in students) {
+            val mark = student.getResults().count { it.build && it.checkstyle && it.test }
+            student.setMark(mark)
+        }
+
+        generateHtmlReport(students, tasks.all, "report_all.html")
     }
 
     private fun checkCfg() = runBlocking {
@@ -117,8 +122,12 @@ class Controller(val args: Array<String>) {
             coroutines.map { async { it.check() } }.awaitAll()
         }
 
-        generateHtmlReport(array, "report_cur_student.html")
+        val mark = student.getResults().count { it.build && it.test }
+        student.setMark(mark)
+
+        generateHtmlReport(array, tasks.all, "report_cur_student.html")
     }
+
 
     private fun checkCurStudentTask() {
         val tasks = getTasks()
@@ -170,8 +179,14 @@ class Controller(val args: Array<String>) {
             coroutine.map { async { it.check() } }.awaitAll()
         }
 
-        generateHtmlReport(students, "report_group_${selectedGroup.name}.html")
+        for (student in students) {
+            val mark = student.getResults().count { it.build && it.test }
+            student.setMark(mark)
+        }
+
+        generateHtmlReport(students, tasks.all, "report_group_${selectedGroup.name}.html")
     }
+
 
     private fun findTask(tasks: Tasks): Task {
         for (task in tasks) {

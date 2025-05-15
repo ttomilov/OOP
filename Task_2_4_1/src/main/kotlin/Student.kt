@@ -12,9 +12,18 @@ class Student(val github: String, val fullName: String, val repo: String) {
 
     private var group: String = ""
     private var results: Vector<Result> = Vector()
+    private var mark: Int = 0
 
     fun setGroup(group: String) {
         this.group = group
+    }
+
+    fun setMark(mark: Int) {
+        this.mark = mark
+    }
+
+    fun getMark(): Int {
+        return mark
     }
 
     fun getGroup(): String = this.group

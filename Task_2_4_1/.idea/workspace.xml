@@ -5,15 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f3730cd5-72ba-4733-b598-9f8ad83c8b39" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_3_1/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_3_1/gradlew" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repositories/ttomilov/OOP/Task_2_2_1/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/ttomilov/OOP/Task_2_2_1/gradlew" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repositories/ttomilov/OOP/Task_2_2_1/logs/pizzeria.log" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/ttomilov/OOP/Task_2_2_1/logs/pizzeria.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repositories/ttomilov/OOP/Task_2_3_1/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/ttomilov/OOP/Task_2_3_1/gradlew" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/CheckCommands.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/CheckCommands.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/config" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Controller.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Controller.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/HTMLReporter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/HTMLReporter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Student.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Student.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,8 +55,9 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Gradle.Build Task_2_4_1.executor": "Run",
+    "Gradle.ControllerTest.executor": "Run",
     "Gradle.Task_2_4_1.executor": "Run",
-    "Kotlin.oop-checker.executor": "Debug",
+    "Kotlin.oop-checker.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
@@ -92,7 +89,7 @@
     <configuration name="oop-checker" type="JetRunConfigurationType">
       <option name="MAIN_CLASS_NAME" value="org.dsl.MainKt" />
       <module name="Task_2_4_1.main" />
-      <option name="PROGRAM_PARAMETERS" value="--check cfg" />
+      <option name="PROGRAM_PARAMETERS" value="--check" />
       <shortenClasspath name="NONE" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -127,6 +124,7 @@
       <workItem from="1747222874215" duration="155000" />
       <workItem from="1747275867357" duration="345000" />
       <workItem from="1747276331165" duration="3349000" />
+      <workItem from="1747285296355" duration="5060000" />
     </task>
     <servers />
   </component>
