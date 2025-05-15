@@ -38,9 +38,9 @@ class Controller(val args: Array<String>) {
         val coroutines = ArrayList<CoroutineTask>()
 
         for (group in groups) {
-            group.students.forEach {
-                it.setGroup(group.name)
-                students.add(it)
+            for (student in group.students) {
+                student.setGroup(group.name)
+                students.add(student)
             }
         }
 
@@ -53,7 +53,7 @@ class Controller(val args: Array<String>) {
         }
 
         for (student in students) {
-            val mark = student.getResults().count { it.build && it.checkstyle && it.test }
+            val mark = student.getResults().count { it.build && it.test }
             student.setMark(mark)
         }
 

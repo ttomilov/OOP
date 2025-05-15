@@ -6,10 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="f3730cd5-72ba-4733-b598-9f8ad83c8b39" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/CheckCommands.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/CheckCommands.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_1_1/.gradle/8.10/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_1_1/.gradle/8.10/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_1_1/.gradle/8.10/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_1_1/.gradle/8.10/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_1_1/.gradle/8.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_1_1/.gradle/8.10/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_1_1/.gradle/8.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_1_1/.gradle/8.10/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_1_1/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_1_1/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_1_1/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_1_1/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repositories/ttomilov/OOP/Task_2_2_1/logs/pizzeria.log" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/ttomilov/OOP/Task_2_2_1/logs/pizzeria.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Controller.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Controller.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/HTMLReporter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/HTMLReporter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Student.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Student.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/ControllerTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/ControllerTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +61,9 @@
   "keyToString": {
     "Gradle.Build Task_2_4_1.executor": "Run",
     "Gradle.ControllerTest.executor": "Run",
+    "Gradle.ControllerTest.should check all tasks for all students.executor": "Run",
+    "Gradle.ControllerTest.should check specific task for specific student.executor": "Run",
+    "Gradle.ControllerTest.should print error on invalid args.executor": "Run",
     "Gradle.Task_2_4_1.executor": "Run",
     "Kotlin.oop-checker.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
@@ -73,7 +81,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -85,7 +93,79 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Gradle.ControllerTest.should check specific task for specific student">
+    <configuration name="ControllerTest.should check all tasks for all students" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;org.dsl.ControllerTest.should check all tasks for all students&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="ControllerTest.should check specific task for specific student" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;org.dsl.ControllerTest.should check specific task for specific student&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="ControllerTest.should print error on invalid args" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;org.dsl.ControllerTest.should print error on invalid args&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="oop-checker" type="JetRunConfigurationType">
       <option name="MAIN_CLASS_NAME" value="org.dsl.MainKt" />
       <module name="Task_2_4_1.main" />
@@ -95,6 +175,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Gradle.ControllerTest.should check all tasks for all students" />
+      <item itemvalue="Gradle.ControllerTest.should check specific task for specific student" />
+      <item itemvalue="Gradle.ControllerTest.should print error on invalid args" />
+      <item itemvalue="Kotlin.oop-checker" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.ControllerTest.should check specific task for specific student" />
+        <item itemvalue="Gradle.ControllerTest.should check all tasks for all students" />
+        <item itemvalue="Gradle.ControllerTest.should print error on invalid args" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -124,11 +217,15 @@
       <workItem from="1747222874215" duration="155000" />
       <workItem from="1747275867357" duration="345000" />
       <workItem from="1747276331165" duration="3349000" />
-      <workItem from="1747285296355" duration="5060000" />
+      <workItem from="1747285296355" duration="10574000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

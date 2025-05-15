@@ -7,8 +7,8 @@ import java.io.*
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class ControllerTest {
 
-    @BeforeAll
-    fun setupConfig() {
+    @BeforeEach
+    fun reloadConfig() {
         Config.read()
     }
 
