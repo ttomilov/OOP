@@ -5,17 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f3730cd5-72ba-4733-b598-9f8ad83c8b39" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/report_all.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/kotlin/ThreadChecker.kt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/resources/xml/log4j2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_1_1/.gradle/8.10/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_1_1/.gradle/8.10/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_1_1/.gradle/8.10/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_1_1/.gradle/8.10/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_1_1/.gradle/8.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_1_1/.gradle/8.10/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_1_1/.gradle/8.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_1_1/.gradle/8.10/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_1_1/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_1_1/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_1_1/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/nkrainov/OOP/Task_2_1_1/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repositories/ttomilov/OOP/Task_2_2_1/logs/pizzeria.log" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/ttomilov/OOP/Task_2_2_1/logs/pizzeria.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/CheckCommands.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/CheckCommands.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Controller.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Controller.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Coroutine.kt" beforeDir="false" />
@@ -76,7 +70,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "#11 on Task__2__4__1",
+    "git-widget-placeholder": "Task__2__4__1",
     "last_opened_file_path": "/home/ttomilov/OOP/Task_2_4_1/src/test/resources",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -230,7 +224,7 @@
       <workItem from="1747285296355" duration="10574000" />
       <workItem from="1747317176051" duration="63000" />
       <workItem from="1747374477163" duration="2525000" />
-      <workItem from="1747377022413" duration="2580000" />
+      <workItem from="1747377022413" duration="2657000" />
     </task>
     <servers />
   </component>
