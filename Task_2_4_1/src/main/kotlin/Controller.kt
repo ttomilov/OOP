@@ -1,6 +1,5 @@
 package org.dsl
 
-import kotlinx.coroutines.*
 import org.dsl.CheckCommands.Companion.runAllChecks
 import org.dsl.Config.Companion.getCheckTasks
 import org.dsl.Config.Companion.getGroups
@@ -31,11 +30,11 @@ class Controller(val args: Array<String>) {
         }
     }
 
-    private fun checkAll() = runBlocking {
+    private fun checkAll() {
         val tasks = getTasks()
         val groups = getGroups()
         val students = ArrayList<Student>()
-        val coroutines = ArrayList<CoroutineTask>()
+        val threads = ArrayList<ThreadChecker>()
 
         for (group in groups) {
             for (student in group.students) {
@@ -45,11 +44,11 @@ class Controller(val args: Array<String>) {
         }
 
         for (task in tasks) {
-            coroutines.add(CoroutineTask(task, students))
-        }
-
-        coroutineScope {
-            coroutines.map { async { it.check() } }.awaitAll()
+            val thread = ThreadChecker()
+            thread.init(task, students)
+            threads.add(thread)
+            threads.last.start()
+            threads.last.join()
         }
 
         for (student in students) {
@@ -60,12 +59,12 @@ class Controller(val args: Array<String>) {
         generateHtmlReport(students, tasks.all, "report_all.html")
     }
 
-    private fun checkCfg() = runBlocking {
+    private fun checkCfg() {
         val groups = getGroups()
         val tasks = getTasks()
         val checkTasks = getCheckTasks()
         val students = ArrayList<Student>()
-        val coroutines = ArrayList<CoroutineTask>()
+        val threads = ArrayList<ThreadChecker>()
         val checker = mutableMapOf<Task, ArrayList<Student>>()
 
         groups.groups.forEach { group ->
@@ -93,20 +92,19 @@ class Controller(val args: Array<String>) {
         }
 
         for (check in checker) {
-            coroutines.add(CoroutineTask(check.key, check.value))
-        }
-
-        coroutineScope {
-            coroutines.map { async { it.check() } }.awaitAll()
+            val thread = ThreadChecker()
+            thread.init(check.key, check.value)
+            threads.add(thread)
+            threads.last.start()
         }
 
         generateHtmlReport(students, "report_cfg.html")
     }
 
-    private fun checkCurStudent() = runBlocking {
+    private fun checkCurStudent() {
         val student = findStudent(getGroups())
         val tasks = getTasks()
-        val coroutines = ArrayList<CoroutineTask>()
+        val threads = ArrayList<ThreadChecker>()
 
         if (student.github == "EXIT") {
             throw IllegalArgumentException("ERROR: student ${args[2]} doesn't exist")
@@ -115,11 +113,10 @@ class Controller(val args: Array<String>) {
         val array = arrayListOf(student)
 
         for (task in tasks) {
-            coroutines.add(CoroutineTask(task, array))
-        }
-
-        coroutineScope {
-            coroutines.map { async { it.check() } }.awaitAll()
+            val thread = ThreadChecker()
+            thread.init(task, array)
+            threads.add(thread)
+            threads.last.start()
         }
 
         val mark = student.getResults().count { it.build && it.test }
@@ -148,12 +145,12 @@ class Controller(val args: Array<String>) {
         generateHtmlReport(listOf(student), "report_cur_student_task.html")
     }
 
-    private fun checkGroup() = runBlocking {
+    private fun checkGroup() {
         val groups = getGroups()
         val tasks = getTasks()
         val students = ArrayList<Student>()
         var selectedGroup: Group? = null
-        val coroutine = ArrayList<CoroutineTask>()
+        val threads = ArrayList<ThreadChecker>()
 
         for (group in groups) {
             if (group.name == args[2]) {
@@ -172,11 +169,10 @@ class Controller(val args: Array<String>) {
         }
 
         for (task in tasks) {
-            coroutine.add(CoroutineTask(task, students))
-        }
-
-        coroutineScope {
-            coroutine.map { async { it.check() } }.awaitAll()
+            val thread = ThreadChecker()
+            thread.init(task, students)
+            threads.add(thread)
+            threads.last.start()
         }
 
         for (student in students) {

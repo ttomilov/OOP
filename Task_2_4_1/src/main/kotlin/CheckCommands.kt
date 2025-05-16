@@ -1,5 +1,7 @@
 package org.dsl
 
+import org.apache.logging.log4j.LogManager
+import org.apache.logging.log4j.Logger
 import org.dsl.GitCommands.Companion.clone
 import java.io.File
 import org.dsl.Student.Result
@@ -10,16 +12,22 @@ import kotlin.io.path.Path
 class CheckCommands {
 
     companion object {
+        private val logger: Logger = LogManager.getLogger(CheckCommands::class.java)
+        private val lock = Any()
+
         fun runAllChecks(student: Student, task: Task) {
-            println("Run check for ${student.github} in ${task.id}")
+            log("Run check for ${student.github} in ${task.id}")
             clone(student)
             val path = Path("repositories" + File.separator + student.github + File.separator + "OOP" + File.separator + task.id)
             if (!Files.exists(path)) {
-                student.addResult(Result(task.name + "(" + task.id + ")", build = false, test = false, checkstyle = false))
+                synchronized(lock) {
+                    student.addResult(Result(task.name + "(" + task.id + ")", build = false, test = false, checkstyle = false))
+                }
                 return
             }
-
-            student.addResult(Result(task.name + "(" + task.id + ")", build(student, task), tests(student, task), checkstyle(student, task)))
+            synchronized(lock) {
+                student.addResult(Result(task.name + "(" + task.id + ")", build(student, task), tests(student, task), checkstyle(student, task)))
+            }
         }
 
         private fun runGradleCommand(command: String, dir: File): Boolean {
@@ -39,22 +47,22 @@ class CheckCommands {
         }
 
         private fun checkstyle(student: Student, task: Task): Boolean {
-            val taskDir = File("repositories${File.separator}${student.github}${File.separator}OOP${File.separator}${task.id}${File.separator}src")
-            val jar = javaClass.getResource("/checkstyle-10.23.1-all.jar")
-            val cfg = javaClass.getResource("/google_checks.xml")
+            val taskDir = File("repositories" + File.separator + student.github + File.separator + File.separator + task.id + File.separator + "src")
+            val jar = javaClass.getResource("/jar/checkstyle-10.23.1-all.jar")
+            val cfg = javaClass.getResource("/xml/google_checks.xml")
 
             if (cfg == null) {
-                println("WARNING: No style config found!")
+                log("WARNING: No style config found!")
                 return false
             }
 
             if (jar == null) {
-                println("WARNING: No checkstyle jar found!")
+                log("WARNING: No checkstyle jar found!")
                 return false
             }
 
             if (!taskDir.exists()) {
-                println("WARNING: No ${task.id} in ${student.github} found!")
+                log("WARNING: No ${task.id} in ${student.github} found!")
                 return false
             }
 
@@ -72,7 +80,7 @@ class CheckCommands {
             val exitCode = process.waitFor()
 
             if (exitCode > 1) {
-                println("ERROR in producing checkstyle jar, exitCode=${exitCode}")
+                log("ERROR in producing checkstyle jar, exitCode=${exitCode}")
                 return false
             }
 
@@ -84,6 +92,13 @@ class CheckCommands {
         private fun tests(student: Student, task: Task): Boolean {
             val dir = File("repositories" + File.separator + student.github + File.separator + "OOP" + File.separator + task.id)
             return runGradleCommand("test", dir)
+        }
+        
+        private fun log(msg: String){
+            synchronized(lock){
+                logger.info(msg)
+                println(msg)
+            }
         }
     }
 }

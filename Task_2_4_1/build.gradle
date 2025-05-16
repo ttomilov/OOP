@@ -19,11 +19,15 @@ dependencies {
     testImplementation "junit:junit:4.13.1"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2"
     implementation "org.jetbrains.kotlinx:kotlinx-html-jvm:0.12.0"
+    implementation 'org.apache.logging.log4j:log4j-core:2.24.3'
+    implementation 'org.apache.logging.log4j:log4j-api:2.24.3'
 }
+
 
 test {
     useJUnitPlatform()
 }
+
 kotlin {
     jvmToolchain(21)
 }
