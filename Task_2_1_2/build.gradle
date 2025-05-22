@@ -1,9 +1,16 @@
 plugins {
     id 'java'
+    id 'jacoco'
 }
 
 group = 'org.main'
-version = '1.0-SNAPSHOT'
+version = '1.0'
+
+tasks.jacocoTestReport {
+    reports {
+        xml.required = true
+    }
+}
 
 repositories {
     mavenCentral()
