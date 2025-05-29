@@ -10,7 +10,8 @@ public class Server extends Thread {
     private final int port;
     private final List<ClientSession> clients = new ArrayList<>();
     private volatile boolean running = true;
-    private final long clientWaitMillis = 5000; // время ожидания перед началом
+    private final long clientWaitMillis = 5000;
+    private final Object waitMonitor = new Object();
 
     public Server(int port) {
         this.port = port;
@@ -25,7 +26,9 @@ public class Server extends Thread {
             new Thread(this::acceptClients).start();
 
             Logger.log("Waiting " + clientWaitMillis + "ms for clients to connect...");
-            Thread.sleep(clientWaitMillis);
+            synchronized (waitMonitor) {
+                waitMonitor.wait(clientWaitMillis);
+            }
             Logger.log("Finished waiting. " + clients.size() + " clients connected.");
 
             Scanner scanner = new Scanner(System.in);
@@ -34,6 +37,9 @@ public class Server extends Thread {
             while (running) {
                 String input = scanner.nextLine();
                 if (input.equals("exit")) {
+                    synchronized (waitMonitor) {
+                        waitMonitor.notify();
+                    }
                     broadcastShutdown();
                     running = false;
                     try {
@@ -52,31 +58,49 @@ public class Server extends Thread {
 
                 int clientCount = clients.size();
                 ArrayList<ArrayList<Integer>> parts = splitList(numbers, clientCount);
+                Queue<List<Integer>> taskQueue = new LinkedList<>(parts);
                 List<Boolean> results = Collections.synchronizedList(new ArrayList<>());
-                List<Thread> tasks = new ArrayList<>();
 
-                for (int i = 0; i < clientCount; i++) {
-                    ClientSession handler = clients.get(i);
-                    List<Integer> toSend = parts.get(i);
+                while (!taskQueue.isEmpty()) {
+                    List<Integer> subtask = taskQueue.poll();
+
+                    ClientSession client = null;
+                    synchronized (clients) {
+                        if (!clients.isEmpty()) {
+                            client = clients.get(0);
+                        }
+                    }
+
+                    if (client == null) {
+                        Logger.log("No clients left to process remaining tasks.");
+                        break;
+                    }
+
+                    final ClientSession selectedClient = client;
+                    final List<Integer> currentTask = subtask;
 
                     Thread task = new Thread(() -> {
                         try {
-                            handler.sendTask(toSend);
-                            boolean result = handler.receiveResult();
+                            selectedClient.sendTask(currentTask);
+                            boolean result = selectedClient.receiveResult();
                             results.add(result);
                         } catch (IOException e) {
-                            Logger.log("Error communicating with client " + handler.id + ": " + e.getMessage());
-                            results.add(true);
+                            Logger.log("Client " + selectedClient.id + " failed: " + e.getMessage());
+
+                            synchronized (clients) {
+                                clients.remove(selectedClient);
+                            }
+
+                            synchronized (taskQueue) {
+                                taskQueue.add(currentTask);
+                            }
                         }
                     });
 
-                    tasks.add(task);
                     task.start();
+                    task.join();
                 }
 
-                for (Thread t : tasks) {
-                    t.join();
-                }
 
                 boolean anyNotPrime = results.contains(true);
                 Logger.log("Final result: " + (anyNotPrime ? "Some numbers are NOT prime" : "All numbers are prime"));

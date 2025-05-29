@@ -1,15 +1,22 @@
 package org.main;
 
+import java.util.ArrayList;
+
+import static java.lang.Thread.sleep;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         int port = 5555;
 
         Server server = new Server(port);
         server.start();
 
+        ArrayList<Client> clients = new ArrayList<>();
+
         int clientCount = Runtime.getRuntime().availableProcessors();
         for (int i = 0; i < clientCount; i++) {
-            new Client("localhost", port, i).start();
+            clients.add (new Client("localhost", port, i));
+            clients.getLast().start();
         }
     }
 }
