@@ -72,12 +72,12 @@ public class Test {
         PrintStream originalOut = System.out;
         System.setOut(new PrintStream(testOut));
 
-        Server server = new Server(5556);
+        Server server = new Server(5555);
         Thread serverThread = new Thread(server);
         serverThread.start();
 
         new Thread(() -> {
-            try (Socket socket = new Socket("localhost", 5556)) {
+            try (Socket socket = new Socket("localhost", 5555)) {
                 Logger.log("Fake client 0 connected then disconnected");
                 socket.close();
             } catch (IOException e) {
@@ -86,7 +86,7 @@ public class Test {
         }).start();
 
         for (int i = 1; i < 4; i++) {
-            new Client("localhost", 5556, i).start();
+            new Client("localhost", 5555, i).start();
         }
 
         serverThread.join();

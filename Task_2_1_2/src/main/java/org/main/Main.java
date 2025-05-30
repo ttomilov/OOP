@@ -16,7 +16,7 @@ public class Main {
         int clientCount = Runtime.getRuntime().availableProcessors();
         for (int i = 0; i < clientCount; i++) {
             clients.add (new Client("localhost", port, i));
-            clients.getLast().start();
+            clients.get(i).start();
         }
     }
 }
