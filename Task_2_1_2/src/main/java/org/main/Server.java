@@ -48,8 +48,10 @@ public class Server extends Thread {
                     break;
                 }
 
-                List<Integer> numbers = loadNumbersFromResource(input);
-                if (numbers == null) continue;
+                List<Integer> numbers = loadNumbersFromFile(input);
+                if (numbers == null) {
+                    continue;
+                }
 
                 if (clients.isEmpty()) {
                     Logger.log("No clients connected. Try again later.");
@@ -61,19 +63,17 @@ public class Server extends Thread {
                 Queue<List<Integer>> taskQueue = new LinkedList<>(parts);
                 List<Boolean> results = Collections.synchronizedList(new ArrayList<>());
 
+                List<Thread> threads = new ArrayList<>();
+
                 while (!taskQueue.isEmpty()) {
                     List<Integer> subtask = taskQueue.poll();
 
-                    ClientSession client = null;
+                    ClientSession client;
                     synchronized (clients) {
-                        if (!clients.isEmpty()) {
-                            client = clients.get(0);
+                        if (clients.isEmpty()) {
+                            break;
                         }
-                    }
-
-                    if (client == null) {
-                        Logger.log("No clients left to process remaining tasks.");
-                        break;
+                        client = clients.remove(0);
                     }
 
                     final ClientSession selectedClient = client;
@@ -84,12 +84,13 @@ public class Server extends Thread {
                             selectedClient.sendTask(currentTask);
                             boolean result = selectedClient.receiveResult();
                             results.add(result);
-                        } catch (IOException e) {
-                            Logger.log("Client " + selectedClient.id + " failed: " + e.getMessage());
 
                             synchronized (clients) {
-                                clients.remove(selectedClient);
+                                clients.add(selectedClient);
                             }
+
+                        } catch (IOException e) {
+                            Logger.log("Client " + selectedClient.id + " failed: " + e.getMessage());
 
                             synchronized (taskQueue) {
                                 taskQueue.add(currentTask);
@@ -98,9 +99,12 @@ public class Server extends Thread {
                     });
 
                     task.start();
-                    task.join();
+                    threads.add(task);
                 }
 
+                for (Thread task : threads) {
+                    task.join();
+                }
 
                 boolean anyNotPrime = results.contains(true);
                 Logger.log("Final result: " + (anyNotPrime ? "Some numbers are NOT prime" : "All numbers are prime"));
@@ -140,19 +144,19 @@ public class Server extends Thread {
         }
     }
 
-    private List<Integer> loadNumbersFromResource(String filename) {
-        try (InputStream inputStream = getClass().getResourceAsStream("/" + filename)) {
-            if (inputStream == null) {
-                Logger.log("File not found in resources.");
-                return null;
-            }
+    private List<Integer> loadNumbersFromFile(String filename) {
+        File file = new File(filename);
 
+        if (!file.exists()) {
+            Logger.log("File not found: " + filename);
+            return null;
+        }
+
+        try (DataInputStream dataIn = new DataInputStream(new BufferedInputStream(new FileInputStream(file)))) {
             List<Integer> numbers = new ArrayList<>();
-            try (DataInputStream dataIn = new DataInputStream(new BufferedInputStream(inputStream))) {
-                int n = dataIn.readInt();
-                for (int i = 0; i < n; i++) {
-                    numbers.add(dataIn.readInt());
-                }
+            int n = dataIn.readInt();
+            for (int i = 0; i < n; i++) {
+                numbers.add(dataIn.readInt());
             }
             return numbers;
 

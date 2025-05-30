@@ -33,7 +33,9 @@ public class Client extends Thread {
 
     @Override
     public void run() {
-        try (Socket socket = new Socket(host, port); DataInputStream dataIn = new DataInputStream(socket.getInputStream()); DataOutputStream dataOut = new DataOutputStream(socket.getOutputStream())) {
+        try (Socket socket = new Socket(host, port);
+             DataInputStream dataIn = new DataInputStream(socket.getInputStream());
+             DataOutputStream dataOut = new DataOutputStream(socket.getOutputStream())) {
             Logger.log("Client " + id + " connected to server at " + host + ":" + port);
 
             while (true) {

@@ -2,26 +2,20 @@ package org.main;
 
 import java.io.*;
 import java.net.Socket;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class Test {
 
-    private static void generateBinFile(String filename, List<Integer> numbers) throws IOException {
-        try (DataOutputStream out = new DataOutputStream(new FileOutputStream("src/main/resources/" + filename))) {
-            out.writeInt(numbers.size());
-            for (int num : numbers) {
-                out.writeInt(num);
-            }
-        }
+    private String getResourcePath(String resourceName) {
+        return getClass().getClassLoader().getResource(resourceName).getPath();
     }
 
-    private void runTest(String filename, List<Integer> numbers, String expectedOutput) throws Exception {
-        generateBinFile(filename, numbers);
-
+    private void runTest(String resourceFile, String expectedOutput) throws Exception {
+        String filepath = getResourcePath(resourceFile);
         ByteArrayInputStream testInput = new ByteArrayInputStream(
-                (filename + System.lineSeparator() + "exit" + System.lineSeparator()).getBytes());
+                (filepath + System.lineSeparator() + "exit" + System.lineSeparator()).getBytes());
+
         InputStream originalIn = System.in;
         System.setIn(testInput);
 
@@ -53,7 +47,6 @@ public class Test {
     public void testAllPrime() throws Exception {
         runTest(
                 "input_all_prime.bin",
-                List.of(2, 3, 5, 7, 11, 13, 17, 19),
                 "Final result: All numbers are prime"
         );
     }
@@ -62,19 +55,16 @@ public class Test {
     public void testSomeNotPrime() throws Exception {
         runTest(
                 "input_with_composite.bin",
-                List.of(2, 3, 4, 5, 7, 9, 11),
                 "Final result: Some numbers are NOT prime"
         );
     }
 
     @org.junit.jupiter.api.Test
     public void testClientDisconnects() throws Exception {
-        String filename = "input_disconnect.bin";
-        List<Integer> numbers = List.of(2, 3, 5, 7, 11, 13, 17, 19);
-        generateBinFile(filename, numbers);
-
+        String filepath = getResourcePath("input_disconnect.bin");
         ByteArrayInputStream testInput = new ByteArrayInputStream(
-                (filename + System.lineSeparator() + "exit" + System.lineSeparator()).getBytes());
+                (filepath + System.lineSeparator() + "exit" + System.lineSeparator()).getBytes());
+
         InputStream originalIn = System.in;
         System.setIn(testInput);
 
@@ -110,5 +100,4 @@ public class Test {
         assertTrue(output.contains("Final result: All numbers are prime"));
         assertTrue(output.contains("Client 0"));
     }
-
 }
