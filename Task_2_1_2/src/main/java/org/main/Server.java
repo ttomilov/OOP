@@ -9,9 +9,8 @@ public class Server extends Thread {
     private ServerSocket serverSocket;
     private final int port;
     private final List<ClientSession> clients = new ArrayList<>();
+    private final Object clientMonitor = new Object();
     private volatile boolean running = true;
-    private final long clientWaitMillis = 5000;
-    private final Object waitMonitor = new Object();
 
     public Server(int port) {
         this.port = port;
@@ -25,40 +24,41 @@ public class Server extends Thread {
 
             new Thread(this::acceptClients).start();
 
-            Logger.log("Waiting " + clientWaitMillis + "ms for clients to connect...");
-            synchronized (waitMonitor) {
-                waitMonitor.wait(clientWaitMillis);
-            }
-            Logger.log("Finished waiting. " + clients.size() + " clients connected.");
-
             Scanner scanner = new Scanner(System.in);
-            Logger.log("Enter .bin filename or 'exit':");
+            Logger.log("Commands:\n - enter .bin filename to start\n - 'list' to show clients\n - 'exit' to stop");
 
             while (running) {
                 String input = scanner.nextLine();
+
                 if (input.equals("exit")) {
-                    synchronized (waitMonitor) {
-                        waitMonitor.notify();
-                    }
                     broadcastShutdown();
                     running = false;
-                    try {
-                        serverSocket.close();
-                    } catch (IOException ignored) {}
+                    serverSocket.close();
                     break;
                 }
 
+                if (input.equals("list")) {
+                    synchronized (clients) {
+                        Logger.log("Connected clients: " + clients.size());
+                    }
+                    continue;
+                }
+
                 List<Integer> numbers = loadNumbersFromFile(input);
-                if (numbers == null) {
-                    continue;
+                if (numbers == null) continue;
+
+                synchronized (clientMonitor) {
+                    while (clients.isEmpty()) {
+                        Logger.log("Waiting for clients to connect...");
+                        clientMonitor.wait();
+                    }
                 }
 
-                if (clients.isEmpty()) {
-                    Logger.log("No clients connected. Try again later.");
-                    continue;
+                int clientCount;
+                synchronized (clients) {
+                    clientCount = clients.size();
                 }
 
-                int clientCount = clients.size();
                 ArrayList<ArrayList<Integer>> parts = splitList(numbers, clientCount);
                 Queue<List<Integer>> taskQueue = new LinkedList<>(parts);
                 List<Boolean> results = Collections.synchronizedList(new ArrayList<>());
@@ -67,12 +67,10 @@ public class Server extends Thread {
 
                 while (!taskQueue.isEmpty()) {
                     List<Integer> subtask = taskQueue.poll();
-
                     ClientSession client;
+
                     synchronized (clients) {
-                        if (clients.isEmpty()) {
-                            break;
-                        }
+                        if (clients.isEmpty()) break;
                         client = clients.remove(0);
                     }
 
@@ -88,10 +86,8 @@ public class Server extends Thread {
                             synchronized (clients) {
                                 clients.add(selectedClient);
                             }
-
                         } catch (IOException e) {
                             Logger.log("Client " + selectedClient.id + " failed: " + e.getMessage());
-
                             synchronized (taskQueue) {
                                 taskQueue.add(currentTask);
                             }
@@ -125,8 +121,17 @@ public class Server extends Thread {
         while (running) {
             try {
                 Socket socket = serverSocket.accept();
-                Logger.log("Client " + id + " connected.");
-                clients.add(new ClientSession(socket, id++));
+                ClientSession client = new ClientSession(socket, id++);
+
+                synchronized (clients) {
+                    clients.add(client);
+                }
+
+                synchronized (clientMonitor) {
+                    clientMonitor.notifyAll();
+                }
+
+                Logger.log("Client " + client.id + " connected.");
             } catch (IOException e) {
                 if (running) {
                     Logger.log("Error accepting client: " + e.getMessage());
@@ -146,7 +151,6 @@ public class Server extends Thread {
 
     private List<Integer> loadNumbersFromFile(String filename) {
         File file = new File(filename);
-
         if (!file.exists()) {
             Logger.log("File not found: " + filename);
             return null;

@@ -11,13 +11,15 @@ public class Test {
         return getClass().getClassLoader().getResource(resourceName).getPath();
     }
 
-    private void runTest(String resourceFile, String expectedOutput) throws Exception {
+    private void runTest(String resourceFile, String expectedOutput, int clientCount) throws Exception {
         String filepath = getResourcePath(resourceFile);
-        ByteArrayInputStream testInput = new ByteArrayInputStream(
-                (filepath + System.lineSeparator() + "exit" + System.lineSeparator()).getBytes());
+
+        PipedOutputStream pos = new PipedOutputStream();
+        PipedInputStream pis = new PipedInputStream(pos);
+        PrintWriter writer = new PrintWriter(pos, true);
 
         InputStream originalIn = System.in;
-        System.setIn(testInput);
+        System.setIn(pis);
 
         ByteArrayOutputStream testOut = new ByteArrayOutputStream();
         PrintStream originalOut = System.out;
@@ -27,10 +29,14 @@ public class Test {
         Thread serverThread = new Thread(server);
         serverThread.start();
 
-        int clientCount = 4;
         for (int i = 0; i < clientCount; i++) {
             new Client("localhost", 5555, i).start();
         }
+
+        Thread.sleep(1500);
+
+        writer.println(filepath);
+        writer.println("exit");
 
         serverThread.join();
 
@@ -43,11 +49,13 @@ public class Test {
         assertTrue(output.contains(expectedOutput));
     }
 
+
     @org.junit.jupiter.api.Test
     public void testAllPrime() throws Exception {
         runTest(
                 "input_all_prime.bin",
-                "Final result: All numbers are prime"
+                "Final result: All numbers are prime",
+                4
         );
     }
 
@@ -55,7 +63,8 @@ public class Test {
     public void testSomeNotPrime() throws Exception {
         runTest(
                 "input_with_composite.bin",
-                "Final result: Some numbers are NOT prime"
+                "Final result: Some numbers are NOT prime",
+                4
         );
     }
 
@@ -88,6 +97,8 @@ public class Test {
         for (int i = 1; i < 4; i++) {
             new Client("localhost", 5555, i).start();
         }
+
+        Thread.sleep(1000);
 
         serverThread.join();
 

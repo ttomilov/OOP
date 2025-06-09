@@ -2,8 +2,6 @@ package org.main;
 
 import java.util.ArrayList;
 
-import static java.lang.Thread.sleep;
-
 public class Main {
     public static void main(String[] args) {
         int port = 5555;

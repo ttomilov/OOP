@@ -2,6 +2,7 @@ package org.main;
 
 import java.io.*;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.ArrayList;
 
 public class Client extends Thread {
@@ -18,14 +19,9 @@ public class Client extends Thread {
 
     private boolean notPrimeFinder() {
         for (int i : numbers) {
-            if (i <= 1) {
-                return true;
-            }
-
+            if (i <= 1) return true;
             for (int j = 2; j * j <= i; j++) {
-                if (i % j == 0) {
-                    return true;
-                }
+                if (i % j == 0) return true;
             }
         }
         return false;
@@ -36,10 +32,18 @@ public class Client extends Thread {
         try (Socket socket = new Socket(host, port);
              DataInputStream dataIn = new DataInputStream(socket.getInputStream());
              DataOutputStream dataOut = new DataOutputStream(socket.getOutputStream())) {
+
             Logger.log("Client " + id + " connected to server at " + host + ":" + port);
 
             while (true) {
-                int n = dataIn.readInt();
+                int n;
+                try {
+                    n = dataIn.readInt();
+                } catch (EOFException | SocketException e) {
+                    Logger.log("Client " + id + " connection closed by server.");
+                    break;
+                }
+
                 if (n == -1) {
                     Logger.log("Client " + id + " received shutdown signal.");
                     break;
