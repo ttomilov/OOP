@@ -24,6 +24,13 @@ public class Server extends Thread {
 
             new Thread(this::acceptClients).start();
 
+            synchronized (clientMonitor) {
+                while (clients.isEmpty()) {
+                    Logger.log("Waiting for clients to connect...");
+                    clientMonitor.wait();
+                }
+            }
+
             Scanner scanner = new Scanner(System.in);
             Logger.log("Commands:\n - enter .bin filename to start\n - 'list' to show clients\n - 'exit' to stop");
 
@@ -46,13 +53,6 @@ public class Server extends Thread {
 
                 List<Integer> numbers = loadNumbersFromFile(input);
                 if (numbers == null) continue;
-
-                synchronized (clientMonitor) {
-                    while (clients.isEmpty()) {
-                        Logger.log("Waiting for clients to connect...");
-                        clientMonitor.wait();
-                    }
-                }
 
                 int clientCount;
                 synchronized (clients) {
